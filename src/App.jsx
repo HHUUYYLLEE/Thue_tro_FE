@@ -1,10 +1,16 @@
-import './App.css'
-
+import useRouteElement from './useRouteElement'
+// import { ToastContainer } from 'react-toastify'
+// import 'react-toastify/dist/ReactToastify.css'
+import BGM from './components/BGM'
 function App() {
+  const routeElement = useRouteElement()
+
   return (
-    <>
-      <div className='text-yellow-300 text-4xl'>Hello</div>
-    </>
+    <div>
+      <BGM />
+      {routeElement}
+      {/* <ToastContainer /> */}
+    </div>
   )
 }
 
