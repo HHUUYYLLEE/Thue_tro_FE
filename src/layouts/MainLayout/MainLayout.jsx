@@ -5,11 +5,9 @@ function Mainlayout({ children }) {
   return (
     <>
       <div className='flex flex-col min-h-[100vh]'>
-        <div>
+        <div className='bg-[#DCEAFF]'>
           <Header />
         </div>
-
-        {/* <div className='z-0 h-auto min-h-[calc(100vh_-_210px)] text-black bg-[#DCEAFF]'>{children}</div> */}
         <div className='mt-auto'>
           <Footer />
         </div>

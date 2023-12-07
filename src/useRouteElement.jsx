@@ -1,6 +1,6 @@
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
-import MainLayout from './layout/MainLayout'
-import RegisterLayout from './layout/RegisterLayout'
+import MainLayout from './layouts/MainLayout'
+import RegisterLayout from './layouts/RegisterLayout'
 
 import { useContext } from 'react'
 import { AppContext } from './contexts/app.context'
