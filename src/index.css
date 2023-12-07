@@ -16,3 +16,7 @@
 .font-blooddrip {
   font-family: BloodDrip;
 }
+
+.active {
+  @apply text-blue-600;
+}
