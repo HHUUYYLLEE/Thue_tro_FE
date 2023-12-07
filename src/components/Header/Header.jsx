@@ -54,7 +54,7 @@ export default function Header() {
 
   return (
     <header
-      className={`bg-transparent fixed flex top-0 w-full h-20 justify-between items-center ${
+      className={`bg-transparent fixed flex top-0 w-full h-20 justify-between items-center transition duration-300 ${
         header ? 'bg-white/90 backdrop-filter shadow-lg' : ''
       }`}
     >
