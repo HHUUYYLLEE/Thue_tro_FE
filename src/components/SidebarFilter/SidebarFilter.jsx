@@ -3,8 +3,11 @@ import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import Switch from 'react-switch'
 import { displayNum } from '../../utils/utils'
-
-export default function SidebarFilter(page) {
+import { useForm } from 'react-hook-form'
+import { createSearchParams, useNavigate } from 'react-router-dom'
+export default function SidebarFilter() {
+  const navigate = useNavigate()
+  const { register, handleSubmit } = useForm({})
   const minPrice = 0,
     defaultPrice = 5000000,
     minArea = 10,

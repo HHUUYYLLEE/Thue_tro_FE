@@ -1,5 +1,4 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { Audio } from 'react-loader-spinner'
 import { getAllRooms } from '../../api/rooms.api'
 import Room from './Room/Room'
 export default function RoomsList() {
