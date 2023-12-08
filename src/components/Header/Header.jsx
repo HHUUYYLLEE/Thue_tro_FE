@@ -35,7 +35,7 @@ export default function Header() {
       <div className='flex pl-20 gap-8 font-semibold'>
         {headerItems.map((item) => {
           return (
-            <NavLink key={item.id} to={item.path} className='group transition duration-300 text-white'>
+            <NavLink key={item.id} to={item.path} className='group text-lg transition duration-300 text-white'>
               {item.name}
               <span className='block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white' />
             </NavLink>
