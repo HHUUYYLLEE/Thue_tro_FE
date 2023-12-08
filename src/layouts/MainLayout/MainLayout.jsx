@@ -1,5 +1,6 @@
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
+import Body from '../../components/Body'
 
 function Mainlayout({ children }) {
   return (
@@ -10,6 +11,7 @@ function Mainlayout({ children }) {
         </div>
         <div className='h-[100rem]'></div>
         <div className='mt-auto'>
+          <Body />
           <Footer />
         </div>
       </div>
