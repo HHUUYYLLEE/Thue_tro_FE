@@ -1,6 +1,7 @@
 import Banner from '../../components/Banner'
 import NavFilter from '../../components/NavFilter'
-
+import RoomDetail from '../../components/RoomDetail'
+import SidebarFilter from '../../components/SidebarFilter/SidebarFilter'
 export default function Home() {
   return (
     <>
@@ -9,8 +10,16 @@ export default function Home() {
           <Banner />
         </div>
       </div>
-      <div className='mt-[6rem]'>
+      <div className='mt-[8rem]'>
         <NavFilter />
+      </div>
+      <div className='my-[8rem] mx-[11rem] grid gap-x-[7rem] grid-cols-11'>
+        <div className='row-start-1 col-span-3'>
+          <SidebarFilter />
+        </div>
+        <div className='row-start-1 col-span-8'>
+          <RoomDetail />
+        </div>
       </div>
     </>
   )
