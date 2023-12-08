@@ -43,7 +43,11 @@ export default function Header() {
               }`}
             >
               {item.name}
-              <span className='block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white' />
+              <span
+                className={`block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 ${
+                  path.pathname === '/room' ? 'bg-black' : 'bg-white'
+                }`}
+              />
             </NavLink>
           )
         })}

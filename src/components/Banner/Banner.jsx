@@ -49,16 +49,16 @@ export default function Banner() {
           <div className='text-white text-3xl italic'>Các phòng trọ nổi bật</div>
           <div className='flex gap-8 mt-12'>
             <div>
-              <img src={Room1} alt=""/>
+              <img src={Room1} alt='' />
             </div>
             <div>
-              <img src={Room2} alt=""/>
+              <img src={Room2} alt='' />
             </div>
             <div>
-              <img src={Room3} alt=""/>
+              <img src={Room3} alt='' />
             </div>
             <div>
-              <img src={Room4} alt=""/>
+              <img src={Room4} alt='' />
             </div>
           </div>
         </div>
