@@ -15,7 +15,7 @@ export default function PopUpAddress({ setAddressMenu }) {
   // console.log(districts)
   return (
     <div className='absolute top-[3.5rem] right-2 z-50'>
-      <div className='z-50 bg-white divide-y h-[18rem] overflow-y-auto example divide-gray-100 border border-black shadow min-w-[20rem] '>
+      <div className='z-50 bg-white divide-y h-[18rem] overflow-y-auto example divide-gray-100 border border-black shadow min-w-[18rem] '>
         <ul className=''>
           {districts &&
             districts.map((district) => {

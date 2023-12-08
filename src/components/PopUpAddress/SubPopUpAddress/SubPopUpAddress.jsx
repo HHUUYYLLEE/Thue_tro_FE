@@ -20,7 +20,7 @@ export default function SubPopUpAddress({ id, hideAll }) {
   console.log(wards)
   return (
     <div className='absolute fix_hover top-0 right-[-102%]'>
-      <div className='z-50 bg-white divide-y h-[18rem] overflow-y-auto example divide-gray-100 border border-black shadow min-w-[20rem] '>
+      <div className='z-50 bg-white divide-y h-[18rem] overflow-y-auto example divide-gray-100 border border-black shadow min-w-[18rem] '>
         <ul className=''>
           {wards &&
             wards.map((ward) => {
