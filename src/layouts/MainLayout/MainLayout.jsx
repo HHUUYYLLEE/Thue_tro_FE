@@ -9,7 +9,7 @@ function Mainlayout({ children }) {
         <div className='bg-[#DCEAFF]'>
           <Header />
         </div>
-        <div className='h-[100rem]'>{children}</div>
+        <div>{children}</div>
         <div className='mt-auto'>
           <Footer />
         </div>

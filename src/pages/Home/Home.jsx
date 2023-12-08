@@ -4,7 +4,7 @@ import PopUpAddress from '../../components/PopUpAddress'
 export default function Home() {
   return (
     <>
-      <div className='h-[100rem]'>
+      <div>
         <div>
           <Banner />
         </div>

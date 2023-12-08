@@ -1,4 +1,8 @@
 import BannerImage from '../../asset/img/banner.png'
+import Room1 from '../../asset/img/room1.png'
+import Room2 from '../../asset/img/room2.png'
+import Room3 from '../../asset/img/room3.png'
+import Room4 from '../../asset/img/room4.png'
 
 export default function Banner() {
   return (
@@ -40,6 +44,15 @@ export default function Banner() {
           </button>
         </div>
       </form>
+      <div className='pl-28 pt-[540px]'>
+        <div className='z-50 absolute text-white text-3xl italic'>Các phòng trọ nổi bật</div>
+        <div className='flex absolute gap-4 mt-20'>
+          <img src={Room1} alt=""/>
+          <img src={Room2} alt=""/>
+          <img src={Room3} alt=""/>
+          <img src={Room4} alt=""/>
+        </div>
+      </div>
     </div>
   )
 }
