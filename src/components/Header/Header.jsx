@@ -54,11 +54,11 @@ export default function Header() {
 
   return (
     <header
-      className={`bg-transparent fixed flex top-0 w-full h-20 justify-between items-center transition duration-300 ${
+      className={`bg-transparent fixed flex top-0 w-full h-20 justify-between items-center transition duration-300 z-[999] ${
         header ? 'bg-white/90 backdrop-filter shadow-lg' : ''
       }`}
     >
-      <div className='pl-20 -mt-2 text-3xl text-[#30B4FF] italic'>
+      <div className='pl-20 -mt-2 text-3xl text-white italic'>
         <Link to='/'>tro.vn</Link>
       </div>
       <div className='flex pl-20 gap-8 font-semibold'>
@@ -76,9 +76,9 @@ export default function Header() {
         </NavLink> */}
         {headerItems.map((item) => {
           return (
-            <NavLink key={item.id} to={item.path} className='group transition duration-300'>
+            <NavLink key={item.id} to={item.path} className='group transition duration-300 text-white'>
               {item.name}
-              <span className='block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-sky-600' />
+              <span className='block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white' />
             </NavLink>
           )
         })}

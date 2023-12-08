@@ -1,5 +1,6 @@
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
+import Banner from '../../components/Banner'
 
 function Mainlayout({ children }) {
   return (
@@ -8,7 +9,7 @@ function Mainlayout({ children }) {
         <div className='bg-[#DCEAFF]'>
           <Header />
         </div>
-        <div className='h-[100rem]'></div>
+        <div className='h-[100rem]'><Banner /></div>
         <div className='mt-auto'>
           <Footer />
         </div>
