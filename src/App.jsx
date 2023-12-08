@@ -22,7 +22,7 @@ function App() {
           contextClass[type || 'default'] +
           ' relative flex p-3 border font-gray-300 min-h-10 rounded-md justify-between overflow-hidden cursor-pointer'
         }
-        bodyClassName={() => 'text-sm text-black font-white font-med flex p-3'}
+        bodyClassName={() => 'text-sm text-black font-white font-medium flex p-3'}
         position='bottom-right'
         autoClose={2000}
       />

@@ -1,5 +1,5 @@
 import Banner from '../../components/Banner'
-import PopUpAddress from '../../components/PopUpAddress'
+import NavFilter from '../../components/NavFilter'
 
 export default function Home() {
   return (
@@ -9,8 +9,8 @@ export default function Home() {
           <Banner />
         </div>
       </div>
-      <div className='mt-[20rem]'>
-        <PopUpAddress />
+      <div className='mt-[8rem]'>
+        <NavFilter />
       </div>
     </>
   )
