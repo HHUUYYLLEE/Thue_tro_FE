@@ -19,23 +19,29 @@ export default function Header() {
   }
 
   const path = useLocation()
-  console.log(path.pathname)
+  // console.log(path.pathname)
 
   window.addEventListener('scroll', changeBackground)
 
   return (
     <header
-      className={`bg-transparent fixed flex top-0 w-full h-20 justify-between items-center transition duration-300 z-[999] ${
-        header ? 'bg-slate-900/70 backdrop-filter shadow-lg' : ''
+      className={`bg-transparent fixed flex top-0 w-full h-20 backdrop-filter shadow-lg justify-between items-center transition duration-300 z-[999] ${
+        path.pathname === '/room' ? '' : `${header ? 'bg-slate-900/50' : ''}`
       }`}
     >
-      <div className='pl-20 -mt-2 text-3xl text-white italic'>
+      <div className={`pl-20 -mt-2 text-3xl italic ${path.pathname === '/room' ? 'text-blue-500' : 'text-white'}`}>
         <Link to='/'>tro.vn</Link>
       </div>
       <div className='flex pl-20 gap-8 font-semibold'>
         {headerItems.map((item) => {
           return (
-            <NavLink key={item.id} to={item.path} className='group text-lg transition duration-300 text-white'>
+            <NavLink
+              key={item.id}
+              to={item.path}
+              className={`group text-lg transition duration-300 ${
+                path.pathname === '/room' ? 'text-black' : 'text-white'
+              }`}
+            >
               {item.name}
               <span className='block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-white' />
             </NavLink>

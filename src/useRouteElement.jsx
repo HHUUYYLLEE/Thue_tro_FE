@@ -4,6 +4,7 @@ import MainLayout from './layouts/MainLayout'
 import Home from './pages/Home'
 
 import Error404NotFound from './pages/Error404NotFound/Error404NotFound'
+import RoomProfile from './pages/RoomProfile'
 
 export default function useRouteElement() {
   const routeElement = useRoutes([
@@ -13,6 +14,15 @@ export default function useRouteElement() {
       element: (
         <MainLayout>
           <Home />
+        </MainLayout>
+      )
+    },
+    {
+      path: '/room',
+      index: true,
+      element: (
+        <MainLayout>
+          <RoomProfile />
         </MainLayout>
       )
     },
