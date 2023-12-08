@@ -10,7 +10,7 @@ export default function Home() {
           <Banner />
         </div>
       </div>
-      <div className='mt-[8rem]'>
+      <div className='mt-[5rem]'>
         <NavFilter />
       </div>
       <div className='my-[8rem] mx-[11rem] grid gap-x-[7rem] grid-cols-11'>
