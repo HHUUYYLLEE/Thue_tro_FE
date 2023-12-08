@@ -3,9 +3,18 @@ import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import Switch from 'react-switch'
 import { displayNum } from '../../utils/utils'
-export default function SidebarFilter() {
-  const [sliderPrice, setSliderPrice] = useState(1000000)
-  const [sliderArea, setSliderArea] = useState(100)
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { Audio } from 'react-loader-spinner'
+import { getAllRooms } from '../../api/rooms.api'
+export default function SidebarFilter(page) {
+  const minPrice = 0,
+    defaultPrice = 5000000,
+    minArea = 10,
+    defaultArea = 200
+  const [sliderPriceRight, setSliderPriceRight] = useState(defaultPrice)
+  const [sliderPriceLeft, setSliderPriceLeft] = useState(minPrice)
+  const [sliderAreaRight, setSliderAreaRight] = useState(defaultArea)
+  const [sliderAreaLeft, setSliderAreaLeft] = useState(minArea)
   const [parklingLotToggle, setParkingLotToggle] = useState(false)
   const [newToggle, setNewToggle] = useState(false)
   const [highSecurityToggle, setHighSecurityToggle] = useState(false)
@@ -17,267 +26,258 @@ export default function SidebarFilter() {
   const [haveTV, setHaveTV] = useState(false)
   const [haveKitchen, setHaveKitchen] = useState(false)
   const [haveWashingMachine, setHaveWashingMachine] = useState(false)
-  const [have1People, setHave1People] = useState(false)
-  const [have2People, setHave2People] = useState(false)
-  const [have3People, setHave3People] = useState(false)
-  const [have4People, setHave4People] = useState(false)
-  const [have5People, setHave5People] = useState(false)
-  const [haveMoreThan5People, setHaveMoreThan5People] = useState(false)
+  const sliders = [
+    {
+      id: 1,
+      label: 'Giá',
+      cssStyle: 'mt-[0.5rem]',
+      step: 10000,
+      min: minPrice,
+      max: 10000000,
+      default1: minPrice,
+      default2: defaultPrice,
+      unit: '',
+      state1: sliderPriceLeft,
+      state2: sliderPriceRight,
+      setState1: setSliderPriceLeft,
+      setState2: setSliderPriceRight
+    },
+    {
+      id: 2,
+      label: 'Diện tích',
+      cssStyle: 'my-[3rem]',
+      step: 10,
+      min: minArea,
+      max: 500,
+      default1: minArea,
+      default2: defaultArea,
+      unit: 'm2',
+      state1: sliderAreaLeft,
+      state2: sliderAreaRight,
+      setState1: setSliderAreaLeft,
+      setState2: setSliderAreaRight
+    }
+  ]
+  const toggles = [
+    {
+      id: 1,
+      label: 'Khu vực để xe',
+      state: parklingLotToggle,
+      setState: setParkingLotToggle
+    },
+    {
+      id: 2,
+      label: 'Mới',
+      state: newToggle,
+      setState: setNewToggle
+    },
+    {
+      id: 3,
+      label: 'An ninh cao',
+      state: highSecurityToggle,
+      setState: setHighSecurityToggle
+    },
+    {
+      id: 4,
+      label: 'Chung chủ',
+      state: haveOwner,
+      setState: setHaveOwner
+    }
+  ]
+  const checks = [
+    {
+      id: 1,
+      label: 'Giường',
+      state: haveBed,
+      setState: setHaveBed,
+      count: 22222
+    },
+    {
+      id: 2,
+      label: 'Tủ quần áo',
+      state: haveWardrobe,
+      setState: setHaveWardrobe,
+      count: 22222
+    },
+    {
+      id: 3,
+      label: 'Bàn ăn',
+      state: haveDiningTable,
+      setState: setHaveDiningTable,
+      count: 22222
+    },
+    {
+      id: 4,
+      label: 'Tủ lạnh',
+      state: haveRefrigerator,
+      setState: setHaveRefrigerator,
+      count: 22222
+    },
+    {
+      id: 5,
+      label: 'Tivi',
+      state: haveTV,
+      setState: setHaveTV,
+      count: 22222
+    },
+    {
+      id: 6,
+      label: 'Bếp núc',
+      state: haveKitchen,
+      setState: setHaveKitchen,
+      count: 22222
+    },
+    {
+      id: 7,
+      label: 'Máy giặt',
+      state: haveWashingMachine,
+      setState: setHaveWashingMachine,
+      count: 22222
+    }
+  ]
+  const [currentNumOfPeople, setCurrentNumOfPeople] = useState(0)
+
+  const numOfPeople = [
+    {
+      id: 1,
+      label: '1 người',
+      value: 1,
+      count: 22222
+    },
+    {
+      id: 2,
+      label: '2 người',
+      value: 2,
+      count: 22222
+    },
+    {
+      id: 3,
+      label: '3 người',
+      value: 3,
+      count: 22222
+    },
+    {
+      id: 4,
+      label: '4 người',
+      value: 4,
+      count: 22222
+    },
+    {
+      id: 5,
+      label: '5 người',
+      value: 5,
+      count: 22222
+    },
+    {
+      id: 6,
+      label: '>5 người',
+      value: 'more5',
+      count: 22222
+    }
+  ]
+  const { data, isLoading } = useQuery({
+    queryKey: ['rooms', page],
+    queryFn: () => {
+      return getAllRooms(page)
+    },
+    placeholderData: keepPreviousData
+  })
+  if (isLoading)
+    return (
+      <Audio height='80' width='80' radius='9' color='green' ariaLabel='three-dots-loading' wrapperStyle wrapperClass />
+    )
+  console.log(data?.data)
   return (
     <>
-      <div className='border-y-2 mt-[0.5rem]'>
-        <div className='my-[0.5rem] text-2xl font-andika'>Giá</div>
-        <div className='text-[1.2rem] grid grid-cols-7'>
-          <div className='row-start-1 col-span-3 border-2'>
-            <div className='opacity-50 ml-1'>0</div>
+      {sliders.map((element) => {
+        return (
+          <div key={element.id} className={`border-y-2 ${element.cssStyle}`}>
+            <div className='my-[0.5rem] text-2xl font-andika'>{element.label}</div>
+            <div className='text-[1.2rem] grid grid-cols-7'>
+              <div className='row-start-1 col-span-3 border-2'>
+                <div className='ml-1'>{displayNum(element.state1) + element.unit}</div>
+              </div>
+              <div className='row-start-1 col-span-1 m-auto'>-</div>
+              <div className='row-start-1 col-span-3 border-2'>
+                <div className='ml-1'>{displayNum(element.state2) + element.unit}</div>
+              </div>
+            </div>
+            <Slider
+              range
+              allowCross={false}
+              className='mt-[1rem] mb-[1.5rem]'
+              value={[element.state1, element.state2]}
+              step={element.step}
+              min={element.min}
+              max={element.max}
+              defaultValue={[element.default1, element.default2]}
+              onChange={([value1, value2]) => {
+                element.setState1(value1)
+                element.setState2(value2)
+              }}
+              styles={{
+                track: { backgroundColor: 'black', height: '0.7rem' },
+                handle: { backgroundColor: 'black', height: '1.5rem', width: '1.5rem', borderColor: 'black' },
+                rail: { backgroundColor: 'grey', height: '0.7rem', opacity: '30%' }
+              }}
+            ></Slider>
           </div>
-          <div className='row-start-1 col-span-1 m-auto'>-</div>
-          <div className='row-start-1 col-span-3 border-2'>
-            <div className='ml-1'>{displayNum(sliderPrice)}</div>
-          </div>
-        </div>
-        <Slider
-          className='mt-[1rem] mb-[1.5rem]'
-          value={sliderPrice}
-          step={10000}
-          min={1000000}
-          max={10000000}
-          onChange={(value) => setSliderPrice(value)}
-          styles={{
-            track: { backgroundColor: 'black', height: '0.7rem' },
-            handle: { backgroundColor: 'black', height: '1.5rem', width: '1.5rem', borderColor: 'black' },
-            rail: { backgroundColor: 'grey', height: '0.7rem', opacity: '30%' }
-          }}
-        ></Slider>
-      </div>
+        )
+      })}
+
       <div className='border-y-2 my-[3rem]'>
-        <div className='my-[0.5rem] text-2xl font-andika'>Diện tích</div>
-        <div className='text-[1.2rem] grid grid-cols-7'>
-          <div className='row-start-1 col-span-3 border-2'>
-            <div className='opacity-50 ml-1'>0m2</div>
-          </div>
-          <div className='row-start-1 col-span-1 m-auto'>-</div>
-          <div className='row-start-1 col-span-3 border-2'>
-            <div className='ml-1'>{displayNum(sliderArea) + 'm2'}</div>
-          </div>
-        </div>
-        <Slider
-          className='mt-[1rem] mb-[1.5rem]'
-          value={sliderArea}
-          step={10}
-          min={10}
-          max={500}
-          onChange={(value) => setSliderArea(value)}
-          styles={{
-            track: { backgroundColor: 'black', height: '0.7rem' },
-            handle: { backgroundColor: 'black', height: '1.5rem', width: '1.5rem', borderColor: 'black' },
-            rail: { backgroundColor: 'grey', height: '0.7rem', opacity: '30%' }
-          }}
-        ></Slider>
-      </div>
-      <div className='border-y-2 my-[3rem]'>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='font-andika'>Khu vực để xe</div>
-          <Switch
-            onChange={() => setParkingLotToggle(!parklingLotToggle)}
-            checked={parklingLotToggle}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            onColor='#000000'
-          />
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='font-andika'>Mới</div>
-          <Switch
-            onChange={() => setNewToggle(!newToggle)}
-            checked={newToggle}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            onColor='#000000'
-          />
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='font-andika'>An ninh cao</div>
-          <Switch
-            onChange={() => setHighSecurityToggle(!highSecurityToggle)}
-            checked={highSecurityToggle}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            onColor='#000000'
-          />
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='font-andika'>Chung chủ</div>
-          <Switch
-            onChange={() => setHaveOwner(!haveOwner)}
-            checked={haveOwner}
-            checkedIcon={false}
-            uncheckedIcon={false}
-            onColor='#000000'
-          />
-        </div>
+        {toggles.map((element) => {
+          return (
+            <div key={element.id} className='flex justify-between my-[1rem]'>
+              <div className='font-andika'>{element.label}</div>
+              <Switch
+                onChange={() => element.setState(!element.state)}
+                checked={element.state}
+                checkedIcon={false}
+                uncheckedIcon={false}
+                onColor='#000000'
+              />
+            </div>
+          )
+        })}
       </div>
       <div className='border-y-2 my-[2rem]'>
         <div className='my-[0.5rem] text-2xl font-andika'>Nội thất</div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={haveBed}
-              onChange={() => setHaveBed(!haveBed)}
-            />
-            <div className='font-andika'>Giường</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={haveWardrobe}
-              onChange={() => setHaveWardrobe(!haveWardrobe)}
-            />
-            <div className='font-andika'>Tủ Quần áo</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={haveDiningTable}
-              onChange={() => setHaveDiningTable(!haveDiningTable)}
-            />
-            <div className='font-andika'>Bàn ăn</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={haveRefrigerator}
-              onChange={() => setHaveRefrigerator(!haveRefrigerator)}
-            />
-            <div className='font-andika'>Tủ lạnh</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={haveTV}
-              onChange={() => setHaveTV(!haveTV)}
-            />
-            <div className='font-andika'>Tivi</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={haveKitchen}
-              onChange={() => setHaveKitchen(!haveKitchen)}
-            />
-            <div className='font-andika'>Bếp núc</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={haveWashingMachine}
-              onChange={() => setHaveWashingMachine(!haveWashingMachine)}
-            />
-            <div className='font-andika'>Máy giặt</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
+        {checks.map((element) => {
+          return (
+            <div key={element.id} className='flex justify-between my-[1rem]'>
+              <div className='flex gap-[1rem]'>
+                <input
+                  type='checkbox'
+                  className='transform scale-150 accent-black'
+                  checked={element.state}
+                  onChange={() => element.setState(!element.state)}
+                />
+                <div className='font-andika'>{element.label}</div>
+              </div>
+              <div className='opacity-50'>{element.count}</div>
+            </div>
+          )
+        })}
       </div>
       <div className='border-y-2 my-[2rem]'>
         <div className='my-[0.5rem] text-2xl font-andika'>Số lượng người ở</div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={have1People}
-              onChange={() => setHave1People(!have1People)}
-            />
-            <div className='font-andika'>1 người</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={have2People}
-              onChange={() => setHave2People(!have2People)}
-            />
-            <div className='font-andika'>2 người</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={have3People}
-              onChange={() => setHave3People(!have3People)}
-            />
-            <div className='font-andika'>3 người</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={have4People}
-              onChange={() => setHave4People(!have4People)}
-            />
-            <div className='font-andika'>4 người</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={have5People}
-              onChange={() => setHave5People(!have5People)}
-            />
-            <div className='font-andika'>5 người</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
-        <div className='flex justify-between my-[1rem]'>
-          <div className='flex gap-[1rem]'>
-            <input
-              type='checkbox'
-              className='transform scale-150 accent-black'
-              checked={haveMoreThan5People}
-              onChange={() => setHaveMoreThan5People(!haveMoreThan5People)}
-            />
-            <div className='font-andika'>&#62;5 người</div>
-          </div>
-          <div className='opacity-50'>22222</div>
-        </div>
+        {numOfPeople.map((element) => {
+          return (
+            <div key={element.id} className='flex justify-between my-[1rem]'>
+              <div className='flex gap-[1rem]'>
+                <input
+                  type='radio'
+                  className='transform scale-150 accent-black'
+                  onChange={() => setCurrentNumOfPeople(element.value)}
+                  checked={currentNumOfPeople === element.value}
+                />
+                <div className='font-andika'>{element.label}</div>
+              </div>
+              <div className='opacity-50'>{element.count}</div>
+            </div>
+          )
+        })}
       </div>
     </>
   )
