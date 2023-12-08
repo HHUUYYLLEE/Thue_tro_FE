@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <header
       className={`bg-transparent fixed flex top-0 w-full h-20 justify-between items-center transition duration-300 z-[999] ${
-        header ? 'bg-white/90 backdrop-filter shadow-lg' : ''
+        header ? 'bg-slate-800/70 backdrop-filter shadow-lg' : ''
       }`}
     >
       <div className='pl-20 -mt-2 text-3xl text-white italic'>
