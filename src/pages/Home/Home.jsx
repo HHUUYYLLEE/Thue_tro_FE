@@ -1,5 +1,6 @@
 import Banner from '../../components/Banner'
 import NavFilter from '../../components/NavFilter'
+import RoomDetail from '../../components/RoomDetail'
 
 export default function Home() {
   return (
@@ -11,6 +12,9 @@ export default function Home() {
       </div>
       <div className='mt-[8rem]'>
         <NavFilter />
+      </div>
+      <div>
+        <RoomDetail />
       </div>
     </>
   )
