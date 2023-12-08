@@ -26,7 +26,7 @@ export default function Header() {
   return (
     <header
       className={`bg-transparent fixed flex top-0 w-full h-20 backdrop-filter shadow-lg justify-between items-center transition duration-300 z-[999] ${
-        path.pathname === '/room' ? '' : `${header ? 'bg-slate-900/50' : ''}`
+        path.pathname === '/room' ? '' : `${header ? 'bg-slate-800' : ''}`
       }`}
     >
       <div className={`pl-20 -mt-2 text-3xl italic ${path.pathname === '/room' ? 'text-blue-500' : 'text-white'}`}>

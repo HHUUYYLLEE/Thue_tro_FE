@@ -17,9 +17,6 @@ export default function Home() {
         <div className='row-start-1 col-span-3'>
           <SidebarFilter />
         </div>
-        <div className='row-start-1 col-span-8'>
-          <RoomDetail />
-        </div>
       </div>
     </>
   )
