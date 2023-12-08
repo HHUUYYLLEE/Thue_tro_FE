@@ -1,5 +1,6 @@
 import Footer from '../../components/Footer'
 import Header from '../../components/Header'
+import PopUpAddress from '../../components/PopUpAddress'
 
 function Mainlayout({ children }) {
   return (
@@ -8,7 +9,9 @@ function Mainlayout({ children }) {
         <div className='bg-[#DCEAFF]'>
           <Header />
         </div>
-        <div className='h-[100rem]'></div>
+        <div className='h-[100rem] flex justify-center items-center'>
+          <PopUpAddress />
+        </div>
         <div className='mt-auto'>
           <Footer />
         </div>
