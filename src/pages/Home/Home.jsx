@@ -1,6 +1,6 @@
 import Banner from '../../components/Banner'
 import NavFilter from '../../components/NavFilter'
-import RoomDetail from '../../components/RoomDetail'
+// import RoomDetail from '../../components/RoomDetail'
 import SidebarFilter from '../../components/SidebarFilter/SidebarFilter'
 export default function Home() {
   return (
