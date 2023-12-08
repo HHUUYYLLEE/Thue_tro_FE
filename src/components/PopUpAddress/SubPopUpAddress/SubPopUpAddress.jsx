@@ -13,9 +13,9 @@ export default function SubPopUpAddress({ id, hideSubMenu }) {
   })
 
   const wards = data?.data?.wards
-  // console.log(wards)
+  console.log(wards)
   return (
-    <div className='absolute fix_hover top-0 right-[-102%]'>
+    <div className='absolute fix_hover top-0 right-[22%]'>
       <div className='z-50 bg-white divide-y h-[18rem] overflow-y-auto example divide-gray-100 border border-black shadow w-64 '>
         <ul className=''>
           {wards &&

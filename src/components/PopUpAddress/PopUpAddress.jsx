@@ -14,7 +14,7 @@ export default function PopUpAddress() {
   const districts = data?.data?.districts
   // console.log(districts)
   return (
-    <div className='relative'>
+    <div className='relative max-w-2xl'>
       <div className='z-50 bg-white divide-y h-[18rem] overflow-y-auto example divide-gray-100 border border-black shadow w-64 '>
         <ul className=''>
           {districts &&
