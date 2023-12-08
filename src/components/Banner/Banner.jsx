@@ -12,9 +12,9 @@ export default function Banner() {
         <div className='left-52 top-32 absolute text-white text-6xl italic'>
           Tìm phòng trọ uy tín,<br></br> giá rẻ
         </div>
-        <form className='top-1/3 left-1/2 w-1/2 absolute -translate-x-1/2 -translate-y-1/2'>
+        <form className='top-80 left-0 right-0 ml-auto mr-auto w-[50vw] absolute'>
           <div className='relative'>
-            <div className='flex absolute inset-y-0 left-0 items-center pl-8 pointer-events-none'>
+            <div className='flex absolute inset-y-0 left-0 items-center pl-8 pointer-events-none z-10'>
               <svg
                 aria-hidden='true'
                 className='w-5 h-5 text-white'
@@ -45,13 +45,21 @@ export default function Banner() {
             </button>
           </div>
         </form>
-        <div className='absolute left-52 -mt-60'>
+        <div className='absolute -mt-60 left-0 right-0 ml-auto mr-auto w-[80vw]'>
           <div className='text-white text-3xl italic'>Các phòng trọ nổi bật</div>
           <div className='flex gap-8 mt-12'>
-            <img src={Room1} alt="" className='max-w-[18vw]'/>
-            <img src={Room2} alt="" className='max-w-[18vw]'/>
-            <img src={Room3} alt="" className='max-w-[18vw]'/>
-            <img src={Room4} alt="" className='max-w-[18vw]'/>
+            <div>
+              <img src={Room1} alt=""/>
+            </div>
+            <div>
+              <img src={Room2} alt=""/>
+            </div>
+            <div>
+              <img src={Room3} alt=""/>
+            </div>
+            <div>
+              <img src={Room4} alt=""/>
+            </div>
           </div>
         </div>
       </div>
