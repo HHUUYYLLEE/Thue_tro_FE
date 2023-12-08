@@ -1,7 +1,7 @@
 import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 import RegisterLayout from './layouts/RegisterLayout'
-
+import Home from './pages/Home'
 import { useContext } from 'react'
 import { AppContext } from './contexts/app.context'
 
@@ -36,7 +36,11 @@ export default function useRouteElement() {
     {
       path: '/',
       index: true,
-      element: <MainLayout></MainLayout>
+      element: (
+        <MainLayout>
+          <Home />
+        </MainLayout>
+      )
     },
 
     {

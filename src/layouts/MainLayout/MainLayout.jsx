@@ -9,9 +9,7 @@ function Mainlayout({ children }) {
         <div className='bg-[#DCEAFF]'>
           <Header />
         </div>
-        <div className='h-[100rem] flex justify-center items-center'>
-          <PopUpAddress />
-        </div>
+        <div className='h-[100rem]'></div>
         <div className='mt-auto'>
           <Footer />
         </div>
