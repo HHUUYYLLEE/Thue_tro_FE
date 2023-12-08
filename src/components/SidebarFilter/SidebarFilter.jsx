@@ -3,9 +3,7 @@ import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import Switch from 'react-switch'
 import { displayNum } from '../../utils/utils'
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { Audio } from 'react-loader-spinner'
-import { getAllRooms } from '../../api/rooms.api'
+
 export default function SidebarFilter(page) {
   const minPrice = 0,
     defaultPrice = 5000000,
@@ -175,18 +173,7 @@ export default function SidebarFilter(page) {
       count: 22222
     }
   ]
-  const { data, isLoading } = useQuery({
-    queryKey: ['rooms', page],
-    queryFn: () => {
-      return getAllRooms(page)
-    },
-    placeholderData: keepPreviousData
-  })
-  if (isLoading)
-    return (
-      <Audio height='80' width='80' radius='9' color='green' ariaLabel='three-dots-loading' wrapperStyle wrapperClass />
-    )
-  console.log(data?.data)
+
   return (
     <>
       {sliders.map((element) => {

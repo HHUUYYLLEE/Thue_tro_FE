@@ -1,4 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Andika&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Andika&family=Lato&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -20,7 +23,20 @@
 .font-andika {
   font-family: 'Andika', sans-serif;
 }
-
+.font-lato {
+  font-family: 'Lato', sans-serif;
+}
+.font-montserrat-700 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+}
+.font-montserrat-500 {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 500;
+}
+.font-poppins {
+  font-family: 'Poppins', sans-serif;
+}
 /* .active {
   @apply text-blue-600;
 } */
