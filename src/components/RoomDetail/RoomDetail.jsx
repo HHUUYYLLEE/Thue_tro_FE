@@ -28,10 +28,10 @@ export default function RoomDetail() {
         <>
           <div className='w-5/6 flex flex-col justify-between'>
             <div className='flex flex-row justify-between font-bold text-2xl'>
-              <div>
+              <div className='max-w-[60vw]'>
                 {room.name} | Phòng {room.number_or_people} người | {room.district_id.district}
               </div>
-              <div>{room.price} VNĐ</div>
+              <div>{room.price.toLocaleString()} VNĐ</div>
             </div>
             <div className='flex flex-row justify-between mt-4'>
               <div className=''>
