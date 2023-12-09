@@ -91,23 +91,23 @@ export default function RoomDetail() {
         <div className='grid grid-cols-5 gap-4'>
           <div className='grid col-span-3 row-span-2 gap-4'>
             <div>
-              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage1}' alt='' />
+              <img className='rounded-lg object-fit w-full h-auto' src={RoomDetailImage1} alt='' />
             </div>
           </div>
           <div className='grid gap-4'>
             <div>
-              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage2}' alt='' />
+              <img className='rounded-lg object-fit w-full h-auto' src={RoomDetailImage2} alt='' />
             </div>
             <div>
-              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage3}' alt='' />
+              <img className='rounded-lg object-fit w-full h-auto' src={RoomDetailImage3} alt='' />
             </div>
           </div>
           <div className='grid gap-4'>
             <div>
-              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage4}' alt='' />
+              <img className='rounded-lg object-fit w-full h-auto' src={RoomDetailImage4} alt='' />
             </div>
             <div>
-              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage5}' alt='' />
+              <img className='rounded-lg object-fit w-full h-auto' src={RoomDetailImage5} alt='' />
             </div>
           </div>
         </div>
