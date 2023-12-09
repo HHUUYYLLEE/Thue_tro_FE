@@ -1,9 +1,9 @@
-import React, { useContext, useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
 import { FiFilter } from 'react-icons/fi'
 import PopUpAddress from '../PopUpAddress'
 import { AppContext } from '../../contexts/app.context'
-export default function NavFilter(props) {
+export default function NavFilter() {
   const [addressMenu, setAddressMenu] = useState(false)
   const { valueAddress } = useContext(AppContext)
   const openAddressMenu = () => {
@@ -39,7 +39,7 @@ export default function NavFilter(props) {
               <AiOutlineDown />
             </div>
           </div>
-          {addressMenu && <PopUpAddress Form={props.Form} setAddressMenu={setAddressMenu} />}
+          {addressMenu && <PopUpAddress setAddressMenu={setAddressMenu} />}
         </div>
 
         <div className='relative text-lg font-medium py-1 px-3'>
