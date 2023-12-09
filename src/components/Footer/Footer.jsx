@@ -63,7 +63,7 @@ export default function Footer() {
               </h4>
 
               <div className='list overflow-hidden mt-3'>
-                <img className='max-w-[12rem] h-auto' src={instagram} />
+                <img className='max-w-[14rem] h-auto' src={instagram} />
               </div>
             </div>
           </div>
