@@ -70,7 +70,7 @@ export default function RoomDetail() {
             <div className='grid grid-cols-5 gap-3'>
               <div className='grid col-span-3 row-span-2 gap-3'>
                 <div className='overflow-hidden h-[30.75rem] rounded-lg'>
-                  <img className='rounded-lg object-cover w-full h-auto' src={room.images[0].url} alt='' />
+                  <img className='rounded-lg object-cover w-full h-full' src={room.images[0].url} alt='' />
                 </div>
               </div>
               <div className='grid gap-3'>
