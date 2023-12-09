@@ -1,16 +1,12 @@
 import { FaLocationDot } from 'react-icons/fa6'
-import { useState } from 'react'
 import map from '../../asset/img/map.png'
 import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getRoom } from '../../api/rooms.api'
 
 export default function RoomDetail() {
-  // const video = 'https://youtu.be/r_gURcXAG10?si=di7Yhh16KT_MirpH'
-
   const { id } = useParams()
 
-  const [haveBed, setHaveBed] = useState(false)
   const { data } = useQuery({
     queryKey: ['roomDetail', id],
     queryFn: () => {
