@@ -76,7 +76,7 @@ export default function Banner() {
             </button>
           </div>
         </form>
-        <div className='absolute -mt-56 left-0 right-0 ml-auto mr-auto w-[75vw]'>
+        <div className='absolute -mt-[16rem] left-0 right-0 ml-auto mr-auto w-[75vw]'>
           <div className='text-white text-3xl italic'>Các phòng trọ nổi bật</div>
           <div className='flex gap-8 mt-12'>
             {dataRandomRooms &&
