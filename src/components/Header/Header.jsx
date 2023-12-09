@@ -19,7 +19,7 @@ export default function Header() {
   }
 
   const path = useLocation()
-  // console.log(path.pathname)
+  console.log(path.pathname.includes('/room'))
 
   // console.log(header)
   window.addEventListener('scroll', changeBackground)
@@ -27,10 +27,16 @@ export default function Header() {
   return (
     <header
       className={` fixed flex top-0 w-full h-20 backdrop-filter shadow-lg justify-between items-center transition duration-300 z-[999] ${
-        path.pathname === '/room' ? 'bg-white' : `${header === true ? 'bg-slate-900/70' : 'bg-transparent'}`
+        path.pathname.includes('/room') === true
+          ? 'bg-white'
+          : `${header === true ? 'bg-slate-900/70' : 'bg-transparent'}`
       }`}
     >
-      <div className={`pl-20 -mt-2 text-3xl italic ${path.pathname === '/room' ? 'text-blue-500' : 'text-white'}`}>
+      <div
+        className={`pl-20 -mt-2 text-3xl italic ${
+          path.pathname.includes('/room') === true ? 'text-blue-500' : 'text-white'
+        }`}
+      >
         <Link to='/'>tro.vn</Link>
       </div>
       <div className='flex pl-20 gap-8 font-semibold'>
@@ -40,7 +46,7 @@ export default function Header() {
               key={item.id}
               to={item.path}
               className={`group text-lg transition duration-300 ${
-                path.pathname === '/room' ? 'text-black' : 'text-white'
+                path.pathname.includes('/room') === true ? 'text-black' : 'text-white'
               }`}
             >
               {item.name}
