@@ -39,9 +39,7 @@ export default function RoomDetail() {
                   <div className='self-center mr-1'>
                     <FaLocationDot />
                   </div>
-                  <div className='underline'>
-                    {room.district_id.district}, {room.ward_id.ward}, {room.address}
-                  </div>
+                  <div className='underline'>{room.address}</div>
                 </div>
                 <div className='text-sm mt-3'>Diện tích: {room.area} m2</div>
               </div>
@@ -414,9 +412,7 @@ export default function RoomDetail() {
                     />
                   </svg>
                 </div>
-                <div className='underline'>
-                  {room.district_id.district}, {room.ward_id.ward}, {room.address}
-                </div>
+                <div className='underline'>{room.address}</div>
               </div>
               <div>
                 <img style={{ maxWidth: '650px' }} src={map} alt='' className='pointer-events-none' />
