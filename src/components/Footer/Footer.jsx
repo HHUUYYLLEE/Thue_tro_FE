@@ -1,8 +1,15 @@
+import instagram from '../../asset/img/instagram.png'
+import facebook from '../../asset/img/facebook.png'
+import twitter from '../../asset/img/twitter.png'
+import linked from '../../asset/img/linked.png'
+import youtube from '../../asset/img/youtube.png'
+import footer from '../../asset/img/footer.png'
+
 export default function Footer() {
   return (
     <div>
       <div className='w-full h-[500px] flex flex-col items-center z-0 bg-[#2D3E52] relative'>
-        <img className='w-full' src='/footer.png' />
+        <img className='w-full' src={footer} />
         <div className='div.row flex w-10/12 justify-center text-white'>
           <div className='div.col-lg-3 w-1/4'>
             <div className='div.footer-box'>
@@ -21,10 +28,10 @@ export default function Footer() {
               <div className='p.text-custom-white w-3/4 '>Website tìm phòng trọ tốt nhất Việt Nam</div>
 
               <div className='list w-3/4 mt-3 flex'>
-                <img className='h-7 w-7 mr-3' src='/facebook.png' />
-                <img className='h-7 w-7 mr-3' src='/twitter.png' />
-                <img className='h-7 w-7 mr-3' src='/linked.png' />
-                <img className='h-7 w-7 mr-3' src='/youtube.png' />
+                <img className='h-7 w-7 mr-3' src={facebook} />
+                <img className='h-7 w-7 mr-3' src={twitter} />
+                <img className='h-7 w-7 mr-3' src={linked} />
+                <img className='h-7 w-7 mr-3' src={youtube} />
               </div>
             </div>
           </div>
@@ -56,7 +63,7 @@ export default function Footer() {
               </h4>
 
               <div className='list mt-3'>
-                <img className='w-3/4' src='public\instagram.png' />
+                <img className='w-3/4' src={instagram} />
               </div>
             </div>
           </div>

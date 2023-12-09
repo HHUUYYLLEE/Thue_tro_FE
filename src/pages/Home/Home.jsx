@@ -12,7 +12,7 @@ export default function Home() {
       <div className='mt-[5rem]'>
         <NavFilter />
       </div>
-      <div className='my-[8rem] mx-[5rem] grid gap-x-[7rem] grid-cols-11'>
+      <div className='my-[3rem] mx-[5rem] grid gap-x-[7rem] grid-cols-11'>
         <div className='row-start-1 col-span-3'>
           <SidebarFilter />
         </div>

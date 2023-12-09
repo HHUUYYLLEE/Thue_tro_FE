@@ -1,15 +1,14 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getAllRooms } from '../../api/rooms.api'
 import { FadeLoader } from 'react-spinners'
-import Room from './Room/Room'
+import Room from './Room'
 import useQueryConfig from '../../hooks/useQueryConfig'
 import { useEffect, useRef, useState } from 'react'
-
 import { AiOutlineDown } from 'react-icons/ai'
-import { indexOf } from 'lodash'
+
 export default function RoomsList() {
   const [sortMode, toggleSortMode] = useState('Sắp xếp theo giá thấp nhất')
-  const sortOptions = ['Sắp xếp theo giá thấp nhất', 'Sắp xếp theo giá cao nhất', 'Sắp xếp theo đánh giá']
+  const sortOptions = ['Sắp xếp theo giá thấp nhất', 'Sắp xếp theo giá cao nhất']
   const [sortMenu, toggleSortMenu] = useState(false)
   const refSort = useRef()
   const handleClickOutside = (event) => {
@@ -25,7 +24,7 @@ export default function RoomsList() {
   }, [])
   const queryConfig = useQueryConfig()
 
-  console.log(queryConfig)
+  // console.log(queryConfig)
 
   const { data, isLoading } = useQuery({
     queryKey: ['rooms', queryConfig],
@@ -37,9 +36,9 @@ export default function RoomsList() {
   })
 
   const dataRooms = data?.data?.rooms
-  const total = data?.data
-  console.log(total)
-  console.log(dataRooms)
+  // const total = data?.data
+  // console.log(total)
+
   if (isLoading)
     return (
       <div className='relative'>
@@ -64,7 +63,7 @@ export default function RoomsList() {
           </div>
           {sortMenu && (
             <div className='absolute z-50 right-[0.2rem] top-[2rem]'>
-              <div className='z-50 bg-white divide-y overflow-y-auto rounded-lg example divide-gray-100 border border-black shadow min-w-[18rem] '>
+              <div className='z-50 bg-white divide-y overflow-y-auto example divide-gray-100 border border-black shadow min-w-[18rem] '>
                 <ul>
                   {sortOptions.map((option) => {
                     return (
@@ -90,6 +89,15 @@ export default function RoomsList() {
         dataRooms?.map((room) => {
           return <Room key={room.id} dataRooms={room} />
         })}
+
+      <button
+        // onClick={() => {
+
+        // }}
+        className='font-poppins-500 w-[100%] py-[1rem] hover:bg-green-700 text-white text-xl rounded-lg bg-[#172432]'
+      >
+        Xem thêm kết quả khác
+      </button>
     </>
   )
 }
