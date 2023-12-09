@@ -68,26 +68,26 @@ export default function RoomDetail() {
                 allowFullScreen
               ></iframe>
             </div>
-            <div className='grid grid-cols-5 gap-4'>
-              <div className='grid col-span-3 row-span-2 gap-4'>
-                <div className='overflow-hidden'>
+            <div className='grid grid-cols-5 gap-3'>
+              <div className='grid col-span-3 row-span-2 gap-3'>
+                <div className='overflow-hidden h-[30.75rem] rounded-lg'>
                   <img className='rounded-lg object-cover w-full h-auto' src={room.images[0].url} alt='' />
                 </div>
               </div>
-              <div className='grid gap-4'>
-                <div className='overflow-hidden'>
-                  <img className='rounded-lg object-cover w-full h-auto' src={room.images[1].url} alt='' />
+              <div className='grid gap-3'>
+                <div className='overflow-hidden rounded-lg w-[15rem] h-[15rem]'>
+                  <img className='rounded-lg object-cover w-full h-full' src={room.images[1].url} alt='' />
                 </div>
-                <div className='overflow-hidden'>
-                  <img className='rounded-lg object-cover w-full h-auto' src={room.images[2].url} alt='' />
+                <div className='overflow-hidden rounded-lg w-[15rem] h-[15rem]'>
+                  <img className='rounded-lg object-cover w-full h-full' src={room.images[2].url} alt='' />
                 </div>
               </div>
-              <div className='grid gap-4'>
-                <div className='overflow-hidden'>
-                  <img className='rounded-lg object-cover w-full h-auto' src={room.images[3].url} alt='' />
+              <div className='grid gap-3'>
+                <div className='overflow-hidden rounded-lg w-[15rem] h-[15rem]'>
+                  <img className='rounded-lg object-cover w-full h-full' src={room.images[3].url} alt='' />
                 </div>
-                <div className='overflow-hidden'>
-                  <img className='rounded-lg object-cover w-full h-auto' src={room.images[4].url} alt='' />
+                <div className='overflow-hidden rounded-lg w-[15rem] h-[15rem]'>
+                  <img className='rounded-lg object-cover w-full h-full' src={room.images[4].url} alt='' />
                 </div>
               </div>
             </div>
