@@ -19,7 +19,7 @@ export default function Header() {
   }
 
   const path = useLocation()
-  console.log(path.pathname.includes('/room'))
+  // console.log(path.pathname.includes('/room'))
 
   // console.log(header)
   window.addEventListener('scroll', changeBackground)

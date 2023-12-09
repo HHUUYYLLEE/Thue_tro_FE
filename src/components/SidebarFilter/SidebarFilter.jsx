@@ -180,8 +180,8 @@ export default function SidebarFilter() {
       {sliders.map((element) => {
         return (
           <div key={element.id} className={`border-y-2 ${element.cssStyle}`}>
-            <div className='my-[0.5rem] text-2xl font-andika'>{element.label}</div>
-            <div className='text-[1.2rem] grid grid-cols-7'>
+            <div className='my-[0.5rem] text-lg font-andika'>{element.label}</div>
+            <div className='text-[1rem] grid grid-cols-7'>
               <div className='row-start-1 col-span-3 border-2'>
                 <div className='ml-1'>{displayNum(element.state1) + element.unit}</div>
               </div>
@@ -205,8 +205,8 @@ export default function SidebarFilter() {
               }}
               styles={{
                 track: { backgroundColor: 'black', height: '0.7rem' },
-                handle: { backgroundColor: 'black', height: '1.5rem', width: '1.5rem', borderColor: 'black' },
-                rail: { backgroundColor: 'grey', height: '0.7rem', opacity: '30%' }
+                handle: { backgroundColor: 'black', height: '1.25rem', width: '1.25rem', borderColor: 'black' },
+                rail: { backgroundColor: 'grey', height: '0.5rem', opacity: '30%' }
               }}
             ></Slider>
           </div>
