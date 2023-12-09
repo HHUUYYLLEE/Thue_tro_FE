@@ -24,7 +24,7 @@ export default function RoomsList() {
   }, [])
   const queryConfig = useQueryConfig()
 
-  console.log(queryConfig)
+  // console.log(queryConfig)
 
   const { data, isLoading } = useQuery({
     queryKey: ['rooms', queryConfig],
@@ -36,9 +36,9 @@ export default function RoomsList() {
   })
 
   const dataRooms = data?.data?.rooms
-  const total = data?.data
-  console.log(total)
-  console.log(dataRooms)
+  // const total = data?.data
+  // console.log(total)
+
   if (isLoading)
     return (
       <div className='relative'>
@@ -89,6 +89,15 @@ export default function RoomsList() {
         dataRooms?.map((room) => {
           return <Room key={room.id} dataRooms={room} />
         })}
+
+      <button
+        // onClick={() => {
+
+        // }}
+        className='font-poppins-500 w-[100%] py-[1rem] hover:bg-green-700 text-white text-xl rounded-lg bg-[#172432]'
+      >
+        Xem thêm kết quả khác
+      </button>
     </>
   )
 }
