@@ -1,15 +1,14 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getAllRooms } from '../../api/rooms.api'
 import { FadeLoader } from 'react-spinners'
-import Room from './Room/Room'
+import Room from './Room'
 import useQueryConfig from '../../hooks/useQueryConfig'
 import { useEffect, useRef, useState } from 'react'
-
 import { AiOutlineDown } from 'react-icons/ai'
-import { indexOf } from 'lodash'
+
 export default function RoomsList() {
   const [sortMode, toggleSortMode] = useState('Sắp xếp theo giá thấp nhất')
-  const sortOptions = ['Sắp xếp theo giá thấp nhất', 'Sắp xếp theo giá cao nhất', 'Sắp xếp theo đánh giá']
+  const sortOptions = ['Sắp xếp theo giá thấp nhất', 'Sắp xếp theo giá cao nhất']
   const [sortMenu, toggleSortMenu] = useState(false)
   const refSort = useRef()
   const handleClickOutside = (event) => {
@@ -64,7 +63,7 @@ export default function RoomsList() {
           </div>
           {sortMenu && (
             <div className='absolute z-50 right-[0.2rem] top-[2rem]'>
-              <div className='z-50 bg-white divide-y overflow-y-auto rounded-lg example divide-gray-100 border border-black shadow min-w-[18rem] '>
+              <div className='z-50 bg-white divide-y overflow-y-auto example divide-gray-100 border border-black shadow min-w-[18rem] '>
                 <ul>
                   {sortOptions.map((option) => {
                     return (
