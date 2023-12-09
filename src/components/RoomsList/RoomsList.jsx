@@ -2,7 +2,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getAllRooms } from '../../api/rooms.api'
 import { FadeLoader } from 'react-spinners'
 import useQueryConfig from '../../hooks/useQueryConfig'
-export default function RoomsList({ filter }) {
+export default function RoomsList() {
   const queryConfig = useQueryConfig()
 
   console.log(queryConfig)

@@ -3,7 +3,7 @@ import { IoMdCafe } from 'react-icons/io'
 import { FaRegSquare } from 'react-icons/fa'
 import { FaRegCheckSquare } from 'react-icons/fa'
 import { displayNum } from '../../../utils/utils'
-export default function Room({ info }) {
+export default function Room() {
   return (
     <div className='flex justify-between my-[3rem]'>
       <div className='flex'>
