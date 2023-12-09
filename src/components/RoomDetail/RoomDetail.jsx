@@ -76,18 +76,18 @@ export default function RoomDetail() {
                 </div>
               </div>
               <div className='grid gap-3'>
-                <div className='overflow-hidden rounded-lg w-[15rem] h-[15rem]'>
+                <div className='overflow-hidden rounded-lg w-[14rem] h-[15rem]'>
                   <img className='rounded-lg object-cover w-full h-full' src={room.images[1].url} alt='' />
                 </div>
-                <div className='overflow-hidden rounded-lg w-[15rem] h-[15rem]'>
+                <div className='overflow-hidden rounded-lg w-[14rem] h-[15rem]'>
                   <img className='rounded-lg object-cover w-full h-full' src={room.images[2].url} alt='' />
                 </div>
               </div>
               <div className='grid gap-3'>
-                <div className='overflow-hidden rounded-lg w-[15rem] h-[15rem]'>
+                <div className='overflow-hidden rounded-lg w-[14rem] h-[15rem]'>
                   <img className='rounded-lg object-cover w-full h-full' src={room.images[3].url} alt='' />
                 </div>
-                <div className='overflow-hidden rounded-lg w-[15rem] h-[15rem]'>
+                <div className='overflow-hidden rounded-lg w-[14rem] h-[15rem]'>
                   <img className='rounded-lg object-cover w-full h-full' src={room.images[4].url} alt='' />
                 </div>
               </div>
