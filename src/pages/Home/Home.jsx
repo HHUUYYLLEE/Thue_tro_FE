@@ -7,9 +7,7 @@ export default function Home() {
   return (
     <>
       <div>
-        <div>
-          <Banner />
-        </div>
+        <Banner />
       </div>
       <div className='mt-[5rem]'>
         <NavFilter />

@@ -1,6 +1,11 @@
 import { FaLocationDot } from 'react-icons/fa6'
 import { useState } from 'react'
 import map from '../../asset/img/map.png'
+import RoomDetailImage1 from '../../asset/img/RoomDetailImage1.png'
+import RoomDetailImage2 from '../../asset/img/RoomDetailImage2.png'
+import RoomDetailImage3 from '../../asset/img/RoomDetailImage3.png'
+import RoomDetailImage4 from '../../asset/img/RoomDetailImage4.png'
+import RoomDetailImage5 from '../../asset/img/RoomDetailImage5.png'
 
 export default function RoomDetail() {
   // const video = 'https://youtu.be/r_gURcXAG10?si=di7Yhh16KT_MirpH'
@@ -25,10 +30,10 @@ export default function RoomDetail() {
           </div>
           <div className='flex flex-row items-center justify-center'>
             <div className='flex items-center bg-[#CECECE] min-w-[8rem] text-black cursor-pointer border border-[#01B7F2] rounded-sm px-4 py-1.5 mr-3'>
-              <div className='flex text-lg justify-center items-center w-full'>Đã xác minh</div>
+              <div className='flex text-lg font-bold justify-center items-center w-full'>Đã xác minh</div>
             </div>
             <div className='flex items-center bg-[#01B7F2] min-w-[8rem] text-white cursor-pointer hover:bg-sky-600 font-semibold rounded-sm px-4 py-1.5'>
-              <div className='flex text-lg justify-center items-center w-full'>Liên Hệ</div>
+              <div className='flex text-lg font-bold justify-center items-center w-full'>Liên Hệ</div>
             </div>
           </div>
         </div>
@@ -45,23 +50,16 @@ export default function RoomDetail() {
             allowfullscreen
           ></iframe>
         </div>
-        <div className='grid grid-cols-5 gap-2'>
+        {/* <div className='grid grid-cols-5 gap-2'>
           <div className='col-span-3 row-span-2'>
             <img
               className=''
-              style={{ maxWidth: '100%', height: '376px' }}
+              style={{ width: '100%', height: '376px' }}
               src='https://baodautu.vn/Images/chicong/2017/10/08/do-xo-san-dat-nen-xay-nha-tro-cho-thue1507434774.jpg'
               alt=''
             />
           </div>
           <div className=''>
-            <img
-              // style={{ maxWidth: '100%', height: '188px' }}
-              src='https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/8/17/1081975/Nha-Tro.jpg'
-              alt=''
-            />
-          </div>
-          <div>
             <img src='https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/8/17/1081975/Nha-Tro.jpg' alt='' />
           </div>
           <div>
@@ -69,6 +67,32 @@ export default function RoomDetail() {
           </div>
           <div>
             <img src='https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/8/17/1081975/Nha-Tro.jpg' alt='' />
+          </div>
+          <div>
+            <img src='https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/8/17/1081975/Nha-Tro.jpg' alt='' />
+          </div>
+        </div> */}
+        <div class="grid grid-cols-5 gap-4">
+          <div class="grid col-span-3 row-span-2 gap-4">
+              <div>
+                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage1} alt="" />
+              </div>
+          </div>
+          <div class="grid gap-4">
+              <div>
+                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage2} alt="" />
+              </div>
+              <div>
+                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage3} alt="" />
+              </div>
+          </div>
+          <div class="grid gap-4">
+              <div>
+                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage4} alt="" />
+              </div>
+              <div>
+                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage5} alt="" />
+              </div>
           </div>
         </div>
       </div>
@@ -80,15 +104,19 @@ export default function RoomDetail() {
           </div>
         </div>
         <div>
-          CHO THUÊ CĂN HỘ STUDIO ĐẦY ĐỦ ĐỒ ĐIỀU HÒA GIƯỜNG TỦ PHỐ HÀM LONG CÁCH HỒ GƯƠM 350M Tòa nhà 8 tầng tại số 25
-          Ngõ Hàm Long 2 Tòa nhà cách mặt phố Hàm Long 30m đường vào rộng, rất thuận tiện cho việc đi lại, sinh hoạt,
-          vui chơi, giải trí, Ngay trung tâm phố cổ, chỉ 350m là ra tới Hồ Gươm. Căn hộ rộng được lát sàn gỗ, căn nào
-          cũng có cửa sổ rộng, thoáng mát. Các phòng được thiết kế hết sức hợp lý: kiểu căn hộ Studio, được lắp đầy đủ
-          nội thất. Nội quy: Sáng mở cửa lúc 5h30, tối đóng cửa lúc 23h30. Ai vi phạm ngoài giờ sẽ không được vào hoặc
-          ra khỏi trọ. Không gây tiếng ồn ảnh hưởng các phòng xung quanh, không tiệc tùng, không hút chất cấm,... Tòa
-          nhà trang bị thang máy cao cấp, máy giặt, truyền hình cáp, mỗi căn hộ được cấp thẻ từ thang máy riêng. Tòa nhà
-          có bảo vệ 24/24 nên an ninh cực ổn,khóa cửa vân tay ra vào thoải mái, nhà để xe rộng rãi. -Riêng sàn văn phòng
-          tầng 1 diện tích rộng 40m2 giá 6 000.000 đ/ tháng. Liên hệ chủ nhà Chị Hương
+          <ul className='list-disc list-inside [&>*]:ml-4'>CHO THUÊ CĂN HỘ STUDIO ĐẦY ĐỦ ĐỒ ĐIỀU HÒA GIƯỜNG TỦ PHỐ HÀM LONG CÁCH HỒ GƯƠM 350M
+            <li>Tòa nhà 8 tầng tại số 25 Ngõ Hàm Long 2</li>
+            <li>Tòa nhà cách mặt phố Hàm Long 30m đường vào rộng, rất thuận tiện cho việc đi lại, sinh hoạt, vui chơi, giải trí, Ngay trung tâm phố cổ, chỉ 350m là ra tới Hồ Gươm.</li>
+            <li>Căn hộ rộng được lát sàn gỗ, căn nào cũng có cửa sổ rộng, thoáng mát. Các phòng được thiết kế hết sức hợp lý: kiểu căn hộ Studio, được lắp đầy đủ nội thất.</li>
+            <li>Nội quy:</li>
+            <ul className='list-disc list-inside [&>*]:ml-4'>
+              <li>Sáng mở cửa lúc 5h30, tối đóng cửa lúc 23h30. Ai vi phạm ngoài giờ sẽ không được vào hoặc ra khỏi trọ.</li>
+              <li>Không gây tiếng ồn ảnh hưởng các phòng xung quanh, không tiệc tùng, không hút chất cấm,...</li>
+            </ul>
+            <li>Tòa nhà trang bị thang máy cao cấp, máy giặt, truyền hình cáp, mỗi căn hộ được cấp thẻ từ thang máy riêng.</li>
+            <li>Tòa nhà có bảo vệ 24/24 nên an ninh cực ổn,khóa cửa vân tay ra vào thoải mái, nhà để xe rộng rãi. -Riêng sàn văn phòng tầng 1 diện tích rộng 40m2 giá 6 000.000 đ/ tháng.</li>
+            <li>Liên hệ chủ nhà Chị Hương</li>
+          </ul>
         </div>
       </div>
       <div className='w-5/6 flex flex-col md:flex-row justify-between'>
