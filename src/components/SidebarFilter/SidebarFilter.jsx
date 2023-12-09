@@ -45,7 +45,7 @@ export default function SidebarFilter() {
       name1: 'minArea',
       name2: 'maxArea',
       cssStyle: 'my-[3rem]',
-      step: 10,
+      step: 1,
       min: minArea,
       max: 500,
       default1: minArea,
