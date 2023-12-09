@@ -3,7 +3,7 @@ import { AiOutlineDown } from 'react-icons/ai'
 import { FiFilter } from 'react-icons/fi'
 import PopUpAddress from '../PopUpAddress'
 import { AppContext } from '../../contexts/app.context'
-export default function NavFilter() {
+export default function NavFilter(props) {
   const [addressMenu, setAddressMenu] = useState(false)
   const { valueAddress } = useContext(AppContext)
   const openAddressMenu = () => {
@@ -39,7 +39,7 @@ export default function NavFilter() {
               <AiOutlineDown />
             </div>
           </div>
-          {addressMenu && <PopUpAddress setAddressMenu={setAddressMenu} />}
+          {addressMenu && <PopUpAddress Form={props.Form} setAddressMenu={setAddressMenu} />}
         </div>
 
         <div className='relative text-lg font-medium py-1 px-3'>
@@ -54,14 +54,17 @@ export default function NavFilter() {
           </div>
         </div>
         <div className='relative text-lg font-medium py-1 px-3'>
-          <div className='flex items-center bg-[#0153F2] min-w-[18rem] text-white cursor-pointer hover:bg-sky-600 font-semibold rounded-lg px-5 py-2 mr-3'>
+          <button
+            onClick={props.handleSearch}
+            className='flex items-center bg-[#0153F2] min-w-[18rem] text-white cursor-pointer hover:bg-sky-600 font-semibold rounded-lg px-5 py-2 mr-3'
+          >
             <div className='flex text-lg justify-center items-center w-full'>
               <div className='mr-3'>Tìm kiếm theo bộ lọc</div>
               <div className='text-lg'>
                 <FiFilter />
               </div>
             </div>
-          </div>
+          </button>
         </div>
       </div>
     </div>

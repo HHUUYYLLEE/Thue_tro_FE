@@ -3,11 +3,7 @@ import Slider from 'rc-slider'
 import 'rc-slider/assets/index.css'
 import Switch from 'react-switch'
 import { displayNum } from '../../utils/utils'
-import { useForm } from 'react-hook-form'
-import { createSearchParams, useNavigate } from 'react-router-dom'
-export default function SidebarFilter() {
-  const navigate = useNavigate()
-  const { register, handleSubmit } = useForm({})
+export default function SidebarFilter(props) {
   const minPrice = 0,
     defaultPrice = 5000000,
     minArea = 10,
@@ -31,6 +27,8 @@ export default function SidebarFilter() {
     {
       id: 1,
       label: 'Giá',
+      name1: 'minPrice',
+      name2: 'maxPrice',
       cssStyle: 'mt-[0.5rem]',
       step: 10000,
       min: minPrice,
@@ -46,6 +44,8 @@ export default function SidebarFilter() {
     {
       id: 2,
       label: 'Diện tích',
+      name1: 'minArea',
+      name2: 'maxArea',
       cssStyle: 'my-[3rem]',
       step: 10,
       min: minArea,
@@ -63,24 +63,28 @@ export default function SidebarFilter() {
     {
       id: 1,
       label: 'Khu vực để xe',
+      name: 'haveParkingLot',
       state: parklingLotToggle,
       setState: setParkingLotToggle
     },
     {
       id: 2,
       label: 'Mới',
+      name: 'isNew',
       state: newToggle,
       setState: setNewToggle
     },
     {
       id: 3,
       label: 'An ninh cao',
+      name: 'highSecurity',
       state: highSecurityToggle,
       setState: setHighSecurityToggle
     },
     {
       id: 4,
       label: 'Chung chủ',
+      name: 'haveOwner',
       state: haveOwner,
       setState: setHaveOwner
     }
@@ -89,6 +93,7 @@ export default function SidebarFilter() {
     {
       id: 1,
       label: 'Giường',
+      name: 'haveBed',
       state: haveBed,
       setState: setHaveBed,
       count: 22222
@@ -96,6 +101,7 @@ export default function SidebarFilter() {
     {
       id: 2,
       label: 'Tủ quần áo',
+      name: 'haveWardrobe',
       state: haveWardrobe,
       setState: setHaveWardrobe,
       count: 22222
@@ -103,6 +109,7 @@ export default function SidebarFilter() {
     {
       id: 3,
       label: 'Bàn ăn',
+      name: 'haveDiningTable',
       state: haveDiningTable,
       setState: setHaveDiningTable,
       count: 22222
@@ -110,6 +117,7 @@ export default function SidebarFilter() {
     {
       id: 4,
       label: 'Tủ lạnh',
+      name: 'haveRefrigerator',
       state: haveRefrigerator,
       setState: setHaveRefrigerator,
       count: 22222
@@ -117,6 +125,7 @@ export default function SidebarFilter() {
     {
       id: 5,
       label: 'Tivi',
+      name: 'haveTV',
       state: haveTV,
       setState: setHaveTV,
       count: 22222
@@ -124,6 +133,7 @@ export default function SidebarFilter() {
     {
       id: 6,
       label: 'Bếp núc',
+      name: 'haveKitchen',
       state: haveKitchen,
       setState: setHaveKitchen,
       count: 22222
@@ -131,12 +141,13 @@ export default function SidebarFilter() {
     {
       id: 7,
       label: 'Máy giặt',
+      name: 'haveWashingMachine',
       state: haveWashingMachine,
       setState: setHaveWashingMachine,
       count: 22222
     }
   ]
-  const [currentNumOfPeople, setCurrentNumOfPeople] = useState(0)
+  const [currentNumOfPeople, setCurrentNumOfPeople] = useState('more5')
 
   const numOfPeople = [
     {
@@ -204,6 +215,8 @@ export default function SidebarFilter() {
               onChange={([value1, value2]) => {
                 element.setState1(value1)
                 element.setState2(value2)
+                props.Form[element.name1] = value1
+                props.Form[element.name2] = value2
               }}
               styles={{
                 track: { backgroundColor: 'black', height: '0.7rem' },
@@ -221,7 +234,10 @@ export default function SidebarFilter() {
             <div key={element.id} className='flex justify-between my-[1rem]'>
               <div className='font-andika'>{element.label}</div>
               <Switch
-                onChange={() => element.setState(!element.state)}
+                onChange={() => {
+                  element.setState(!element.state)
+                  props.Form[element.name] = !element.state
+                }}
                 checked={element.state}
                 checkedIcon={false}
                 uncheckedIcon={false}
@@ -241,7 +257,10 @@ export default function SidebarFilter() {
                   type='checkbox'
                   className='transform scale-150 accent-black'
                   checked={element.state}
-                  onChange={() => element.setState(!element.state)}
+                  onChange={() => {
+                    element.setState(!element.state)
+                    props.Form[element.name] = !element.state
+                  }}
                 />
                 <div className='font-andika'>{element.label}</div>
               </div>
@@ -259,7 +278,10 @@ export default function SidebarFilter() {
                 <input
                   type='radio'
                   className='transform scale-150 accent-black'
-                  onChange={() => setCurrentNumOfPeople(element.value)}
+                  onChange={() => {
+                    setCurrentNumOfPeople(element.value)
+                    props.Form.numOfPeople = element.value
+                  }}
                   checked={currentNumOfPeople === element.value}
                 />
                 <div className='font-andika'>{element.label}</div>

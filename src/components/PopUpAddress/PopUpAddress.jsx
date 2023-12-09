@@ -2,7 +2,7 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getDistrict } from '../../api/address.api'
 import PopUpAddressItem from './PopUpAdresssItem'
 import { FadeLoader } from 'react-spinners'
-export default function PopUpAddress({ setAddressMenu }) {
+export default function PopUpAddress({ setAddressMenu, Form }) {
   const { data, isLoading } = useQuery({
     queryKey: ['district'],
     queryFn: () => {
@@ -29,7 +29,9 @@ export default function PopUpAddress({ setAddressMenu }) {
         <ul className=''>
           {districts &&
             districts.map((district) => {
-              return <PopUpAddressItem key={district._id} district={district} setAddressMenu={setAddressMenu} />
+              return (
+                <PopUpAddressItem Form={Form} key={district._id} district={district} setAddressMenu={setAddressMenu} />
+              )
             })}
         </ul>
       </div>
