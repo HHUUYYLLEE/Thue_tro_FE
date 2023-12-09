@@ -1,11 +1,6 @@
 import { FaLocationDot } from 'react-icons/fa6'
 import { useState } from 'react'
 import map from '../../asset/img/map.png'
-import RoomDetailImage1 from '../../asset/img/RoomDetailImage1.png'
-import RoomDetailImage2 from '../../asset/img/RoomDetailImage2.png'
-import RoomDetailImage3 from '../../asset/img/RoomDetailImage3.png'
-import RoomDetailImage4 from '../../asset/img/RoomDetailImage4.png'
-import RoomDetailImage5 from '../../asset/img/RoomDetailImage5.png'
 import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getRoom } from '../../api/rooms.api'
@@ -33,8 +28,10 @@ export default function RoomDetail() {
         <>
           <div className='w-5/6 flex flex-col justify-between'>
             <div className='flex flex-row justify-between font-bold text-2xl'>
-              <div>Trọ sinh viên Hoàng Mai | Phòng 2-3 người | Từ 5 - 7 triệu | 221B Baker Street</div>
-              <div>6.999.999 VNĐ</div>
+              <div>
+                {room.name} | Phòng {room.number_or_people} người | {room.district_id.district}
+              </div>
+              <div>{room.price} VNĐ</div>
             </div>
             <div className='flex flex-row justify-between mt-4'>
               <div className=''>
@@ -42,13 +39,17 @@ export default function RoomDetail() {
                   <div className='self-center mr-1'>
                     <FaLocationDot />
                   </div>
-                  <div className='underline'>Hoàng Mai, Baker, Baker Street, 221B</div>
+                  <div className='underline'>
+                    {room.district_id.district}, {room.ward_id.ward}, {room.address}
+                  </div>
                 </div>
-                <div className='text-sm mt-3'>Diện tích: 30m2</div>
+                <div className='text-sm mt-3'>Diện tích: {room.area} m2</div>
               </div>
               <div className='flex flex-row items-center justify-center'>
                 <div className='flex items-center bg-[#CECECE] min-w-[8rem] text-black cursor-pointer border border-[#01B7F2] rounded-sm px-4 py-1.5 mr-3'>
-                  <div className='flex text-lg font-bold justify-center items-center w-full'>Đã xác minh</div>
+                  <div className='flex text-lg font-bold justify-center items-center w-full'>
+                    {room.is_checked_information === true ? 'Đã xác minh' : 'Chưa xác minh'}
+                  </div>
                 </div>
                 <div className='flex items-center bg-[#01B7F2] min-w-[8rem] text-white cursor-pointer hover:bg-sky-600 font-semibold rounded-sm px-4 py-1.5'>
                   <div className='flex text-lg font-bold justify-center items-center w-full'>Liên Hệ</div>
@@ -100,7 +101,7 @@ export default function RoomDetail() {
               </div>
             </div>
             <div>
-              <ul className='list-disc list-inside [&>*]:ml-4'>
+              {/* <ul className='list-disc list-inside [&>*]:ml-4'>
                 CHO THUÊ CĂN HỘ STUDIO ĐẦY ĐỦ ĐỒ ĐIỀU HÒA GIƯỜNG TỦ PHỐ HÀM LONG CÁCH HỒ GƯƠM 350M
                 <li>Tòa nhà 8 tầng tại số 25 Ngõ Hàm Long 2</li>
                 <li>
@@ -128,7 +129,8 @@ export default function RoomDetail() {
                   -Riêng sàn văn phòng tầng 1 diện tích rộng 40m2 giá 6 000.000 đ/ tháng.
                 </li>
                 <li>Liên hệ chủ nhà Chị Hương</li>
-              </ul>
+              </ul> */}
+              {room.describe}
             </div>
           </div>
           <div className='w-5/6 flex flex-col md:flex-row justify-between'>
@@ -169,7 +171,7 @@ export default function RoomDetail() {
                     />
                   </svg>
                 </div>
-                <div className=' font-normal text-lg'>SĐT: 09849298499191</div>
+                <div className=' font-normal text-lg'>SĐT: {room.host_id.phone_number}</div>
               </div>
               <div className='font-semibold my-3'>Tiện ích</div>
               <div className='grid grid-cols-2 gap-y-0 gap-x-16'>
@@ -183,14 +185,14 @@ export default function RoomDetail() {
                         />
                       </svg>
                     </div>
-                    <div className='font-andika text-sm'>Chỗ giặt dũ</div>
+                    <div className='font-andika text-sm'>Chỗ giặt giũ</div>
                   </div>
 
                   <input
                     type='checkbox'
+                    disabled
                     className='transform scale-150 accent-black'
-                    checked={haveBed}
-                    onChange={() => setHaveBed(!haveBed)}
+                    checked={room.is_have_washing_machine}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -226,12 +228,7 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Điều hòa</div>
                   </div>
 
-                  <input
-                    type='checkbox'
-                    className='transform scale-150 accent-black'
-                    checked={haveBed}
-                    onChange={() => setHaveBed(!haveBed)}
-                  />
+                  <input type='checkbox' disabled className='transform scale-150 accent-black' checked={false} />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -248,9 +245,9 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    disabled
                     className='transform scale-150 accent-black'
-                    checked={haveBed}
-                    onChange={() => setHaveBed(!haveBed)}
+                    checked={room.is_have_kitchen}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -266,12 +263,7 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Có dụng cụ tập gym</div>
                   </div>
 
-                  <input
-                    type='checkbox'
-                    className='transform scale-150 accent-black'
-                    checked={haveBed}
-                    onChange={() => setHaveBed(!haveBed)}
-                  />
+                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -286,12 +278,7 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Phòng ăn riêng</div>
                   </div>
 
-                  <input
-                    type='checkbox'
-                    className='transform scale-150 accent-black'
-                    checked={haveBed}
-                    onChange={() => setHaveBed(!haveBed)}
-                  />
+                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -315,12 +302,7 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Free Wi-Fi</div>
                   </div>
 
-                  <input
-                    type='checkbox'
-                    className='transform scale-150 accent-black'
-                    checked={haveBed}
-                    onChange={() => setHaveBed(!haveBed)}
-                  />
+                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -387,12 +369,7 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Có chỗ để xe</div>
                   </div>
 
-                  <input
-                    type='checkbox'
-                    className='transform scale-150 accent-black'
-                    checked={haveBed}
-                    onChange={() => setHaveBed(!haveBed)}
-                  />
+                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -410,12 +387,7 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Phòng mới</div>
                   </div>
 
-                  <input
-                    type='checkbox'
-                    className='transform scale-150 accent-black'
-                    checked={haveBed}
-                    onChange={() => setHaveBed(!haveBed)}
-                  />
+                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
                 </div>
               </div>
             </div>
@@ -442,7 +414,9 @@ export default function RoomDetail() {
                     />
                   </svg>
                 </div>
-                <div className='underline'>Hoàng Mai, Baker, Baker Street, 221B</div>
+                <div className='underline'>
+                  {room.district_id.district}, {room.ward_id.ward}, {room.address}
+                </div>
               </div>
               <div>
                 <img style={{ maxWidth: '650px' }} src={map} alt='' className='pointer-events-none' />
