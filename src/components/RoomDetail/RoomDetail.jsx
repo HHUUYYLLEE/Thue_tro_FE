@@ -6,10 +6,26 @@ import RoomDetailImage2 from '../../asset/img/RoomDetailImage2.png'
 import RoomDetailImage3 from '../../asset/img/RoomDetailImage3.png'
 import RoomDetailImage4 from '../../asset/img/RoomDetailImage4.png'
 import RoomDetailImage5 from '../../asset/img/RoomDetailImage5.png'
+import { useParams } from 'react-router-dom'
+import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { getRoom } from '../../api/rooms.api'
 
 export default function RoomDetail() {
   // const video = 'https://youtu.be/r_gURcXAG10?si=di7Yhh16KT_MirpH'
+
+  const { id } = useParams()
+
   const [haveBed, setHaveBed] = useState(false)
+  const { data } = useQuery({
+    queryKey: ['roomDetail', id],
+    queryFn: () => {
+      return getRoom(id)
+    },
+    placeholderData: keepPreviousData
+  })
+
+  const room = data?.data?.room
+  console.log(room)
 
   return (
     <div className='w-full flex flex-col justify-center items-center'>
@@ -47,7 +63,7 @@ export default function RoomDetail() {
             title='YouTube video player'
             // frameborder='0'
             allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-            allowfullscreen
+            allowFullScreen
           ></iframe>
         </div>
         {/* <div className='grid grid-cols-5 gap-2'>
@@ -72,27 +88,27 @@ export default function RoomDetail() {
             <img src='https://media-cdn-v2.laodong.vn/Storage/NewsPortal/2022/8/17/1081975/Nha-Tro.jpg' alt='' />
           </div>
         </div> */}
-        <div class="grid grid-cols-5 gap-4">
-          <div class="grid col-span-3 row-span-2 gap-4">
-              <div>
-                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage1} alt="" />
-              </div>
+        <div className='grid grid-cols-5 gap-4'>
+          <div className='grid col-span-3 row-span-2 gap-4'>
+            <div>
+              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage1}' alt='' />
+            </div>
           </div>
-          <div class="grid gap-4">
-              <div>
-                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage2} alt="" />
-              </div>
-              <div>
-                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage3} alt="" />
-              </div>
+          <div className='grid gap-4'>
+            <div>
+              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage2}' alt='' />
+            </div>
+            <div>
+              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage3}' alt='' />
+            </div>
           </div>
-          <div class="grid gap-4">
-              <div>
-                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage4} alt="" />
-              </div>
-              <div>
-                <img class="rounded-lg object-fit w-full h-auto" src={RoomDetailImage5} alt="" />
-              </div>
+          <div className='grid gap-4'>
+            <div>
+              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage4}' alt='' />
+            </div>
+            <div>
+              <img className='rounded-lg object-fit w-full h-auto' src='{RoomDetailImage5}' alt='' />
+            </div>
           </div>
         </div>
       </div>
@@ -104,17 +120,31 @@ export default function RoomDetail() {
           </div>
         </div>
         <div>
-          <ul className='list-disc list-inside [&>*]:ml-4'>CHO THUÊ CĂN HỘ STUDIO ĐẦY ĐỦ ĐỒ ĐIỀU HÒA GIƯỜNG TỦ PHỐ HÀM LONG CÁCH HỒ GƯƠM 350M
+          <ul className='list-disc list-inside [&>*]:ml-4'>
+            CHO THUÊ CĂN HỘ STUDIO ĐẦY ĐỦ ĐỒ ĐIỀU HÒA GIƯỜNG TỦ PHỐ HÀM LONG CÁCH HỒ GƯƠM 350M
             <li>Tòa nhà 8 tầng tại số 25 Ngõ Hàm Long 2</li>
-            <li>Tòa nhà cách mặt phố Hàm Long 30m đường vào rộng, rất thuận tiện cho việc đi lại, sinh hoạt, vui chơi, giải trí, Ngay trung tâm phố cổ, chỉ 350m là ra tới Hồ Gươm.</li>
-            <li>Căn hộ rộng được lát sàn gỗ, căn nào cũng có cửa sổ rộng, thoáng mát. Các phòng được thiết kế hết sức hợp lý: kiểu căn hộ Studio, được lắp đầy đủ nội thất.</li>
+            <li>
+              Tòa nhà cách mặt phố Hàm Long 30m đường vào rộng, rất thuận tiện cho việc đi lại, sinh hoạt, vui chơi,
+              giải trí, Ngay trung tâm phố cổ, chỉ 350m là ra tới Hồ Gươm.
+            </li>
+            <li>
+              Căn hộ rộng được lát sàn gỗ, căn nào cũng có cửa sổ rộng, thoáng mát. Các phòng được thiết kế hết sức hợp
+              lý: kiểu căn hộ Studio, được lắp đầy đủ nội thất.
+            </li>
             <li>Nội quy:</li>
             <ul className='list-disc list-inside [&>*]:ml-4'>
-              <li>Sáng mở cửa lúc 5h30, tối đóng cửa lúc 23h30. Ai vi phạm ngoài giờ sẽ không được vào hoặc ra khỏi trọ.</li>
+              <li>
+                Sáng mở cửa lúc 5h30, tối đóng cửa lúc 23h30. Ai vi phạm ngoài giờ sẽ không được vào hoặc ra khỏi trọ.
+              </li>
               <li>Không gây tiếng ồn ảnh hưởng các phòng xung quanh, không tiệc tùng, không hút chất cấm,...</li>
             </ul>
-            <li>Tòa nhà trang bị thang máy cao cấp, máy giặt, truyền hình cáp, mỗi căn hộ được cấp thẻ từ thang máy riêng.</li>
-            <li>Tòa nhà có bảo vệ 24/24 nên an ninh cực ổn,khóa cửa vân tay ra vào thoải mái, nhà để xe rộng rãi. -Riêng sàn văn phòng tầng 1 diện tích rộng 40m2 giá 6 000.000 đ/ tháng.</li>
+            <li>
+              Tòa nhà trang bị thang máy cao cấp, máy giặt, truyền hình cáp, mỗi căn hộ được cấp thẻ từ thang máy riêng.
+            </li>
+            <li>
+              Tòa nhà có bảo vệ 24/24 nên an ninh cực ổn,khóa cửa vân tay ra vào thoải mái, nhà để xe rộng rãi. -Riêng
+              sàn văn phòng tầng 1 diện tích rộng 40m2 giá 6 000.000 đ/ tháng.
+            </li>
             <li>Liên hệ chủ nhà Chị Hương</li>
           </ul>
         </div>

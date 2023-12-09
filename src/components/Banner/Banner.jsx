@@ -5,7 +5,9 @@ import Room2 from '../../asset/img/room2.png'
 import Room3 from '../../asset/img/room3.png'
 import Room4 from '../../asset/img/room4.png'
 import useQueryConfig from '../../hooks/useQueryConfig'
-import { createSearchParams, useNavigate } from 'react-router-dom'
+import { Link, createSearchParams, useNavigate } from 'react-router-dom'
+import { useQuery } from '@tanstack/react-query'
+import { getRandomRoom } from '../../api/rooms.api'
 
 export default function Banner() {
   const { register, handleSubmit } = useForm({})
@@ -22,6 +24,17 @@ export default function Banner() {
       }).toString()
     })
   })
+
+  const { data, isLoading } = useQuery({
+    queryKey: ['randomRoom'],
+    queryFn: () => {
+      return getRandomRoom()
+    },
+    staleTime: 1000 * 60 * 5
+  })
+
+  const dataRandomRooms = data?.data?.randomRooms
+  console.log(dataRandomRooms)
   return (
     <div>
       <img src={BannerImage} alt='' className='pointer-events-none' />
@@ -66,18 +79,18 @@ export default function Banner() {
         <div className='absolute -mt-60 left-0 right-0 ml-auto mr-auto w-[75vw]'>
           <div className='text-white text-3xl italic'>Các phòng trọ nổi bật</div>
           <div className='flex gap-8 mt-12'>
-            <div>
+            <Link to={''}>
               <img src={Room1} alt='' />
-            </div>
-            <div>
+            </Link>
+            <Link>
               <img src={Room2} alt='' />
-            </div>
-            <div>
+            </Link>
+            <Link>
               <img src={Room3} alt='' />
-            </div>
-            <div>
+            </Link>
+            <Link>
               <img src={Room4} alt='' />
-            </div>
+            </Link>
           </div>
         </div>
       </div>

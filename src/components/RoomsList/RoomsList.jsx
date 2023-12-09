@@ -5,12 +5,14 @@ import Room from './Room'
 import useQueryConfig from '../../hooks/useQueryConfig'
 import { useEffect, useRef, useState } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
+import { createSearchParams, useNavigate } from 'react-router-dom'
 
 export default function RoomsList() {
   const [sortMode, toggleSortMode] = useState('Sắp xếp theo giá thấp nhất')
   const sortOptions = ['Sắp xếp theo giá thấp nhất', 'Sắp xếp theo giá cao nhất']
   const [sortMenu, toggleSortMenu] = useState(false)
   const refSort = useRef()
+  const navigate = useNavigate()
   const handleClickOutside = (event) => {
     if (refSort.current && !refSort.current.contains(event.target)) {
       toggleSortMenu(false)
@@ -36,8 +38,30 @@ export default function RoomsList() {
   })
 
   const dataRooms = data?.data?.rooms
+  console.log(data?.data)
   // const total = data?.data
   // console.log(total)
+  const loadingMore = () => {
+    console.log('loading more')
+    navigate({
+      pathname: '/',
+      search: createSearchParams({
+        ...queryConfig,
+        limit: parseInt(queryConfig.limit) + 3
+      }).toString()
+    })
+  }
+
+  // check xem đã đến giới hạn data chưa. chưa thì cho loadmore = true để load thêm data lên  , đã đến giới hạn thì loadmore = false
+  // disable button loadmore khi đã đến giới hạn
+  const checkLoadingMore = () => {
+    if (dataRooms?.length < queryConfig.limit * queryConfig.page) {
+      return false
+    }
+    return true
+  }
+
+  console.log(checkLoadingMore())
 
   if (isLoading)
     return (
@@ -91,9 +115,7 @@ export default function RoomsList() {
         })}
 
       <button
-        // onClick={() => {
-
-        // }}
+        onClick={loadingMore}
         className='font-poppins-500 w-[100%] py-[1rem] hover:bg-green-700 text-white text-xl rounded-lg bg-[#172432]'
       >
         Xem thêm kết quả khác

@@ -21,7 +21,7 @@ export default function Header() {
   const path = useLocation()
   // console.log(path.pathname)
 
-  console.log(header)
+  // console.log(header)
   window.addEventListener('scroll', changeBackground)
 
   return (

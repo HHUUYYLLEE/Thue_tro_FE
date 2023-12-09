@@ -18,7 +18,7 @@ export default function useRouteElement() {
       )
     },
     {
-      path: '/room',
+      path: '/room/:id',
       index: true,
       element: (
         <MainLayout>

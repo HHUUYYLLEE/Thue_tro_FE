@@ -41,7 +41,7 @@ export default function Room({ dataRooms }) {
         <div className='text-[#353535] font-poppins-800 text-2xl'>{displayNum(dataRooms.price) + '/tháng'}</div>
         <div className='flex justify-end font-medium'>excl. tax</div>
         <div className='flex justify-end mt-[3rem]'>
-          <Link to={dataRooms._id}>
+          <Link to={`/room/${dataRooms._id}`}>
             <button className='font-medium hover:bg-blue-500 bg-[#01B7F2] px-[2rem] py-[0.5rem] rounded-md text-white'>
               Xem phòng
             </button>
