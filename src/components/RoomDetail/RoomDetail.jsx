@@ -74,9 +74,9 @@ export default function RoomDetail() {
       </div>
       <div className='my-16 w-5/6'>
         <div className='mb-5'>
-          <p className='mb-2 font-medium'>Giới thiệu</p>
+          <p className='mb-2 font-medium ml-2'>Giới thiệu</p>
           <div className='w-full bg-[#CECECE] h-[1px] '>
-            <div className='h-[3px] w-16 bg-[#01B7F2]'></div>
+            <div className='h-[3px] w-[87px] bg-[#01B7F2]'></div>
           </div>
         </div>
         <div>
