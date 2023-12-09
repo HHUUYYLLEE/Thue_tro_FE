@@ -8,20 +8,20 @@ export default function Room({ dataRooms }) {
   return (
     <div className='flex justify-between items-center my-[1rem] border-2 rounded-md pr-[2rem]'>
       <div className='flex'>
-        <div className='w-[18rem] overflow-hidden max-h-[13rem]'>
+        <div className='w-[17rem] overflow-hidden max-h-[12rem]'>
           <img
             src={dataRooms.images[0].url}
-            className='w-full hover:scale-125 transition duration-300 ease-in-out h-full object-cover'
+            className='w-[100%] hover:scale-125 transition duration-300 ease-in-out h-full object-cover'
             alt=''
           />
         </div>
-        <div className='ml-[1rem] flex-col flex justify-center max-h-[13rem]'>
-          <div className='font-bold font-lato text-xl max-w-[28rem] line-clamp-2'>{dataRooms.name}</div>
+        <div className='ml-[1rem] flex-col flex justify-center max-h-[12rem]'>
+          <div className='font-bold font-lato text-lg max-w-[27rem] line-clamp-2'>{dataRooms.name}</div>
           <div className='flex text-1xl text-[#01B7F2]'>
             <FaLocationDot />
-            <div className='font-lato ml-[0.4rem] max-w-[27rem] line-clamp-1'>{dataRooms.address}</div>
+            <div className='font-lato text-xs mt-1 ml-[0.4rem] max-w-[27rem] line-clamp-1'>{dataRooms.address}</div>
           </div>
-          <div className='font-montserrat-700'>{'Diện tích: ' + dataRooms.area + 'm2'}</div>
+          <div className='font-montserrat-700 mt-1'>{'Diện tích: ' + dataRooms.area + 'm2'}</div>
           <div className='flex mt-[0.8rem]'>
             <IoMdCafe />
             <div className='ml-[0.4rem] font-montserrat-700'>20+</div>
@@ -37,8 +37,8 @@ export default function Room({ dataRooms }) {
           </div>
         </div>
       </div>
-      <div className='mt-[1rem]'>
-        <div className='text-[#353535] font-poppins-800 text-2xl'>{displayNum(dataRooms.price) + '/tháng'}</div>
+      <div className='mt-[1rem] ml-5'>
+        <div className='text-[#353535] font-poppins-800 text-xl'>{displayNum(dataRooms.price) + '/tháng'}</div>
         <div className='flex justify-end font-medium'>excl. tax</div>
         <div className='flex justify-end mt-[3rem]'>
           <Link to={`/room/${dataRooms._id}`}>
