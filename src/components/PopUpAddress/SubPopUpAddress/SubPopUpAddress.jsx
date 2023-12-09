@@ -4,7 +4,7 @@ import { getWard } from '../../../api/address.api'
 import { useContext } from 'react'
 import { AppContext } from '../../../contexts/app.context'
 
-export default function SubPopUpAddress({ Form, id, hideAll }) {
+export default function SubPopUpAddress({ id, hideAll }) {
   console.log(id)
   const { data } = useQuery({
     queryKey: ['ward', id],
@@ -29,7 +29,6 @@ export default function SubPopUpAddress({ Form, id, hideAll }) {
                   <div
                     onClick={() => {
                       setValueAddress(ward.ward)
-                      Form['ward_id'] = ward._id
                       hideAll()
                     }}
                     className='block cursor-pointer hover:text-blue-500 border-b-[0.25px] border-black px-2 py-2 transition-all duration-400'

@@ -7,7 +7,7 @@ export default function Room({ info }) {
   return (
     <div className='flex justify-between my-[3rem]'>
       <div className='flex'>
-        <img src={info.images[0].url} className='w-[15rem]' alt='' />
+        <img src={info.images[0].url} className='w-[15rem] object-contain' alt='' />
         <div>
           <div className='font-bold font-lato text-2xl'>{info.name}</div>
           <div className='flex text-1xl text-[#01B7F2]'>

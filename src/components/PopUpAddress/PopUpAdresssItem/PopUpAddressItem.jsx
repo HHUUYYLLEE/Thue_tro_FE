@@ -1,8 +1,8 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { IoIosArrowForward } from 'react-icons/io'
 import SubPopUpAddress from '../SubPopUpAddress'
 
-export default function PopUpAddressItem({ Form, district, setAddressMenu }) {
+export default function PopUpAddressItem({ district, setAddressMenu }) {
   const [subMenu, setsubMenu] = useState(false)
 
   const showSubMenu = () => {
@@ -28,7 +28,7 @@ export default function PopUpAddressItem({ Form, district, setAddressMenu }) {
           </div>
         </div>
       </li>
-      {subMenu ? <SubPopUpAddress Form={Form} id={district.code} hideAll={hideAll} /> : ''}
+      {subMenu ? <SubPopUpAddress id={district.code} hideAll={hideAll} /> : ''}
     </div>
   )
 }
