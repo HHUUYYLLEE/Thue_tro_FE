@@ -8,8 +8,12 @@ export default function Room({ dataRooms }) {
   return (
     <div className='flex justify-between items-center my-[1rem] border-2 rounded-md pr-[2rem]'>
       <div className='flex'>
-        <div className='w-[18rem] max-h-[13rem]'>
-          <img src={dataRooms.images[0].url} className='w-full h-full object-cover' alt='' />
+        <div className='w-[18rem] overflow-hidden max-h-[13rem]'>
+          <img
+            src={dataRooms.images[0].url}
+            className='w-full hover:scale-125 transition duration-300 ease-in-out h-full object-cover'
+            alt=''
+          />
         </div>
         <div className='ml-[1rem] flex-col flex justify-center max-h-[13rem]'>
           <div className='font-bold font-lato text-xl max-w-[28rem] line-clamp-2'>{dataRooms.name}</div>
