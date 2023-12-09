@@ -62,8 +62,8 @@ export default function Footer() {
                 <hr className='w-1/3 border-2 border-white mt-3' />
               </h4>
 
-              <div className='list mt-3'>
-                <img className='w-3/4' src={instagram} />
+              <div className='list overflow-hidden mt-3'>
+                <img className='object-cover' src={instagram} />
               </div>
             </div>
           </div>
