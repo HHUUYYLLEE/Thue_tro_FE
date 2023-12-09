@@ -54,10 +54,7 @@ export default function NavFilter(props) {
           </div>
         </div>
         <div className='relative text-lg font-medium py-1 px-3'>
-          <button
-            onClick={props.handleSearch}
-            className='flex items-center bg-[#0153F2] min-w-[18rem] text-white cursor-pointer hover:bg-sky-600 font-semibold rounded-lg px-5 py-2 mr-3'
-          >
+          <button className='flex items-center bg-[#0153F2] min-w-[18rem] text-white cursor-pointer hover:bg-sky-600 font-semibold rounded-lg px-5 py-2 mr-3'>
             <div className='flex text-lg justify-center items-center w-full'>
               <div className='mr-3'>Tìm kiếm theo bộ lọc</div>
               <div className='text-lg'>
