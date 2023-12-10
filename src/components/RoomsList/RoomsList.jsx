@@ -1,11 +1,11 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getAllRooms } from '../../api/rooms.api'
-import { FadeLoader } from 'react-spinners'
 import Room from './Room'
 import useQueryConfig from '../../hooks/useQueryConfig'
 import { useEffect, useRef, useState } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
 import { createSearchParams, useNavigate } from 'react-router-dom'
+import Loading from './Loading'
 
 export default function RoomsList() {
   const [sortMode, toggleSortMode] = useState('Sắp xếp theo giá thấp nhất')
@@ -64,14 +64,7 @@ export default function RoomsList() {
     }
   }, [data?.data?.rooms, data?.data?.total, queryConfig.limit, queryConfig.page, status])
 
-  if (isLoading)
-    return (
-      <div className='relative'>
-        <div className='absolute top-[50%] translate-y-[-50%] translate-x-[-50%] left-[50%]'>
-          <FadeLoader color='#36d7b7' />
-        </div>
-      </div>
-    )
+  if (isLoading) return <Loading />
   return (
     <>
       <div className='flex justify-between mb-[3rem]'>
