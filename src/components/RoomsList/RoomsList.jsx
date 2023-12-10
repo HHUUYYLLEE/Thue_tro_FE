@@ -44,7 +44,6 @@ export default function RoomsList() {
   // console.log(total)
   const loadingMore = () => {
     // console.log('loading more')
-
     navigate({
       pathname: '/',
       search: createSearchParams({
@@ -60,7 +59,6 @@ export default function RoomsList() {
     if (status === 'success') {
       const dataRooms = data.data.rooms
       const total = data.data.total
-      console.log(dataRooms.length)
       if (dataRooms.length >= total) toggleLoadingMore(false)
       else toggleLoadingMore(true)
     }
