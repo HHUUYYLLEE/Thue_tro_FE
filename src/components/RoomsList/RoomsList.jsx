@@ -11,6 +11,7 @@ export default function RoomsList() {
   const [sortMode, toggleSortMode] = useState('Sắp xếp theo giá thấp nhất')
   const sortOptions = ['Sắp xếp theo giá thấp nhất', 'Sắp xếp theo giá cao nhất']
   const [sortMenu, toggleSortMenu] = useState(false)
+  const [enableLoadingMore, toggleLoadingMore] = useState(true)
   const refSort = useRef()
   const navigate = useNavigate()
   const handleClickOutside = (event) => {
@@ -28,7 +29,7 @@ export default function RoomsList() {
 
   // console.log(queryConfig)
 
-  const { data, isLoading } = useQuery({
+  const { status, data, isLoading } = useQuery({
     queryKey: ['rooms', queryConfig],
     queryFn: () => {
       return getAllRooms(queryConfig)
@@ -42,26 +43,28 @@ export default function RoomsList() {
   // const total = data?.data
   // console.log(total)
   const loadingMore = () => {
-    console.log('loading more')
+    // console.log('loading more')
+
     navigate({
       pathname: '/',
       search: createSearchParams({
         ...queryConfig,
-        limit: parseInt(queryConfig.limit) + 3
+        limit: parseInt(queryConfig.limit) + 12
       }).toString()
     })
   }
 
   // check xem đã đến giới hạn data chưa. chưa thì cho loadmore = true để load thêm data lên  , đã đến giới hạn thì loadmore = false
   // disable button loadmore khi đã đến giới hạn
-  const checkLoadingMore = () => {
-    if (dataRooms?.length < queryConfig.limit * queryConfig.page) {
-      return false
+  useEffect(() => {
+    if (status === 'success') {
+      const dataRooms = data.data.rooms
+      const total = data.data.total
+      console.log(dataRooms.length)
+      if (dataRooms.length >= total) toggleLoadingMore(false)
+      else toggleLoadingMore(true)
     }
-    return true
-  }
-
-  console.log(checkLoadingMore())
+  }, [data?.data?.rooms, data?.data?.total, queryConfig.limit, queryConfig.page, status])
 
   if (isLoading)
     return (
@@ -75,8 +78,8 @@ export default function RoomsList() {
     <>
       <div className='flex justify-between mb-[3rem]'>
         <div>
-          <span className='font-poppins-500'>{`Xem ${queryConfig.limit * queryConfig.page} trên `}</span>
-          <span className='font-poppins-500 text-[#01B7F2]'>{`${data && data?.data.total} kết quả`}</span>
+          <span className='font-poppins-500'>{`Xem ${dataRooms.length} trên `}</span>
+          <span className='font-poppins-500 text-[#01B7F2]'>{`${data && data?.data?.total} kết quả`}</span>
         </div>
         <div className='relative' ref={refSort} onClick={() => toggleSortMenu(!sortMenu)}>
           <div className='font-poppins-500 flex justify-end hover:text-blue-400 cursor-pointer '>
@@ -113,13 +116,14 @@ export default function RoomsList() {
         dataRooms?.map((room) => {
           return <Room key={room.id} dataRooms={room} />
         })}
-
-      <button
-        onClick={loadingMore}
-        className='font-poppins-500 w-[100%] py-[1rem] hover:bg-green-700 text-white text-xl rounded-lg bg-[#172432]'
-      >
-        Xem thêm kết quả khác
-      </button>
+      {enableLoadingMore && (
+        <button
+          onClick={loadingMore}
+          className='font-poppins-500 w-[100%] py-[1rem] hover:bg-green-700 text-white text-xl rounded-lg bg-[#172432]'
+        >
+          Xem thêm kết quả khác
+        </button>
+      )}
     </>
   )
 }
