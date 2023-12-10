@@ -1,4 +1,9 @@
 import { FaLocationDot } from 'react-icons/fa6'
+import { LiaSwimmingPoolSolid } from 'react-icons/lia'
+import { PiDesktopLight } from 'react-icons/pi'
+import { PiDeviceTabletSpeakerLight } from 'react-icons/pi'
+import { FiHardDrive } from 'react-icons/fi'
+
 import map from '../../asset/img/map.png'
 import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
@@ -172,14 +177,15 @@ export default function RoomDetail() {
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
                     <div className='self-center'>
-                      <svg width='20' height='19' viewBox='0 0 20 19' fill='none' xmlns='http://www.w3.org/2000/svg'>
+                      {/* <svg width='20' height='19' viewBox='0 0 20 19' fill='none' xmlns='http://www.w3.org/2000/svg'>
                         <path
                           d='M0 13C1.67 12.25 3.33 11.5 5 11.17V3C5 2.20435 5.31607 1.44129 5.87868 0.87868C6.44129 0.316071 7.20435 0 8 0C9.31 0 10.42 0.83 10.83 2H8C7.73478 2 7.48043 2.10536 7.29289 2.29289C7.10536 2.48043 7 2.73478 7 3V4H12V3C12 2.20435 12.3161 1.44129 12.8787 0.87868C13.4413 0.316071 14.2044 0 15 0C16.31 0 17.42 0.83 17.83 2H15C14.7348 2 14.4804 2.10536 14.2929 2.29289C14.1054 2.48043 14 2.73478 14 3V12.94C16 12.62 18 11 20 11V13C17.78 13 15.56 15 13.33 15C11.11 15 8.89 13 6.67 13C4.44 13 2.22 14 0 15V13ZM12 6H7V8H12V6ZM12 10H7V11C8.67 11.16 10.33 12.31 12 12.79V10ZM0 17C2.22 16 4.44 15 6.67 15C8.89 15 11.11 17 13.33 17C15.56 17 17.78 15 20 15V17C17.78 17 15.56 19 13.33 19C11.11 19 8.89 17 6.67 17C4.44 17 2.22 18 0 19V17Z'
                           fill='#181818'
                         />
-                      </svg>
+                      </svg> */}
+                      <LiaSwimmingPoolSolid className='w-[1/5rem] h-[1.5rem]' />
                     </div>
-                    <div className='font-andika text-sm'>Chỗ giặt giũ</div>
+                    <div className='font-andika text-sm'>Máy giặt</div>
                   </div>
 
                   <input
@@ -189,7 +195,7 @@ export default function RoomDetail() {
                     checked={room.is_have_washing_machine}
                   />
                 </div>
-                <div className='flex justify-between my-[14px] min-w-[180px]'>
+                {/* <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
                     <div className='self-center'>
                       <svg width={22} height={22} viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
@@ -227,6 +233,21 @@ export default function RoomDetail() {
                     aria-disabled='true'
                     className='transform scale-150 accent-black'
                     checked={false}
+                  />
+                </div> */}
+                <div className='flex justify-between my-[14px] min-w-[180px]'>
+                  <div className='flex gap-[0.5rem]'>
+                    <div className='self-center'>
+                      <FiHardDrive className='w-[1.5rem] h-[1.5rem] scale-x-[-1]' />
+                    </div>
+                    <div className='font-andika text-sm'>Giường ngủ</div>
+                  </div>
+
+                  <input
+                    type='checkbox'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black pointer-events-none'
+                    checked={room.is_have_television}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -278,7 +299,7 @@ export default function RoomDetail() {
                         />
                       </svg>
                     </div>
-                    <div className='font-andika text-sm'>Phòng ăn riêng</div>
+                    <div className='font-andika text-sm'>Bàn ăn</div>
                   </div>
 
                   <input
@@ -408,6 +429,36 @@ export default function RoomDetail() {
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     checked={room.is_new}
+                  />
+                </div>
+                <div className='flex justify-between my-[14px] min-w-[180px]'>
+                  <div className='flex gap-[0.5rem]'>
+                    <div className='self-center'>
+                      <PiDesktopLight className='w-[1.5rem] h-[1.5rem]' />
+                    </div>
+                    <div className='font-andika text-sm'>Tivi</div>
+                  </div>
+
+                  <input
+                    type='checkbox'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black pointer-events-none'
+                    checked={room.is_have_television}
+                  />
+                </div>
+                <div className='flex justify-between my-[14px] min-w-[180px]'>
+                  <div className='flex gap-[0.5rem]'>
+                    <div className='self-center'>
+                      <PiDeviceTabletSpeakerLight className='w-[1.5rem] h-[1.5rem]' />
+                    </div>
+                    <div className='font-andika text-sm'>Tủ lạnh</div>
+                  </div>
+
+                  <input
+                    type='checkbox'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black pointer-events-none'
+                    checked={room.is_have_refrigerator}
                   />
                 </div>
               </div>

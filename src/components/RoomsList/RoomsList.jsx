@@ -48,7 +48,7 @@ export default function RoomsList() {
       pathname: '/',
       search: createSearchParams({
         ...queryConfig,
-        limit: parseInt(queryConfig.limit) + 12
+        limit: parseInt(queryConfig.limit) + 4
       }).toString()
     })
   }
