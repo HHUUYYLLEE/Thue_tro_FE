@@ -156,7 +156,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
-                    checked={room.is_have_washing_machine}
+                    defaultChecked={room.is_have_washing_machine}
                   />
                 </div>
 
@@ -172,7 +172,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
-                    checked={room.is_have_bed}
+                    defaultChecked={room.is_have_bed}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -192,7 +192,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
-                    checked={room.is_have_kitchen}
+                    defaultChecked={room.is_have_kitchen}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -219,6 +219,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
+                    defaultChecked={room.is_high_security}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -238,6 +239,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
+                    defaultChecked={room.is_have_dining_table}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -252,6 +254,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
+                    defaultChecked={room.is_have_wardrobe}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -322,7 +325,7 @@ export default function RoomDetail() {
                   <input
                     type='checkbox'
                     aria-disabled='true'
-                    checked={room.is_have_parking_lot}
+                    defaultChecked={room.is_have_parking_lot}
                     className='transform scale-150 accent-black pointer-events-none'
                   />
                 </div>
@@ -346,7 +349,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
-                    checked={room.is_new}
+                    defaultChecked={room.is_new}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -361,7 +364,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
-                    checked={room.is_have_television}
+                    defaultChecked={room.is_have_television}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -376,7 +379,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
-                    checked={room.is_have_refrigerator}
+                    defaultChecked={room.is_have_refrigerator}
                   />
                 </div>
               </div>
