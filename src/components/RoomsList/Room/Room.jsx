@@ -24,14 +24,18 @@ export default function Room({ room }) {
     <div className='flex justify-between items-center my-[1rem] border-2 rounded-md pr-[2rem]'>
       <div className='flex'>
         <div className='w-[17rem] overflow-hidden max-h-[12rem]'>
-          <img
-            src={room.images[0].url}
-            className='w-[100%] hover:scale-125 transition duration-300 ease-in-out h-full object-cover'
-            alt=''
-          />
+          <Link to={`/room/${room._id}`}>
+            <img
+              src={room.images[0].url}
+              className='w-[100%] cursor-pointer hover:scale-125 transition duration-300 ease-in-out h-full object-cover'
+              alt=''
+            />
+          </Link>
         </div>
         <div className='ml-[1rem] flex-col flex justify-center max-h-[12rem]'>
-          <div className='font-bold font-lato text-lg max-w-[27rem] line-clamp-2'>{room.name}</div>
+          <Link to={`/room/${room._id}`}>
+            <div className='font-bold cursor-pointer font-lato text-lg max-w-[27rem] line-clamp-2'>{room.name}</div>
+          </Link>
           <div className='flex text-1xl text-[#01B7F2]'>
             <FaLocationDot />
             <div className='font-lato text-xs mt-1 ml-[0.4rem] max-w-[27rem] line-clamp-1'>{room.address}</div>
