@@ -57,9 +57,9 @@ export default function RoomsList() {
   // disable button loadmore khi đã đến giới hạn
   useEffect(() => {
     if (status === 'success') {
-      const dataRooms = data.data.rooms
-      const total = data.data.total
-      if (dataRooms.length >= total) toggleLoadingMore(false)
+      const dataRooms = data?.data?.rooms
+      const total = data?.data?.total
+      if (dataRooms?.length >= total) toggleLoadingMore(false)
       else toggleLoadingMore(true)
     }
   }, [data?.data?.rooms, data?.data?.total, queryConfig.limit, queryConfig.page, status])
@@ -69,7 +69,7 @@ export default function RoomsList() {
     <>
       <div className='flex justify-between mb-[3rem]'>
         <div>
-          <span className='font-poppins-500'>{`Xem ${dataRooms.length} trên `}</span>
+          <span className='font-poppins-500'>{`Xem ${dataRooms?.length} trên `}</span>
           <span className='font-poppins-500 text-[#01B7F2]'>{`${data && data?.data?.total} kết quả`}</span>
         </div>
         <div className='relative' ref={refSort} onClick={() => toggleSortMenu(!sortMenu)}>
