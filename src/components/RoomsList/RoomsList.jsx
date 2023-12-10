@@ -112,7 +112,7 @@ export default function RoomsList() {
       </div>
       {dataRooms &&
         dataRooms?.map((room) => {
-          return <Room key={room.id} dataRooms={room} />
+          return <Room key={room.id} room={room} />
         })}
       {enableLoadingMore && (
         <button

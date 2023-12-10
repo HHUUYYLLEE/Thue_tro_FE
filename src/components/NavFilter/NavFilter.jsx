@@ -45,9 +45,9 @@ export default function NavFilter() {
         <div className='relative text-lg font-medium py-1 px-3'>
           <div className='flex text-lg font-medium hover:text-blue-400 justify-between items-center border cursor-pointer border-black min-w-[18rem] rounded-lg py-2 px-3'>
             <div></div>
-            <div className=''>
-              <p className='line-clamp-1 max-w-[10rem]'>Loại phòng</p>
-            </div>
+
+            <p className='line-clamp-1 max-w-[10rem]'>Loại phòng</p>
+
             <div>
               <AiOutlineDown />
             </div>

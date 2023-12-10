@@ -6,6 +6,7 @@ import { FiHardDrive } from 'react-icons/fi'
 import { PiAlignLeft } from 'react-icons/pi'
 import { FiPhoneCall } from 'react-icons/fi'
 import map from '../../asset/img/map.png'
+import { displayNum } from '../../utils/utils'
 import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getRoom } from '../../api/rooms.api'
@@ -33,7 +34,7 @@ export default function RoomDetail() {
               <div className='max-w-[60vw]'>
                 {room.name} | Phòng {room.number_or_people} người | {room.district_id.district}
               </div>
-              <div>{room.price.toLocaleString()} VNĐ</div>
+              <div>{displayNum(room.price)} VNĐ</div>
             </div>
             <div className='flex flex-row justify-between mt-4'>
               <div className=''>
@@ -43,7 +44,7 @@ export default function RoomDetail() {
                   </div>
                   <div className='underline'>{room.address}</div>
                 </div>
-                <div className='text-sm mt-3'>Diện tích: {room.area} m2</div>
+                <div className='text-sm mt-3'>Diện tích: {room.area}m2</div>
               </div>
               <div className='flex flex-row items-center justify-center'>
                 <div className='flex items-center bg-[#CECECE] min-w-[8rem] text-black cursor-pointer border border-[#01B7F2] rounded-sm px-4 py-1.5 mr-3'>
