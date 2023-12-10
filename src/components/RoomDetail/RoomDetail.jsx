@@ -184,8 +184,8 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
-                    disabled
-                    className='transform scale-150 accent-black'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black pointer-events-none'
                     checked={room.is_have_washing_machine}
                   />
                 </div>
@@ -222,7 +222,12 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Điều hòa</div>
                   </div>
 
-                  <input type='checkbox' disabled className='transform scale-150 accent-black' checked={false} />
+                  <input
+                    type='checkbox'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black'
+                    checked={false}
+                  />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -239,8 +244,8 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
-                    disabled
-                    className='transform scale-150 accent-black'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black pointer-events-none'
                     checked={room.is_have_kitchen}
                   />
                 </div>
@@ -257,7 +262,11 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Có dụng cụ tập gym</div>
                   </div>
 
-                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
+                  <input
+                    type='checkbox'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black pointer-events-none'
+                  />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -272,7 +281,11 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Phòng ăn riêng</div>
                   </div>
 
-                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
+                  <input
+                    type='checkbox'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black pointer-events-none'
+                  />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -296,7 +309,11 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Free Wi-Fi</div>
                   </div>
 
-                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
+                  <input
+                    type='checkbox'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black pointer-events-none'
+                  />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -363,7 +380,12 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Có chỗ để xe</div>
                   </div>
 
-                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
+                  <input
+                    type='checkbox'
+                    aria-disabled='true'
+                    checked={room.is_have_parking_lot}
+                    className='transform scale-150 accent-black pointer-events-none'
+                  />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
@@ -381,7 +403,12 @@ export default function RoomDetail() {
                     <div className='font-andika text-sm'>Phòng mới</div>
                   </div>
 
-                  <input type='checkbox' disabled className='transform scale-150 accent-black' />
+                  <input
+                    type='checkbox'
+                    aria-disabled='true'
+                    className='transform scale-150 accent-black pointer-events-none'
+                    checked={room.is_new}
+                  />
                 </div>
               </div>
             </div>
