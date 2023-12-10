@@ -3,7 +3,8 @@ import { LiaSwimmingPoolSolid } from 'react-icons/lia'
 import { PiDesktopLight } from 'react-icons/pi'
 import { PiDeviceTabletSpeakerLight } from 'react-icons/pi'
 import { FiHardDrive } from 'react-icons/fi'
-
+import { PiAlignLeft } from 'react-icons/pi'
+import { FiPhoneCall } from 'react-icons/fi'
 import map from '../../asset/img/map.png'
 import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
@@ -136,39 +137,7 @@ export default function RoomDetail() {
             <div className=''>
               <div className='flex'>
                 <div className='self-center mr-3'>
-                  <svg width={22} height={22} viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                    <path
-                      d='M10.9997 17.4168C11.9721 17.4168 12.9048 17.0305 13.5924 16.3429C14.28 15.6553 14.6663 14.7226 14.6663 13.7502C14.6663 12.7777 14.28 11.8451 13.5924 11.1574C12.9048 10.4698 11.9721 10.0835 10.9997 10.0835C10.0272 10.0835 9.09458 10.4698 8.40695 11.1574C7.71932 11.8451 7.33301 12.7777 7.33301 13.7502C7.33301 14.7226 7.71932 15.6553 8.40695 16.3429C9.09458 17.0305 10.0272 17.4168 10.9997 17.4168V17.4168Z'
-                      stroke='#181818'
-                      strokeWidth={1.5}
-                      strokeMiterlimit={10}
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                    />
-                    <path
-                      d='M9.57031 13.7504L10.1661 14.3462C10.3403 14.5204 10.6245 14.5295 10.7986 14.3554L12.4303 12.8521'
-                      stroke='#181818'
-                      strokeWidth={1.5}
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                    />
-                    <path
-                      d='M8.25009 20.1668H13.7501C17.4351 20.1668 18.0951 18.691 18.2876 16.8943L18.9751 11.3943C19.2226 9.15766 18.5809 7.3335 14.6668 7.3335H7.33342C3.41925 7.3335 2.77759 9.15766 3.02509 11.3943L3.71259 16.8943C3.90509 18.691 4.56509 20.1668 8.25009 20.1668Z'
-                      stroke='#181818'
-                      strokeWidth={1.5}
-                      strokeMiterlimit={10}
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                    />
-                    <path
-                      d='M6.875 7.03108V6.14191C6.875 4.07941 8.53417 2.05357 10.5967 1.86107C11.1697 1.80477 11.7483 1.86908 12.295 2.04985C12.8417 2.23063 13.3445 2.52387 13.7711 2.9107C14.1976 3.29753 14.5385 3.76939 14.7717 4.2959C15.0048 4.82241 15.1252 5.39191 15.125 5.96774V7.23274'
-                      stroke='#181818'
-                      strokeWidth={1.5}
-                      strokeMiterlimit={10}
-                      strokeLinecap='round'
-                      strokeLinejoin='round'
-                    />
-                  </svg>
+                  <FiPhoneCall className='w-[1.5rem] h-[1.5rem]' />
                 </div>
                 <div className=' font-normal text-lg'>SĐT: {room.host_id.phone_number}</div>
               </div>
@@ -177,12 +146,6 @@ export default function RoomDetail() {
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
                     <div className='self-center'>
-                      {/* <svg width='20' height='19' viewBox='0 0 20 19' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                        <path
-                          d='M0 13C1.67 12.25 3.33 11.5 5 11.17V3C5 2.20435 5.31607 1.44129 5.87868 0.87868C6.44129 0.316071 7.20435 0 8 0C9.31 0 10.42 0.83 10.83 2H8C7.73478 2 7.48043 2.10536 7.29289 2.29289C7.10536 2.48043 7 2.73478 7 3V4H12V3C12 2.20435 12.3161 1.44129 12.8787 0.87868C13.4413 0.316071 14.2044 0 15 0C16.31 0 17.42 0.83 17.83 2H15C14.7348 2 14.4804 2.10536 14.2929 2.29289C14.1054 2.48043 14 2.73478 14 3V12.94C16 12.62 18 11 20 11V13C17.78 13 15.56 15 13.33 15C11.11 15 8.89 13 6.67 13C4.44 13 2.22 14 0 15V13ZM12 6H7V8H12V6ZM12 10H7V11C8.67 11.16 10.33 12.31 12 12.79V10ZM0 17C2.22 16 4.44 15 6.67 15C8.89 15 11.11 17 13.33 17C15.56 17 17.78 15 20 15V17C17.78 17 15.56 19 13.33 19C11.11 19 8.89 17 6.67 17C4.44 17 2.22 18 0 19V17Z'
-                          fill='#181818'
-                        />
-                      </svg> */}
                       <LiaSwimmingPoolSolid className='w-[1/5rem] h-[1.5rem]' />
                     </div>
                     <div className='font-andika text-sm'>Máy giặt</div>
@@ -195,46 +158,7 @@ export default function RoomDetail() {
                     checked={room.is_have_washing_machine}
                   />
                 </div>
-                {/* <div className='flex justify-between my-[14px] min-w-[180px]'>
-                  <div className='flex gap-[0.5rem]'>
-                    <div className='self-center'>
-                      <svg width={22} height={22} viewBox='0 0 22 22' fill='none' xmlns='http://www.w3.org/2000/svg'>
-                        <path
-                          d='M1.83398 13.75H16.959C18.7282 13.75 20.1673 15.1892 20.1673 16.9583C20.1673 18.7275 18.7282 20.1667 16.959 20.1667C15.1898 20.1667 13.7507 18.7275 13.7507 16.9583V16.5'
-                          stroke='#181818'
-                          strokeWidth={1.5}
-                          strokeMiterlimit={10}
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                        />
-                        <path
-                          d='M1.83398 11.0002H16.959C18.719 11.0002 20.1673 9.561 20.1673 7.79183C20.1673 6.03183 18.719 4.5835 16.959 4.5835C16.1088 4.58591 15.2942 4.92471 14.693 5.52587C14.0919 6.12702 13.7531 6.94167 13.7507 7.79183V8.25016'
-                          stroke='#181818'
-                          strokeWidth={1.5}
-                          strokeMiterlimit={10}
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                        />
-                        <path
-                          d='M1.83398 8.25003H8.53482C9.02251 8.25003 9.49926 8.10541 9.90476 7.83446C10.3103 7.56351 10.6263 7.1784 10.8129 6.72783C10.9996 6.27726 11.0484 5.78146 10.9533 5.30313C10.8581 4.82481 10.6233 4.38544 10.2784 4.04059C9.93357 3.69573 9.4942 3.46089 9.01588 3.36574C8.53755 3.2706 8.04176 3.31943 7.59118 3.50606C7.14061 3.69269 6.7555 4.00875 6.48455 4.41425C6.2136 4.81975 6.06898 5.2965 6.06898 5.78419V6.13253'
-                          stroke='#181818'
-                          strokeWidth={1.5}
-                          strokeMiterlimit={10}
-                          strokeLinecap='round'
-                          strokeLinejoin='round'
-                        />
-                      </svg>
-                    </div>
-                    <div className='font-andika text-sm'>Điều hòa</div>
-                  </div>
 
-                  <input
-                    type='checkbox'
-                    aria-disabled='true'
-                    className='transform scale-150 accent-black'
-                    checked={false}
-                  />
-                </div> */}
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
                     <div className='self-center'>
@@ -247,7 +171,7 @@ export default function RoomDetail() {
                     type='checkbox'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
-                    checked={room.is_have_television}
+                    checked={room.is_have_bed}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
@@ -273,14 +197,21 @@ export default function RoomDetail() {
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
                     <div className='self-center'>
-                      <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 15 15'>
-                        <path
-                          fill='currentColor'
-                          d='M14.5 7v1h-1v2h-1v1H11V8H4v3H2.5v-1h-1V8h-1V7h1V5h1V4H4v3h7V4h1.5v1h1v2Z'
-                        />
+                      <svg
+                        xmlns='http://www.w3.org/2000/svg'
+                        width='24'
+                        height='24'
+                        fill='none'
+                        viewBox='0 0 24 24'
+                        strokeWidth='1.5'
+                        strokeLinecap='round'
+                        strokeLinejoin='round'
+                        stroke='currentColor'
+                      >
+                        <path d='M8 10V8c0-2.761 1.239-5 4-5s4 2.239 4 5v2M3.5 17.8v-4.6c0-1.12 0-1.68.218-2.107a2 2 0 0 1 .874-.875c.428-.217.988-.217 2.108-.217h10.6c1.12 0 1.68 0 2.108.217a2 2 0 0 1 .874.874c.218.428.218.988.218 2.108v4.6c0 1.12 0 1.68-.218 2.108a2 2 0 0 1-.874.874C18.98 21 18.42 21 17.3 21H6.7c-1.12 0-1.68 0-2.108-.218a2 2 0 0 1-.874-.874C3.5 19.481 3.5 18.921 3.5 17.8ZM16 14v3' />
                       </svg>
                     </div>
-                    <div className='font-andika text-sm'>Có dụng cụ tập gym</div>
+                    <div className='font-andika text-sm'>Bảo mật cao</div>
                   </div>
 
                   <input
@@ -311,23 +242,9 @@ export default function RoomDetail() {
                 <div className='flex justify-between my-[14px] min-w-[180px]'>
                   <div className='flex gap-[0.5rem]'>
                     <div className='self-center'>
-                      <svg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 512 512'>
-                        <path
-                          fill='currentColor'
-                          d='M346.65 304.3a136 136 0 0 0-180.71 0a21 21 0 1 0 27.91 31.38a94 94 0 0 1 124.89 0a21 21 0 0 0 27.91-31.4Z'
-                        />
-                        <path
-                          fill='currentColor'
-                          d='M256.28 183.7a221.47 221.47 0 0 0-151.8 59.92a21 21 0 1 0 28.68 30.67a180.28 180.28 0 0 1 246.24 0a21 21 0 1 0 28.68-30.67a221.47 221.47 0 0 0-151.8-59.92Z'
-                        />
-                        <path
-                          fill='currentColor'
-                          d='M462 175.86a309 309 0 0 0-411.44 0a21 21 0 1 0 28 31.29a267 267 0 0 1 355.43 0a21 21 0 0 0 28-31.31Z'
-                        />
-                        <circle cx='256.28' cy='393.41' r='32' fill='currentColor' />
-                      </svg>
+                      <PiAlignLeft className='w-[1.5rem] h-[1.5rem]' />
                     </div>
-                    <div className='font-andika text-sm'>Free Wi-Fi</div>
+                    <div className='font-andika text-sm'>Tủ quần áo</div>
                   </div>
 
                   <input
