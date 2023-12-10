@@ -101,7 +101,7 @@ export default function RoomDetail() {
                 <div className='h-[3px] w-[87px] bg-[#01B7F2]'></div>
               </div>
             </div>
-            <div>
+            <div className='whitespace-pre-line'>
               {/* <ul className='list-disc list-inside [&>*]:ml-4'>
                 CHO THUÊ CĂN HỘ STUDIO ĐẦY ĐỦ ĐỒ ĐIỀU HÒA GIƯỜNG TỦ PHỐ HÀM LONG CÁCH HỒ GƯƠM 350M
                 <li>Tòa nhà 8 tầng tại số 25 Ngõ Hàm Long 2</li>
