@@ -23,7 +23,7 @@ export default function Room({ room }) {
   return (
     <div className='flex justify-between items-center my-[1rem] border-2 rounded-md pr-[2rem]'>
       <div className='flex'>
-        <div className='w-[17rem] overflow-hidden max-h-[12rem]'>
+        <div className='max-w-[13vw] min-w-[13vw] w-[100%] overflow-hidden max-h-[12rem]'>
           <Link to={`/room/${room._id}`}>
             <img
               src={room.images[0].url}
