@@ -35,7 +35,7 @@ export default function Banner() {
     <div>
       <img src={BannerImage} alt='' className='pointer-events-none' />
       <div>
-        <div className='left-52 top-32 absolute text-white text-6xl italic'>
+        <div className='left-52 top-32 absolute text-white text-6xl font-abeezee'>
           Tìm phòng trọ uy tín,<br></br> giá rẻ
         </div>
         <form onSubmit={onSubmit} className='top-80 left-0 right-0 ml-auto mr-auto w-[50vw] absolute'>
@@ -61,7 +61,7 @@ export default function Banner() {
               type='search'
               id='default-search'
               {...register('search')}
-              className='h-[60px] backdrop-blur placeholder-white bg-white/30 text-white block p-4 pl-16 w-full text-sm border border-gray-300 rounded-[10px]'
+              className='h-[60px] font-andika backdrop-blur placeholder-white bg-white/30 text-white block p-4 pl-16 w-full text-sm border border-gray-300 rounded-[10px]'
               placeholder='Tìm kiếm quận, huyện, vị trí, phòng trọ,...'
             ></input>
             <button
@@ -73,7 +73,7 @@ export default function Banner() {
           </div>
         </form>
         <div className='absolute -mt-[15rem] left-[8.5rem] right-0  mr-auto w-[75vw]'>
-          <div className='text-white text-3xl italic'>Các phòng trọ nổi bật</div>
+          <div className='text-white text-3xl font-abeezee'>Các phòng trọ nổi bật</div>
           <div className='flex gap-8 mt-12'>
             {dataRandomRooms &&
               dataRandomRooms.map((dataRandomRoom) => {
@@ -83,7 +83,8 @@ export default function Banner() {
                       src={dataRandomRoom.images[0].url}
                       alt=''
                       className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg border-gray-500 border-2 shadow-lg'
-                    />                  </Link>
+                    />{' '}
+                  </Link>
                 )
               })}
           </div>

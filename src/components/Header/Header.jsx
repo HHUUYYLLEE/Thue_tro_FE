@@ -51,11 +51,11 @@ export default function Header() {
             >
               {item.name}
               <span
-                className={`block rounded-xl mt-[2vh] h-[0.3rem] bg-white
-                  7${
+                className={`block rounded-xl mt-[2vh] h-[0.3rem] bg-white mx-auto
+                  ${
                     path.pathname === item.path
-                      ? 'max-w-full'
-                      : ' max-w-0 group-hover:max-w-full transition-all duration-500'
+                      ? 'max-w-[80%]'
+                      : ' max-w-0 group-hover:max-w-[80%] transition-all duration-500'
                   }`}
               />
             </NavLink>
