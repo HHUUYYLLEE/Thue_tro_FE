@@ -59,7 +59,7 @@ export default function Room({ room }) {
       <div className='mt-[1.5rem] mr-[2vw]'>
         <div className='text-[#353535] font-poppins-700 text-4xl'>{displayNum(room.price) + '/tháng'}</div>
         <div className='flex justify-end font-poppins-500 text-[#112211]'>excl. tax</div>
-        <div className='flex justify-end mt-[1.5rem]'>
+        <div className='flex justify-end mt-[1vh]'>
           <Link to={`/room/${room._id}`}>
             <button className='font-medium hover:bg-blue-500 bg-[#01B7F2] px-[2rem] py-[0.5rem] rounded-md text-white'>
               Xem phòng
