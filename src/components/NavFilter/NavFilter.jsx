@@ -25,7 +25,7 @@ export default function NavFilter() {
   return (
     <div className='w-full flex justify-center items-center border border-slate-400 px-7 pb-6 pt-8 mb-8'>
       <div className='w-[86%] flex justify-between'>
-        <div className='font-poppins-800 text-[#353535] text-3xl mt-[0.5rem]'>Bộ lọc tìm kiếm</div>
+        <div className='font-poppins-700 text-[#353535] text-3xl mt-[0.5rem]'>Bộ lọc tìm kiếm</div>
         <div ref={refAddress} className='relative text-lg font-medium py-1'>
           <div
             onClick={openAddressMenu}
