@@ -39,21 +39,24 @@ export default function Header() {
       >
         <Link to='/'>tro.vn</Link>
       </div>
-      <div className='flex pl-60 gap-8 font-semibold'>
+      <div className='flex pl-60 gap-8 font-poppins-500'>
         {headerItems.map((item) => {
           return (
             <NavLink
               key={item.id}
               to={item.path}
               className={`group text-lg transition duration-300 ${
-                path.pathname.includes('/room') === true ? 'text-black' : 'text-white'
+                path.pathname.includes('/room') ? 'text-black' : 'text-white'
               }`}
             >
               {item.name}
               <span
-                className={`block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 ${
-                  path.pathname === '/room' ? 'bg-black' : 'bg-white'
-                }`}
+                className={`block rounded-xl mt-[2vh] h-[0.3rem] bg-white
+                  7${
+                    path.pathname === item.path
+                      ? 'max-w-full'
+                      : ' max-w-0 group-hover:max-w-full transition-all duration-500'
+                  }`}
               />
             </NavLink>
           )
