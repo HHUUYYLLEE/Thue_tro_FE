@@ -96,7 +96,7 @@ export default function Footer() {
         {/* <div className='div.copyright justify-center text-white text-xs absolute bottom-0 mb-3 rotate-180'>
           © Website - 2022 | All Right Reserved. Designed By Website
         </div> */}
-        <div className='ml-[77px]'>
+        <div className='ml-[77px] mt-16'>
           <div>
             <svg width={1920} height={53} viewBox='0 0 1920 53' fill='none' xmlns='http://www.w3.org/2000/svg'>
               <mask id='path-1-inside-1_307_7356' fill='white'>
