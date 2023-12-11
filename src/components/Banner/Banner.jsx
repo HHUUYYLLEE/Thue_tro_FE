@@ -76,15 +76,18 @@ export default function Banner() {
             </button>
           </div>
         </form>
-        <div className='absolute -mt-[16rem] left-0 right-0 ml-auto mr-auto w-[75vw]'>
+        <div className='absolute -mt-[16rem] left-[8.5rem] right-0  mr-auto w-[75vw]'>
           <div className='text-white text-3xl italic'>Các phòng trọ nổi bật</div>
           <div className='flex gap-8 mt-12'>
             {dataRandomRooms &&
               dataRandomRooms.map((dataRandomRoom) => {
                 return (
                   <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
-                    <img src={dataRandomRoom.images[1].url} alt='Ảnh không có' className='w-[336px] h-[217px] rounded-lg border-gray-500 border-2 shadow-lg'/>
-                  </Link>
+                    <img
+                      src={dataRandomRoom.images[0].url}
+                      alt=''
+                      className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg border-gray-500 border-2 shadow-lg'
+                    />                  </Link>
                 )
               })}
           </div>

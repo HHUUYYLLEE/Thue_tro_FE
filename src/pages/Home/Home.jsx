@@ -12,11 +12,11 @@ export default function Home() {
       <div className='mt-[6rem]'>
         <NavFilter />
       </div>
-      <div className='my-[3rem] mx-[10rem] grid gap-x-[3rem]  grid-cols-11'>
-        <div className='row-start-1 col-span-3'>
+      <div className='my-[3rem] mx-[9vw] grid gap-x-[3rem] grid-cols-11'>
+        <div className='row-start-1 col-span-2'>
           <SidebarFilter />
         </div>
-        <div className='row-start-1 col-span-8'>
+        <div className='row-start-1 col-span-9'>
           <RoomsList />
         </div>
       </div>

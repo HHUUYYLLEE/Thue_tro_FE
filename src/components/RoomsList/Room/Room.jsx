@@ -4,31 +4,50 @@ import { FaRegSquare } from 'react-icons/fa'
 import { FaRegCheckSquare } from 'react-icons/fa'
 import { displayNum } from '../../../utils/utils'
 import { Link } from 'react-router-dom'
-export default function Room({ dataRooms }) {
+export default function Room({ room }) {
+  let numOfFeatures = () => {
+    let count = 0
+    if (room.is_have_parking_lot) count++
+    if (room.is_new) count++
+    if (room.is_high_security) count++
+    if (room.is_have_bed) count++
+    if (room.is_have_wardrobe) count++
+    if (room.is_have_dining_table) count++
+    if (room.is_have_refrigerator) count++
+    if (room.is_have_television) count++
+    if (room.is_have_kitchen) count++
+    if (room.is_have_washing_machine) count++
+    return count
+  }
+
   return (
-    <div className='flex justify-between items-center my-[1rem] border-2 rounded-md pr-[2rem]'>
+    <div className='flex justify-between items-center my-[1rem] border-2 rounded-md mr-[2vw]'>
       <div className='flex'>
-        <div className='w-[17rem] overflow-hidden max-h-[12rem]'>
-          <img
-            src={dataRooms.images[0].url}
-            className='w-[100%] hover:scale-125 transition duration-300 ease-in-out h-full object-cover'
-            alt=''
-          />
+        <div className='max-w-[16vw] min-w-[16vw] w-[100%] overflow-hidden max-h-[22vh]'>
+          <Link to={`/room/${room._id}`}>
+            <img
+              src={room.images[0].url}
+              className='w-[100%] cursor-pointer hover:scale-125 transition duration-300 ease-in-out h-full object-cover'
+              alt=''
+            />
+          </Link>
         </div>
         <div className='ml-[1rem] flex-col flex justify-center max-h-[12rem]'>
-          <div className='font-bold font-lato text-lg max-w-[27rem] line-clamp-2'>{dataRooms.name}</div>
+          <Link to={`/room/${room._id}`}>
+            <div className='font-bold cursor-pointer font-lato text-2xl max-w-[12vw] line-clamp-1'>{room.name}</div>
+          </Link>
           <div className='flex text-1xl text-[#01B7F2]'>
             <FaLocationDot />
-            <div className='font-lato text-xs mt-1 ml-[0.4rem] max-w-[27rem] line-clamp-1'>{dataRooms.address}</div>
+            <div className='font-lato text-xs mt-1 ml-[0.4rem] max-w-[16vw] line-clamp-1'>{room.address}</div>
           </div>
-          <div className='font-montserrat-700 mt-1'>{'Diện tích: ' + dataRooms.area + 'm2'}</div>
-          <div className='flex mt-[0.8rem]'>
+          <div className='font-montserrat-700 text-sm mt-1'>{'Diện tích: ' + room.area + 'm2'}</div>
+          <div className='flex mt-[1.2rem]'>
             <IoMdCafe />
-            <div className='ml-[0.4rem] font-montserrat-700'>20+</div>
+            <div className='ml-[0.4rem] font-montserrat-700'>{numOfFeatures()}</div>
             <div className='ml-[0.4rem] font-montserrat-500'>Tiện ích</div>
           </div>
-          <div className='flex mt-[0.8rem] items-center'>
-            {dataRooms.is_checked_information ? (
+          <div className='flex mt-[0.4rem] items-center'>
+            {room.is_checked_information ? (
               <FaRegCheckSquare className='text-[#0057FF] text-xl' />
             ) : (
               <FaRegSquare className='text-[#0057FF] text-xl' />
@@ -37,11 +56,11 @@ export default function Room({ dataRooms }) {
           </div>
         </div>
       </div>
-      <div className='mt-[1rem] ml-5'>
-        <div className='text-[#353535] font-poppins-800 text-xl'>{displayNum(dataRooms.price) + '/tháng'}</div>
-        <div className='flex justify-end font-medium'>excl. tax</div>
-        <div className='flex justify-end mt-[3rem]'>
-          <Link to={`/room/${dataRooms._id}`}>
+      <div className='mt-[1.5rem] mr-[2vw]'>
+        <div className='text-[#353535] font-poppins-700 text-4xl'>{displayNum(room.price) + '/tháng'}</div>
+        <div className='flex justify-end font-poppins-500 text-[#112211]'>excl. tax</div>
+        <div className='flex justify-end mt-[1vh]'>
+          <Link to={`/room/${room._id}`}>
             <button className='font-medium hover:bg-blue-500 bg-[#01B7F2] px-[2rem] py-[0.5rem] rounded-md text-white'>
               Xem phòng
             </button>
