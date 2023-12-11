@@ -83,7 +83,7 @@ export default function Banner() {
               dataRandomRooms.map((dataRandomRoom) => {
                 return (
                   <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
-                    <img src={dataRandomRoom.images[0].url} alt='' className='w-[336px] h-[217px] rounded-lg border-gray-500 border-2 shadow-lg'/>
+                    <img src={dataRandomRoom.images[1].url} alt='Ảnh không có' className='w-[336px] h-[217px] rounded-lg border-gray-500 border-2 shadow-lg'/>
                   </Link>
                 )
               })}
