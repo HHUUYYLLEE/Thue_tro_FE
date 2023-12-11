@@ -1,9 +1,5 @@
 import { useForm } from 'react-hook-form'
 import BannerImage from '../../asset/img/banner.png'
-import Room1 from '../../asset/img/room1.png'
-import Room2 from '../../asset/img/room2.png'
-import Room3 from '../../asset/img/room3.png'
-import Room4 from '../../asset/img/room4.png'
 import useQueryConfig from '../../hooks/useQueryConfig'
 import { Link, createSearchParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
@@ -76,7 +72,7 @@ export default function Banner() {
             </button>
           </div>
         </form>
-        <div className='absolute -mt-[16rem] left-[8.5rem] right-0  mr-auto w-[75vw]'>
+        <div className='absolute -mt-[15rem] left-[8.5rem] right-0  mr-auto w-[75vw]'>
           <div className='text-white text-3xl italic'>Các phòng trọ nổi bật</div>
           <div className='flex gap-8 mt-12'>
             {dataRandomRooms &&

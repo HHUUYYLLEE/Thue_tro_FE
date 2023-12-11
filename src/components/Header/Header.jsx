@@ -39,7 +39,7 @@ export default function Header() {
       >
         <Link to='/'>tro.vn</Link>
       </div>
-      <div className='flex pl-20 gap-8 font-semibold'>
+      <div className='flex pl-60 gap-8 font-semibold'>
         {headerItems.map((item) => {
           return (
             <NavLink
