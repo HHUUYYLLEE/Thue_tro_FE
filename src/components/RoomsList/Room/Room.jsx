@@ -21,9 +21,9 @@ export default function Room({ room }) {
   }
 
   return (
-    <div className='flex justify-between items-center my-[1rem] border-2 rounded-md pr-[2rem]'>
+    <div className='flex justify-between items-center my-[1rem] border-2 rounded-md mr-[2vw]'>
       <div className='flex'>
-        <div className='max-w-[13vw] min-w-[13vw] w-[100%] overflow-hidden max-h-[12rem]'>
+        <div className='max-w-[16vw] min-w-[16vw] w-[100%] overflow-hidden max-h-[22vh]'>
           <Link to={`/room/${room._id}`}>
             <img
               src={room.images[0].url}
@@ -34,19 +34,19 @@ export default function Room({ room }) {
         </div>
         <div className='ml-[1rem] flex-col flex justify-center max-h-[12rem]'>
           <Link to={`/room/${room._id}`}>
-            <div className='font-bold cursor-pointer font-lato text-lg max-w-[27rem] line-clamp-2'>{room.name}</div>
+            <div className='font-bold cursor-pointer font-lato text-2xl max-w-[12vw] line-clamp-1'>{room.name}</div>
           </Link>
           <div className='flex text-1xl text-[#01B7F2]'>
             <FaLocationDot />
-            <div className='font-lato text-xs mt-1 ml-[0.4rem] max-w-[27rem] line-clamp-1'>{room.address}</div>
+            <div className='font-lato text-xs mt-1 ml-[0.4rem] max-w-[16vw] line-clamp-1'>{room.address}</div>
           </div>
-          <div className='font-montserrat-700 mt-1'>{'Diện tích: ' + room.area + 'm2'}</div>
-          <div className='flex mt-[0.8rem]'>
+          <div className='font-montserrat-700 text-sm mt-1'>{'Diện tích: ' + room.area + 'm2'}</div>
+          <div className='flex mt-[1.2rem]'>
             <IoMdCafe />
             <div className='ml-[0.4rem] font-montserrat-700'>{numOfFeatures()}</div>
             <div className='ml-[0.4rem] font-montserrat-500'>Tiện ích</div>
           </div>
-          <div className='flex mt-[0.8rem] items-center'>
+          <div className='flex mt-[0.4rem] items-center'>
             {room.is_checked_information ? (
               <FaRegCheckSquare className='text-[#0057FF] text-xl' />
             ) : (
@@ -56,10 +56,10 @@ export default function Room({ room }) {
           </div>
         </div>
       </div>
-      <div className='mt-[1rem] ml-5'>
-        <div className='text-[#353535] font-poppins-800 text-xl'>{displayNum(room.price) + '/tháng'}</div>
-        <div className='flex justify-end font-medium'>excl. tax</div>
-        <div className='flex justify-end mt-[3rem]'>
+      <div className='mt-[1.5rem] mr-[2vw]'>
+        <div className='text-[#353535] font-poppins-700 text-4xl'>{displayNum(room.price) + '/tháng'}</div>
+        <div className='flex justify-end font-poppins-500 text-[#112211]'>excl. tax</div>
+        <div className='flex justify-end mt-[1.5rem]'>
           <Link to={`/room/${room._id}`}>
             <button className='font-medium hover:bg-blue-500 bg-[#01B7F2] px-[2rem] py-[0.5rem] rounded-md text-white'>
               Xem phòng

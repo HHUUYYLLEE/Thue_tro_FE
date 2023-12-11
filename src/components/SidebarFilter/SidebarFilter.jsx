@@ -6,8 +6,10 @@ import { displayNum } from '../../utils/utils'
 export default function SidebarFilter() {
   const minPrice = 0,
     defaultPrice = 5000000,
+    maxPrice = 10000000,
     minArea = 10,
-    defaultArea = 200
+    defaultArea = 200,
+    maxArea = 500
   const [sliderPriceRight, setSliderPriceRight] = useState(defaultPrice)
   const [sliderPriceLeft, setSliderPriceLeft] = useState(minPrice)
   const [sliderAreaRight, setSliderAreaRight] = useState(defaultArea)
@@ -23,40 +25,7 @@ export default function SidebarFilter() {
   const [haveTV, setHaveTV] = useState(false)
   const [haveKitchen, setHaveKitchen] = useState(false)
   const [haveWashingMachine, setHaveWashingMachine] = useState(false)
-  const sliders = [
-    {
-      id: 1,
-      label: 'Giá',
-      cssStyle: 'mt-[0.5rem]',
-      step: 10000,
-      min: minPrice,
-      max: 10000000,
-      default1: minPrice,
-      default2: defaultPrice,
-      unit: '',
-      state1: sliderPriceLeft,
-      state2: sliderPriceRight,
-      setState1: setSliderPriceLeft,
-      setState2: setSliderPriceRight
-    },
-    {
-      id: 2,
-      label: 'Diện tích',
-      name1: 'minArea',
-      name2: 'maxArea',
-      cssStyle: 'my-[3rem]',
-      step: 1,
-      min: minArea,
-      max: 500,
-      default1: minArea,
-      default2: defaultArea,
-      unit: 'm2',
-      state1: sliderAreaLeft,
-      state2: sliderAreaRight,
-      setState1: setSliderAreaLeft,
-      setState2: setSliderAreaRight
-    }
-  ]
+
   const toggles = [
     {
       id: 1,
@@ -177,43 +146,72 @@ export default function SidebarFilter() {
 
   return (
     <>
-      {sliders.map((element) => {
-        return (
-          <div key={element.id} className={`border-y-2 ${element.cssStyle}`}>
-            <div className='my-[0.5rem] text-lg font-andika'>{element.label}</div>
-            <div className='text-[1rem] grid grid-cols-7'>
-              <div className='row-start-1 col-span-3 border-2'>
-                <div className='ml-1'>{displayNum(element.state1) + element.unit}</div>
-              </div>
-              <div className='row-start-1 col-span-1 m-auto'>-</div>
-              <div className='row-start-1 col-span-3 border-2'>
-                <div className='ml-1'>{displayNum(element.state2) + element.unit}</div>
-              </div>
-            </div>
-            <Slider
-              range
-              allowCross={false}
-              className='mt-[1rem] mb-[1.5rem]'
-              value={[element.state1, element.state2]}
-              step={element.step}
-              min={element.min}
-              max={element.max}
-              defaultValue={[element.default1, element.default2]}
-              onChange={([value1, value2]) => {
-                element.setState1(value1)
-                element.setState2(value2)
-              }}
-              styles={{
-                track: { backgroundColor: 'black', height: '0.7rem' },
-                handle: { backgroundColor: 'black', height: '1.25rem', width: '1.25rem', borderColor: 'black' },
-                rail: { backgroundColor: 'grey', height: '0.5rem', opacity: '30%' }
-              }}
-            ></Slider>
+      <div className='border-y-2 mt-[0.5rem]'>
+        <div className='my-[0.5rem] text-lg font-andika'>Giá</div>
+        <div className='text-[1rem] grid grid-cols-7'>
+          <div className='row-start-1 col-span-3 border-2'>
+            <div className='ml-1'>{displayNum(sliderPriceLeft)}</div>
           </div>
-        )
-      })}
+          <div className='row-start-1 col-span-1 m-auto'>-</div>
+          <div className='row-start-1 col-span-3 border-2'>
+            <div className='ml-1'>{displayNum(sliderPriceRight)}</div>
+          </div>
+        </div>
+        <Slider
+          range
+          allowCross={false}
+          className='mt-[1rem] mb-[1.5rem]'
+          value={[sliderPriceLeft, sliderPriceRight]}
+          step={10000}
+          min={minPrice}
+          max={maxPrice}
+          defaultValue={[minPrice, defaultPrice]}
+          onChange={([value1, value2]) => {
+            setSliderPriceLeft(value1)
+            setSliderPriceRight(value2)
+          }}
+          styles={{
+            track: { backgroundColor: 'black', height: '0.7rem' },
+            handle: { backgroundColor: 'black', height: '1.25rem', width: '1.25rem', borderColor: 'black' },
+            rail: { backgroundColor: 'grey', height: '0.5rem', opacity: '30%' }
+          }}
+        ></Slider>
+      </div>
+      <div className='border-y-2 pb-[1.5rem]'>
+        <div className='my-[0.5rem] text-lg font-andika'>Diện tích</div>
+      </div>
+      <div className='border-b-2 mt-[3rem]'>
+        <div className='text-[1rem] grid grid-cols-7 mt-[2rem]'>
+          <div className='row-start-1 col-span-3 border-2'>
+            <div className='ml-1'>{displayNum(sliderAreaLeft) + ' m2'}</div>
+          </div>
+          <div className='row-start-1 col-span-1 m-auto'>-</div>
+          <div className='row-start-1 col-span-3 border-2'>
+            <div className='ml-1'>{displayNum(sliderAreaRight) + ' m2'}</div>
+          </div>
+        </div>
+        <Slider
+          range
+          allowCross={false}
+          className='mt-[1rem] mb-[1.5rem]'
+          value={[sliderAreaLeft, sliderAreaRight]}
+          step={1}
+          min={minArea}
+          max={maxArea}
+          defaultValue={[minArea, defaultArea]}
+          onChange={([value1, value2]) => {
+            setSliderAreaLeft(value1)
+            setSliderAreaRight(value2)
+          }}
+          styles={{
+            track: { backgroundColor: 'black', height: '0.7rem' },
+            handle: { backgroundColor: 'black', height: '1.25rem', width: '1.25rem', borderColor: 'black' },
+            rail: { backgroundColor: 'grey', height: '0.5rem', opacity: '30%' }
+          }}
+        ></Slider>
+      </div>
 
-      <div className='border-y-2 my-[3rem]'>
+      <div className='border-y-2 mt-[2rem]'>
         {toggles.map((element) => {
           return (
             <div key={element.id} className='flex justify-between my-[1rem]'>
@@ -231,7 +229,7 @@ export default function SidebarFilter() {
           )
         })}
       </div>
-      <div className='border-y-2 my-[2rem]'>
+      <div className='border-y-2 mt-[2rem]'>
         <div className='my-[0.5rem] text-2xl font-andika'>Nội thất</div>
         {checks.map((element) => {
           return (
@@ -252,7 +250,7 @@ export default function SidebarFilter() {
           )
         })}
       </div>
-      <div className='border-y-2 my-[2rem]'>
+      <div className='border-y-2 mt-[2rem]'>
         <div className='my-[0.5rem] text-2xl font-andika'>Số lượng người ở</div>
         {numOfPeople.map((element) => {
           return (

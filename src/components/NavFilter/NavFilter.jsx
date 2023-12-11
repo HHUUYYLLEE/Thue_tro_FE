@@ -23,13 +23,13 @@ export default function NavFilter() {
   }, [])
 
   return (
-    <div className='w-full flex justify-center items-center border border-slate-400 px-16 pb-6 pt-8 mb-8'>
-      <div className='w-5/6 flex justify-between'>
-        <div className='font-bold text-2xl'>Bộ lọc tìm kiếm</div>
+    <div className='w-full flex justify-center items-center border border-slate-400 px-7 pb-6 pt-8 mb-8'>
+      <div className='w-[86%] flex justify-between'>
+        <div className='font-poppins-800 text-[#353535] text-3xl mt-[0.5rem]'>Bộ lọc tìm kiếm</div>
         <div ref={refAddress} className='relative text-lg font-medium py-1'>
           <div
             onClick={openAddressMenu}
-            className='flex  hover:text-blue-400 justify-between items-center cursor-pointer border border-black min-w-[18rem] rounded-lg  py-2 px-3'
+            className='flex  hover:text-blue-400 justify-between items-center cursor-pointer border border-black min-w-[20vw] rounded-lg  py-2 px-3'
           >
             <div></div>
             <div className=''>
@@ -43,20 +43,20 @@ export default function NavFilter() {
         </div>
 
         <div className='relative text-lg font-medium py-1'>
-          <div className='flex text-lg font-medium hover:text-blue-400 justify-between items-center border cursor-pointer border-black min-w-[18rem] rounded-lg py-2 px-3'>
+          <div className='flex text-lg font-medium hover:text-blue-400 justify-between items-center border cursor-pointer border-black min-w-[20vw] rounded-lg py-2 px-10'>
             <div></div>
 
-            <p className='line-clamp-1 max-w-[8rem]'>Loại phòng</p>
+            <p className='line-clamp-1 ml-[2vw] max-w-[8rem]'>Loại phòng</p>
 
-            <div>
+            <div className='mr-[-2vw]'>
               <AiOutlineDown />
             </div>
           </div>
         </div>
-        <div className='relative text-lg font-medium py-1'>
-          <button className='flex items-center bg-[#0153F2] min-w-[16rem] text-white cursor-pointer hover:bg-sky-600 font-semibold rounded-lg px-5 py-2 mr-3'>
-            <div className='flex text-lg justify-center items-center w-full'>
-              <div className='mr-3'>Tìm kiếm theo bộ lọc</div>
+        <div className='relative font-medium py-1 pl-[2vw]'>
+          <button className='flex items-center bg-[#0153F2] min-w-[18vw] text-white cursor-pointer hover:bg-sky-600 font-poppins-600 rounded-md py-[0.8rem] mr-3'>
+            <div className='flex justify-center items-center w-full'>
+              <div className='mr-3 text-sm'>Tìm kiếm theo bộ lọc</div>
               <div className='text-lg'>
                 <FiFilter />
               </div>
