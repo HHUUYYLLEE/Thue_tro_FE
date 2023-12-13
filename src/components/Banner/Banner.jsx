@@ -4,6 +4,7 @@ import useQueryConfig from '../../hooks/useQueryConfig'
 import { Link, createSearchParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getRandomRoom } from '../../api/rooms.api'
+import { omit } from 'lodash'
 
 export default function Banner() {
   const { register, handleSubmit } = useForm({})
@@ -14,10 +15,35 @@ export default function Banner() {
     console.log(data)
     navigate({
       pathname: '/',
-      search: createSearchParams({
-        ...queryConfig,
-        ...data
-      }).toString()
+      search: createSearchParams(
+        omit(
+          {
+            ...queryConfig,
+            ...data
+          },
+          [
+            'address',
+            'type',
+            'sort',
+            'price_min',
+            'price_max',
+            'area_min',
+            'area_max',
+            'is_have_parking_lot',
+            'is_new',
+            'is_high_security',
+            'is_have_owner',
+            'is_have_bed',
+            'is_have_wardrobe',
+            'is_have_dinning_table',
+            'is_have_refrigerator',
+            'is_have_television',
+            'is_have_kitchen',
+            'is_have_washing_machine',
+            'number_or_people'
+          ]
+        )
+      ).toString()
     })
   })
 

@@ -51,7 +51,7 @@ export default function Header() {
             >
               {item.name}
               <span
-                className={`block rounded-xl mt-[2vh] h-[0.3rem] bg-white mx-auto
+                className={`block rounded-xl mt-[0.5vh] h-[0.1rem] bg-white mx-auto
                   ${
                     path.pathname === item.path
                       ? 'max-w-[80%]'

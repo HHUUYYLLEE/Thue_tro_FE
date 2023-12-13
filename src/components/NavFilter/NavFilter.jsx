@@ -3,18 +3,38 @@ import { AiOutlineDown } from 'react-icons/ai'
 import { FiFilter } from 'react-icons/fi'
 import PopUpAddress from '../PopUpAddress'
 import { AppContext } from '../../contexts/app.context'
+import useQueryConfig from '../../hooks/useQueryConfig'
+import { createSearchParams, useNavigate } from 'react-router-dom'
 export default function NavFilter() {
   const [addressMenu, setAddressMenu] = useState(false)
-  const { valueAddress } = useContext(AppContext)
+  const { valueAddress, valueQuery } = useContext(AppContext)
+
+  const queryConfig = useQueryConfig()
+
+  console.log(queryConfig)
+  const navigate = useNavigate()
+
   const openAddressMenu = () => {
     setAddressMenu(!addressMenu)
   }
+  console.log(valueQuery)
   const refAddress = useRef()
   const handleClickOutside = (event) => {
     if (refAddress.current && !refAddress.current.contains(event.target)) {
       setAddressMenu(false)
     }
   }
+
+  const onSumitQuery = () => {
+    navigate({
+      pathname: '/',
+      search: createSearchParams({
+        ...queryConfig,
+        ...valueQuery
+      }).toString()
+    })
+  }
+
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
@@ -46,7 +66,7 @@ export default function NavFilter() {
           <div className='flex text-lg font-medium hover:text-blue-400 justify-between items-center border cursor-pointer border-black min-w-[20vw] rounded-lg py-2 px-10'>
             <div></div>
 
-            <p className='line-clamp-1 ml-[2vw] max-w-[8rem]'>Loại phòng</p>
+            <p className='line-clamp-1 max-w-[8rem]'>Loại phòng</p>
 
             <div className='mr-[-2vw]'>
               <AiOutlineDown />
@@ -54,7 +74,10 @@ export default function NavFilter() {
           </div>
         </div>
         <div className='relative font-medium py-1 pl-[2vw]'>
-          <button className='flex items-center bg-[#0153F2] min-w-[18vw] text-white cursor-pointer hover:bg-sky-600 font-poppins-600 rounded-md py-[0.8rem] mr-3'>
+          <button
+            onClick={onSumitQuery}
+            className='flex items-center bg-[#0153F2] min-w-[18vw] text-white cursor-pointer hover:bg-sky-600 font-poppins-600 rounded-md py-[0.8rem] mr-3'
+          >
             <div className='flex justify-center items-center w-full'>
               <div className='mr-3 text-sm'>Tìm kiếm theo bộ lọc</div>
               <div className='text-lg'>

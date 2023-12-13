@@ -14,7 +14,7 @@ export default function SubPopUpAddress({ id, hideAll }) {
     placeholderData: keepPreviousData
   })
 
-  const { setValueAddress } = useContext(AppContext)
+  const { setValueAddress, setValueQuery } = useContext(AppContext)
 
   const wards = data?.data?.wards
   console.log(wards)
@@ -29,6 +29,7 @@ export default function SubPopUpAddress({ id, hideAll }) {
                   <div
                     onClick={() => {
                       setValueAddress(ward.ward)
+                      setValueQuery((prev) => ({ ...prev, address: ward._id }))
                       hideAll()
                     }}
                     className='block cursor-pointer hover:text-blue-500 border-b-[0.25px] border-black px-2 py-2 transition-all duration-400'
