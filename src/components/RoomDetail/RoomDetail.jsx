@@ -10,17 +10,23 @@ import { displayNum } from '../../utils/utils'
 import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getRoom } from '../../api/rooms.api'
-
+import { useEffect } from 'react'
+import webName from '../../asset/webName'
 export default function RoomDetail() {
   const { id } = useParams()
 
-  const { data } = useQuery({
+  const { data, status } = useQuery({
     queryKey: ['roomDetail', id],
     queryFn: () => {
       return getRoom(id)
     },
     placeholderData: keepPreviousData
   })
+  useEffect(() => {
+    if (status === 'success') {
+      document.getElementsByTagName('title')[0].textContent = data?.data?.room?.name + ' | ' + webName
+    }
+  }, [data?.data?.name, status])
 
   const room = data?.data?.room
   console.log(room)

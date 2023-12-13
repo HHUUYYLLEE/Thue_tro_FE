@@ -51,12 +51,13 @@ export default function Header() {
             >
               {item.name}
               <span
-                className={`block rounded-xl mt-[0.5vh] h-[0.1rem] bg-white mx-auto
-                  ${
-                    path.pathname === item.path
-                      ? 'max-w-[80%]'
-                      : ' max-w-0 group-hover:max-w-[80%] transition-all duration-500'
-                  }`}
+                className={`${
+                  path.pathname === item.path
+                    ? 'max-w-[80%]'
+                    : 'max-w-0 group-hover:max-w-[80%] transition-all duration-500'
+                } block rounded-xl mt-[0.5vh] h-[0.1rem] mx-auto ${
+                  path.pathname.includes('/room') ? 'bg-black' : 'bg-white'
+                }`}
               />
             </NavLink>
           )

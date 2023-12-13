@@ -103,7 +103,7 @@ export default function SidebarFilter() {
       count: 22222
     }
   ]
-  const [currentNumOfPeople, setCurrentNumOfPeople] = useState('more5')
+  const [currentNumOfPeople, setCurrentNumOfPeople] = useState(0)
 
   const numOfPeople = [
     {

@@ -1,9 +1,13 @@
+import { useEffect } from 'react'
 import Banner from '../../components/Banner'
 import NavFilter from '../../components/NavFilter'
 import RoomsList from '../../components/RoomsList'
 import SidebarFilter from '../../components/SidebarFilter/SidebarFilter'
-
+import webName from '../../asset/webName'
 export default function Home() {
+  useEffect(() => {
+    document.getElementsByTagName('title')[0].textContent = webName
+  }, [])
   return (
     <>
       <div>
