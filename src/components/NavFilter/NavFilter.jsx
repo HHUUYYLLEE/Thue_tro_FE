@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState, useMemo } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
 import { FiFilter } from 'react-icons/fi'
 import PopUpAddress from '../PopUpAddress'
@@ -8,14 +8,11 @@ import { createSearchParams, useNavigate } from 'react-router-dom'
 export default function NavFilter() {
   const [addressMenu, setAddressMenu] = useState(false)
   const { valueAddress, valueQuery, setValueQuery, setValueAddress } = useContext(AppContext)
-  const roomTypes = useMemo(
-    () => [
-      { label: 'Nhà trọ', type: 0 },
-      { label: 'Phòng trọ', type: 1 },
-      { label: 'Chung cư mini', type: 2 }
-    ],
-    []
-  )
+  const roomTypes = [
+    { label: 'Nhà trọ', type: 0 },
+    { label: 'Phòng trọ', type: 1 },
+    { label: 'Chung cư mini', type: 2 }
+  ]
   const queryConfig = useQueryConfig()
   const [roomType, setRoomType] = useState(
     queryConfig?.type !== undefined
