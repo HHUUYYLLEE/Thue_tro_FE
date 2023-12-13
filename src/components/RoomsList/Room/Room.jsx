@@ -21,7 +21,7 @@ export default function Room({ room }) {
   }
 
   return (
-    <div className='flex justify-between items-center my-[1rem] border-2 rounded-md mr-[2vw]'>
+    <div className='flex justify-between items-center my-[1rem] border-2 rounded-md'>
       <div className='flex'>
         <div className='max-w-[16vw] min-w-[16vw] w-[100%] overflow-hidden max-h-[22vh]'>
           <Link to={`/room/${room._id}`}>

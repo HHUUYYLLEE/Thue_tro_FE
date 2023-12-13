@@ -2,7 +2,7 @@ import omitBy from 'lodash/omitBy'
 
 import { isUndefined } from 'lodash'
 import useQueryParams from './useQueryParam'
-
+import { minPrice, minArea, defaultAreaRight, defaultPriceRight } from '../utils/env'
 export default function useQueryConfig() {
   const queryParams = useQueryParams()
   const queryConfig = omitBy(
@@ -12,11 +12,11 @@ export default function useQueryConfig() {
       search: queryParams.search,
       address: queryParams.address,
       type: queryParams.type,
-      sort: queryParams.sort,
-      price_min: queryParams.price_min,
-      price_max: queryParams.price_max,
-      area_min: queryParams.area_min,
-      area_max: queryParams.area_max,
+      sort: queryParams.sort || '1',
+      price_min: queryParams.price_min || minPrice,
+      price_max: queryParams.price_max || defaultPriceRight,
+      area_min: queryParams.area_min || minArea,
+      area_max: queryParams.area_max || defaultAreaRight,
       is_have_parking_lot: queryParams.is_have_parking_lot,
       is_new: queryParams.is_new,
       is_high_security: queryParams.is_high_security,

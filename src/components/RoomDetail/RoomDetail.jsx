@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getRoom } from '../../api/rooms.api'
 import { useEffect } from 'react'
-import webName from '../../asset/webName'
+import webName from '../../utils/env'
 export default function RoomDetail() {
   const { id } = useParams()
 
@@ -26,7 +26,7 @@ export default function RoomDetail() {
     if (status === 'success') {
       document.getElementsByTagName('title')[0].textContent = data?.data?.room?.name + ' | ' + webName
     }
-  }, [data?.data?.name, status])
+  }, [data?.data?.room?.name, status])
 
   const room = data?.data?.room
   console.log(room)

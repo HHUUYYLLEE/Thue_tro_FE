@@ -2,7 +2,7 @@ import { createContext, useState } from 'react'
 // import { getAccessTokenFromLS, getInfoFromLS } from '../utils/auth'
 
 const initialAppContext = {
-  valueAddress: '',
+  valueAddress: 'Vị trí',
   setValueAddress: () => null,
   valueQuery: {},
   setValueQuery: () => null
