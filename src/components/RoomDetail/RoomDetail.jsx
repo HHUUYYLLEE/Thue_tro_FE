@@ -172,6 +172,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     defaultChecked={room.is_have_washing_machine}
@@ -188,6 +189,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     defaultChecked={room.is_have_bed}
@@ -208,6 +210,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     defaultChecked={room.is_have_kitchen}
@@ -235,6 +238,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     defaultChecked={room.is_high_security}
@@ -255,6 +259,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     defaultChecked={room.is_have_dining_table}
@@ -270,6 +275,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     defaultChecked={room.is_have_wardrobe}
@@ -342,6 +348,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     defaultChecked={room.is_have_parking_lot}
                     className='transform scale-150 accent-black pointer-events-none'
@@ -365,6 +372,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     defaultChecked={room.is_new}
@@ -380,6 +388,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     defaultChecked={room.is_have_television}
@@ -395,6 +404,7 @@ export default function RoomDetail() {
 
                   <input
                     type='checkbox'
+                    name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
                     defaultChecked={room.is_have_refrigerator}
