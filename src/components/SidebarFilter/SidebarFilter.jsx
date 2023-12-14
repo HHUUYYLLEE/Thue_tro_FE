@@ -197,7 +197,7 @@ export default function SidebarFilter() {
           allowCross={false}
           className='mt-[1rem] mb-[1.5rem]'
           value={[sliderPriceLeft, sliderPriceRight]}
-          step={10000}
+          step={100000}
           min={minPrice}
           max={maxPrice}
           defaultValue={[minPrice, defaultPriceRight]}

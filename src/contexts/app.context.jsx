@@ -13,7 +13,6 @@ export const AppContext = createContext(initialAppContext)
 export const AppProvider = ({ children }) => {
   const [valueAddress, setValueAddress] = useState(initialAppContext.valueAddress)
   const [valueQuery, setValueQuery] = useState(initialAppContext.valueQuery)
-
   return (
     <AppContext.Provider
       value={{

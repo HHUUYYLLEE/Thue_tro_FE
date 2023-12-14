@@ -1,6 +1,5 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-
 const headerItems = [
   { id: 1, name: 'Trang chủ', path: '/' },
   { id: 2, name: 'Đăng nhập', path: '/login' },
@@ -9,7 +8,6 @@ const headerItems = [
 
 export default function Header() {
   const [header, setHeader] = useState(false)
-
   const changeBackground = () => {
     if (window.scrollY > 100) {
       setHeader(true)
@@ -37,12 +35,15 @@ export default function Header() {
           path.pathname.includes('/room') === true ? 'text-blue-500' : 'text-white'
         }`}
       >
-        <Link to='/'>tro.vn</Link>
+        <Link onClick={() => this.forceUpdate} to='/'>
+          tro.vn
+        </Link>
       </div>
       <div className='flex pl-60 gap-8 font-poppins-500'>
         {headerItems.map((item) => {
           return (
             <NavLink
+              onClick={() => this.forceUpdate}
               key={item.id}
               to={item.path}
               className={`group text-lg transition duration-300 ${

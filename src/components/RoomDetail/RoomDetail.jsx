@@ -10,11 +10,12 @@ import { displayNum } from '../../utils/utils'
 import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getRoom } from '../../api/rooms.api'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import webName from '../../utils/env'
+import { FadeLoader } from 'react-spinners'
 export default function RoomDetail() {
   const { id } = useParams()
-
+  const [loadingVideo, setLoadingVideo] = useState(true)
   const { data, status } = useQuery({
     queryKey: ['roomDetail', id],
     queryFn: () => {
@@ -66,15 +67,26 @@ export default function RoomDetail() {
           </div>
           <div className='flex flex-col w-5/6 mb-4'>
             <div className='mt-14 mb-3'>
-              <iframe
-                width='100%'
-                height='600'
-                src={room.video_url}
-                title='YouTube video player'
-                // frameborder='0'
-                allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
-                allowFullScreen
-              ></iframe>
+              <div className='relative w-full'>
+                {loadingVideo && (
+                  <div className='absolute top-[50%] left-[50%]'>
+                    <div className='translate-x-[-50%] translate-y-[-50%]'>
+                      <FadeLoader color='#36d7b7' />
+                    </div>
+                    <div className='translate-x-[-80%] translate-y-[-50%] text-3xl'>Loading video...</div>
+                  </div>
+                )}
+                <iframe
+                  width='100%'
+                  height='600'
+                  src={room.video_url}
+                  title='YouTube video player'
+                  // frameborder='0'
+                  allow='accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share'
+                  allowFullScreen
+                  onLoad={() => setLoadingVideo(false)}
+                />
+              </div>
             </div>
             <div className='grid grid-cols-5 gap-3'>
               <div className='grid col-span-3 row-span-2 gap-3'>
