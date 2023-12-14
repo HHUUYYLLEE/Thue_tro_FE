@@ -107,10 +107,10 @@ export default function Banner() {
                 return (
                   <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
                     <img
-                      src={dataRandomRoom.images[0].url}
+                      src={dataRandomRoom.images[Math.floor(Math.random() * 5)].url}
                       alt=''
                       className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg border-gray-500 border-2 shadow-lg'
-                    />{' '}
+                    />
                   </Link>
                 )
               })}
