@@ -5,11 +5,10 @@ import Switch from 'react-switch'
 import { displayNum } from '../../utils/utils'
 import { AppContext } from '../../contexts/app.context'
 import useQueryConfig from '../../hooks/useQueryConfig'
-import { minPrice, minArea, defaultAreaRight, defaultPriceRight } from '../../utils/env'
+import { minPrice, minArea, defaultAreaRight, defaultPriceRight, maxPrice, maxArea } from '../../utils/env'
 export default function SidebarFilter() {
   const queryConfig = useQueryConfig()
-  const maxPrice = 10000000,
-    maxArea = 500
+
   const [sliderPriceRight, setSliderPriceRight] = useState(
     queryConfig?.price_max !== undefined ? parseInt(queryConfig.price_max) : defaultPriceRight
   )
@@ -255,6 +254,7 @@ export default function SidebarFilter() {
             <div key={element.id} className='flex justify-between my-[1rem]'>
               <div className='font-andika'>{element.label}</div>
               <Switch
+                name='switch'
                 onChange={(value) => {
                   element.setState(value)
                   setValueQuery((prev) => ({ ...prev, [element.queryKey]: value }))
@@ -276,6 +276,7 @@ export default function SidebarFilter() {
               <div className='flex gap-[1rem]'>
                 <input
                   type='checkbox'
+                  name='checkbox'
                   className='transform scale-150 accent-black'
                   checked={element.state}
                   onChange={(e) => {
@@ -300,6 +301,7 @@ export default function SidebarFilter() {
               <div className='flex gap-[1rem]'>
                 <input
                   type='radio'
+                  name='radio'
                   className='transform scale-150 accent-black'
                   onChange={() => {
                     setCurrentNumOfPeople(element.value)

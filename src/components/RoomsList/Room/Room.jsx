@@ -23,9 +23,14 @@ export default function Room({ room }) {
   return (
     <div className='flex justify-between items-center my-[1rem] border-2 rounded-md'>
       <div className='flex'>
-        <div className='max-w-[16vw] min-w-[16vw] w-[100%] overflow-hidden max-h-[22vh]'>
+        <div className='max-w-[16vw] min-w-[16vw] w-[100%] overflow-hidden max-h-[22vh] min-h-[22vh]'>
           <Link to={`/room/${room._id}`}>
             <img
+              onMouseLeave={(e) => {
+                let randomIndex = Math.floor(Math.random() * 5)
+                while (room.images[randomIndex].url === e.target.src) randomIndex = Math.floor(Math.random() * 5)
+                e.target.src = room.images[randomIndex].url
+              }}
               src={room.images[0].url}
               className='w-[100%] cursor-pointer hover:scale-125 transition duration-300 ease-in-out h-full object-cover'
               alt=''
@@ -34,7 +39,7 @@ export default function Room({ room }) {
         </div>
         <div className='ml-[1rem] flex-col flex justify-center max-h-[12rem]'>
           <Link to={`/room/${room._id}`}>
-            <div className='font-bold cursor-pointer font-lato text-2xl max-w-[12vw] line-clamp-1'>{room.name}</div>
+            <div className='font-bold cursor-pointer font-lato text-2xl max-w-[16vw] line-clamp-1'>{room.name}</div>
           </Link>
           <div className='flex text-1xl text-[#01B7F2]'>
             <FaLocationDot />

@@ -103,6 +103,7 @@ export default function Footer() {
 
                 <div className='mt-3'>
                   <input
+                    name='someinput'
                     className='shadow font-roboto appearance-none border rounded-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline w-full'
                     type='text'
                     placeholder='Email Id'
