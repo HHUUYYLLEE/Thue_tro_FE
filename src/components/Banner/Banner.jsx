@@ -52,7 +52,8 @@ export default function Banner() {
     queryFn: () => {
       return getRandomRoom()
     },
-    staleTime: 1000 * 60 * 5
+    staleTime: 1000 * 60 * 5,
+    refetchInterval: 3000
   })
 
   const dataRandomRooms = data?.data?.randomRooms
