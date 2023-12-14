@@ -15,7 +15,7 @@ function App() {
 
   return (
     <div>
-      <BGM />
+      {/* <BGM /> */}
       {routeElement}
       <ToastContainer
         toastClassName={({ type }) =>

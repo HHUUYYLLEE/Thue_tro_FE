@@ -3,7 +3,7 @@ import Eyes from '../../asset/img/eyes.png'
 import Eyes2 from '../../asset/img/eyes2.png'
 import Eyes3 from '../../asset/img/eyes3.png'
 import Eyes4 from '../../asset/img/eyes4.png'
-
+import BGM from '../../components/BGM'
 export default function Error404NotFound() {
   document.addEventListener(
     'click',
@@ -53,6 +53,7 @@ export default function Error404NotFound() {
 
   return (
     <>
+      <BGM />
       <div className=' bg-black cursor-default overflow-x-hidden select-none'>
         <div className='absolute w-[10vw] h-[10vw] randomPosImg invisible overflow-hidden'>
           <img src={Eyes} alt=''></img>
@@ -110,7 +111,7 @@ export default function Error404NotFound() {
             </div>
           </div>
         </div>
-        <div className='text-[#880808] text-[10vw] font-blooddrip mt-[-10vh] z-10'>
+        <div className='text-[#880808] text-[10vw] font-blooddrip mt-[-10vh]'>
           <span className='animation404 animate-fadeIn1'>E</span>
           <span className='animation404 animate-fadeIn2'>R</span>
           <span className='animation404 animate-fadeIn3'>R</span>

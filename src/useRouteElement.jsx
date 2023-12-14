@@ -2,7 +2,7 @@ import { useRoutes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 
 import Home from './pages/Home'
-
+import Bejeweled from './pages/Bejeweled'
 import Error404NotFound from './pages/Error404NotFound/Error404NotFound'
 import RoomProfile from './pages/RoomProfile'
 
@@ -24,6 +24,14 @@ export default function useRouteElement() {
         <MainLayout>
           <RoomProfile />
         </MainLayout>
+      )
+    },
+    {
+      path: 'bejeweled',
+      element: (
+        // <MainLayout>
+        <Bejeweled />
+        // </MainLayout>
       )
     },
     {

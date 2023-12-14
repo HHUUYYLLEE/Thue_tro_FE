@@ -1,3 +1,4 @@
+import BGM from '../../components/BGM'
 export default function Bejeweled() {
   function Game() {
     // Get the canvas and context
@@ -870,8 +871,11 @@ export default function Bejeweled() {
   }
   setTimeout(Game, 500)
   return (
-    <div className='w-full flex justify-center items-center h-[600px]'>
-      <canvas id='viewport' width='640' height='480'></canvas>
-    </div>
+    <>
+      <BGM />
+      <div className='w-full flex justify-center items-center h-[600px]'>
+        <canvas id='viewport' width='640' height='480'></canvas>
+      </div>
+    </>
   )
 }
