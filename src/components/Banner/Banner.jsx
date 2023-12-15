@@ -53,7 +53,7 @@ export default function Banner() {
       return getRandomRoom()
     },
     staleTime: 1000 * 60 * 5,
-    refetchInterval: 3000
+    refetchInterval: 7500
   })
 
   const dataRandomRooms = data?.data?.randomRooms
@@ -107,6 +107,7 @@ export default function Banner() {
                 return (
                   <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
                     <img
+                      referrerPolicy='no-referrer'
                       src={dataRandomRoom.images[Math.floor(Math.random() * 5)].url}
                       alt=''
                       className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg border-gray-500 border-2 shadow-lg'

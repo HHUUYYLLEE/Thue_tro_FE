@@ -6,6 +6,8 @@ import { displayNum } from '../../utils/utils'
 import { AppContext } from '../../contexts/app.context'
 import useQueryConfig from '../../hooks/useQueryConfig'
 import { minPrice, minArea, defaultAreaRight, defaultPriceRight, maxPrice, maxArea } from '../../utils/env'
+import { useQuery, keepPreviousData } from '@tanstack/react-query'
+import { getServicesCount, getNumberOfPeopleCount } from '../../api/countFilterOptions'
 export default function SidebarFilter() {
   const queryConfig = useQueryConfig()
 
@@ -89,56 +91,56 @@ export default function SidebarFilter() {
       label: 'Giường',
       state: haveBed,
       setState: setHaveBed,
-      count: 22222,
-      queryKey: 'is_have_bed'
+      queryKey: 'is_have_bed',
+      count: '???'
     },
     {
       id: 2,
       label: 'Tủ quần áo',
       state: haveWardrobe,
       setState: setHaveWardrobe,
-      count: 22222,
-      queryKey: 'is_have_wardrobe'
+      queryKey: 'is_have_wardrobe',
+      count: '???'
     },
     {
       id: 3,
       label: 'Bàn ăn',
       state: haveDiningTable,
       setState: setHaveDiningTable,
-      count: 22222,
-      queryKey: 'is_have_dinning_table'
+      queryKey: 'is_have_dinning_table',
+      count: '???'
     },
     {
       id: 4,
       label: 'Tủ lạnh',
       state: haveRefrigerator,
       setState: setHaveRefrigerator,
-      count: 22222,
-      queryKey: 'is_have_refrigerator'
+      queryKey: 'is_have_refrigerator',
+      count: '???'
     },
     {
       id: 5,
       label: 'Tivi',
       state: haveTV,
       setState: setHaveTV,
-      count: 22222,
-      queryKey: 'is_have_television'
+      queryKey: 'is_have_television',
+      count: '???'
     },
     {
       id: 6,
       label: 'Bếp núc',
       state: haveKitchen,
       setState: setHaveKitchen,
-      count: 22222,
-      queryKey: 'is_have_kitchen'
+      queryKey: 'is_have_kitchen',
+      count: '???'
     },
     {
       id: 7,
       label: 'Máy giặt',
       state: haveWashingMachine,
       setState: setHaveWashingMachine,
-      count: 22222,
-      queryKey: 'is_have_wasing_machine'
+      queryKey: 'is_have_washing_machine',
+      count: '???'
     }
   ]
   const [currentNumOfPeople, setCurrentNumOfPeople] = useState(
@@ -149,46 +151,68 @@ export default function SidebarFilter() {
     {
       label: '1 người',
       value: 1,
-      count: 22222
+      count: '???'
     },
     {
       label: '2 người',
       value: 2,
-      count: 22222
+      count: '???'
     },
     {
       label: '3 người',
       value: 3,
-      count: 22222
+      count: '???'
     },
     {
       label: '4 người',
       value: 4,
-      count: 22222
+      count: '???'
     },
     {
       label: '5 người',
       value: 5,
-      count: 22222
+      count: '???'
     },
     {
       label: '>5 người',
       value: 6,
-      count: 22222
+      count: '???'
     }
   ]
   const { setValueQuery } = useContext(AppContext)
-
+  const { data: countData, isSuccess } = useQuery({
+    queryKey: ['count'],
+    queryFn: () => {
+      const promiseArray = []
+      checks.forEach((e) => {
+        promiseArray.push(getServicesCount(e.queryKey))
+      })
+      numOfPeople.forEach(async (e) => {
+        promiseArray.push(getNumberOfPeopleCount(e.value.toString()))
+      })
+      return Promise.all(promiseArray)
+    },
+    placeholderData: keepPreviousData
+  })
+  // console.log(countData)
+  if (isSuccess) {
+    checks.forEach((e, index) => {
+      e.count = countData[index].data.count
+    })
+    numOfPeople.forEach((e, index) => {
+      e.count = countData[index + checks.length].data.count
+    })
+  }
   return (
     <>
       <div className='border-y-2 mt-[0.5rem]'>
         <div className='my-[0.5rem] text-lg font-andika'>Giá</div>
         <div className='text-[1rem] grid grid-cols-7'>
-          <div className='row-start-1 col-span-3 border-2'>
+          <div className='row-start-1 col-span-3 border-2 w-max'>
             <div className='ml-1'>{displayNum(sliderPriceLeft)}</div>
           </div>
           <div className='row-start-1 col-span-1 m-auto'>-</div>
-          <div className='row-start-1 col-span-3 border-2'>
+          <div className='row-start-1 col-span-3 border-2 w-max'>
             <div className='ml-1'>{displayNum(sliderPriceRight)}</div>
           </div>
         </div>
@@ -218,11 +242,11 @@ export default function SidebarFilter() {
       </div>
       <div className='border-b-2 mt-[3rem]'>
         <div className='text-[1rem] grid grid-cols-7 mt-[2rem]'>
-          <div className='row-start-1 col-span-3 border-2'>
+          <div className='row-start-1 col-span-3 border-2 w-max'>
             <div className='ml-1'>{displayNum(sliderAreaLeft) + 'm2'}</div>
           </div>
           <div className='row-start-1 col-span-1 m-auto'>-</div>
-          <div className='row-start-1 col-span-3 border-2'>
+          <div className='row-start-1 col-span-3 border-2 w-max'>
             <div className='ml-1'>{displayNum(sliderAreaRight) + 'm2'}</div>
           </div>
         </div>

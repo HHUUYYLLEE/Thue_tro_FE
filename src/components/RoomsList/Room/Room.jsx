@@ -34,6 +34,7 @@ export default function Room({ room }) {
               src={room.images[0].url}
               className='w-[100%] cursor-pointer hover:scale-125 transition duration-300 ease-in-out h-full object-cover'
               alt=''
+              // referrerPolicy='no-referrer'
             />
           </Link>
         </div>

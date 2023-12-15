@@ -91,23 +91,48 @@ export default function RoomDetail() {
             <div className='grid grid-cols-5 gap-3'>
               <div className='grid col-span-3 row-span-2 gap-3'>
                 <div className='overflow-hidden h-[30.75rem] rounded-lg'>
-                  <img className='rounded-lg object-cover w-full h-full' src={room.images[0].url} alt='' />
+                  <img
+                    className='rounded-lg object-cover w-full h-full'
+                    src={room.images[0].url}
+                    alt=''
+                    referrerPolicy='no-referrer'
+                  />
                 </div>
               </div>
               <div className='grid gap-3'>
                 <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
-                  <img className='rounded-lg object-cover w-full h-full' src={room.images[1].url} alt='' />
+                  <img
+                    className='rounded-lg object-cover w-full h-full'
+                    src={room.images[1].url}
+                    alt=''
+                    referrerPolicy='no-referrer'
+                  />
                 </div>
                 <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
-                  <img className='rounded-lg object-cover w-full h-full' src={room.images[2].url} alt='' />
+                  <img
+                    className='rounded-lg object-cover w-full h-full'
+                    src={room.images[2].url}
+                    alt=''
+                    referrerPolicy='no-referrer'
+                  />
                 </div>
               </div>
               <div className='grid gap-3'>
                 <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
-                  <img className='rounded-lg object-cover w-full h-full' src={room.images[3].url} alt='' />
+                  <img
+                    className='rounded-lg object-cover w-full h-full'
+                    src={room.images[3].url}
+                    alt=''
+                    referrerPolicy='no-referrer'
+                  />
                 </div>
                 <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
-                  <img className='rounded-lg object-cover w-full h-full' src={room.images[4].url} alt='' />
+                  <img
+                    className='rounded-lg object-cover w-full h-full'
+                    src={room.images[4].url}
+                    alt=''
+                    referrerPolicy='no-referrer'
+                  />
                 </div>
               </div>
             </div>
