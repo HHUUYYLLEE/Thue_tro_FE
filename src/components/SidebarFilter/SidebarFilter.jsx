@@ -8,6 +8,7 @@ import useQueryConfig from '../../hooks/useQueryConfig'
 import { minPrice, minArea, defaultAreaRight, defaultPriceRight, maxPrice, maxArea } from '../../utils/env'
 import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import { getServicesCount, getNumberOfPeopleCount } from '../../api/countFilterOptions'
+import { PulseLoader } from 'react-spinners'
 export default function SidebarFilter() {
   const queryConfig = useQueryConfig()
 
@@ -180,7 +181,11 @@ export default function SidebarFilter() {
     }
   ]
   const { setValueQuery } = useContext(AppContext)
-  const { data: countData, isSuccess } = useQuery({
+  const {
+    data: countData,
+    isSuccess,
+    isLoading
+  } = useQuery({
     queryKey: ['count'],
     queryFn: () => {
       const promiseArray = []
@@ -208,12 +213,12 @@ export default function SidebarFilter() {
       <div className='border-y-2 mt-[0.5rem]'>
         <div className='my-[0.5rem] text-lg font-andika'>Giá</div>
         <div className='text-[1rem] grid grid-cols-7'>
-          <div className='row-start-1 col-span-3 border-2 w-max'>
-            <div className='ml-1'>{displayNum(sliderPriceLeft)}</div>
+          <div className='row-start-1 col-span-3 border-2 min-w-[5vw] w-max'>
+            <div className='mx-1'>{displayNum(sliderPriceLeft)}</div>
           </div>
           <div className='row-start-1 col-span-1 m-auto'>-</div>
-          <div className='row-start-1 col-span-3 border-2 w-max'>
-            <div className='ml-1'>{displayNum(sliderPriceRight)}</div>
+          <div className='row-start-1 col-span-3 border-2 min-w-[5vw] w-max'>
+            <div className='mx-1'>{displayNum(sliderPriceRight)}</div>
           </div>
         </div>
         <Slider
@@ -242,12 +247,12 @@ export default function SidebarFilter() {
       </div>
       <div className='border-b-2 mt-[3rem]'>
         <div className='text-[1rem] grid grid-cols-7 mt-[2rem]'>
-          <div className='row-start-1 col-span-3 border-2 w-max'>
-            <div className='ml-1'>{displayNum(sliderAreaLeft) + 'm2'}</div>
+          <div className='row-start-1 col-span-3 border-2 min-w-[5vw]  w-max'>
+            <div className='mx-1'>{displayNum(sliderAreaLeft) + 'm2'}</div>
           </div>
           <div className='row-start-1 col-span-1 m-auto'>-</div>
-          <div className='row-start-1 col-span-3 border-2 w-max'>
-            <div className='ml-1'>{displayNum(sliderAreaRight) + 'm2'}</div>
+          <div className='row-start-1 col-span-3 border-2 min-w-[5vw] w-max'>
+            <div className='mx-1'>{displayNum(sliderAreaRight) + 'm2'}</div>
           </div>
         </div>
         <Slider
@@ -312,7 +317,13 @@ export default function SidebarFilter() {
                 />
                 <div className='font-andika'>{element.label}</div>
               </div>
-              <div className='opacity-50'>{element.count}</div>
+              {isLoading ? (
+                <div>
+                  <PulseLoader speedMultiplier={0.7} size={5} color='#36d7b7' />
+                </div>
+              ) : (
+                <div className='opacity-50'>{element.count}</div>
+              )}
             </div>
           )
         })}
@@ -335,7 +346,13 @@ export default function SidebarFilter() {
                 />
                 <div className='font-andika'>{element.label}</div>
               </div>
-              <div className='opacity-50'>{element.count}</div>
+              {isLoading ? (
+                <div>
+                  <PulseLoader speedMultiplier={0.7} size={5} color='#36d7b7' />
+                </div>
+              ) : (
+                <div className='opacity-50'>{element.count}</div>
+              )}
             </div>
           )
         })}
