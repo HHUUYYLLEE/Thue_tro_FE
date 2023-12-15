@@ -4,8 +4,8 @@ import useQueryConfig from '../../hooks/useQueryConfig'
 import { Link, createSearchParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getRandomRoom } from '../../api/rooms.api'
-import { omit } from 'lodash'
-
+import { last, omit } from 'lodash'
+import Slider from 'react-slick'
 export default function Banner() {
   const { register, handleSubmit } = useForm({})
   const queryConfig = useQueryConfig()
@@ -47,17 +47,21 @@ export default function Banner() {
     })
   })
 
-  const { data, isLoading } = useQuery({
+  const { data, isLoading, isSuccess } = useQuery({
     queryKey: ['randomRoom'],
     queryFn: () => {
       return getRandomRoom()
     },
     staleTime: 1000 * 60 * 5,
-    refetchInterval: 7500
+    refetchInterval: 12500
   })
-
-  const dataRandomRooms = data?.data?.randomRooms
-  console.log(dataRandomRooms)
+  let first4Rooms, last4Rooms
+  if (isSuccess) {
+    const listRandomRooms = data?.data?.randomRooms
+    first4Rooms = listRandomRooms.slice(0, 4)
+    last4Rooms = listRandomRooms.slice(4)
+  }
+  console.log(data?.data?.randomRooms)
   return (
     <div>
       <img src={BannerImage} alt='' className='pointer-events-none' />
@@ -99,22 +103,52 @@ export default function Banner() {
             </button>
           </div>
         </form>
-        <div className='absolute -mt-[15rem] left-[8.5rem] right-0  mr-auto w-[75vw]'>
+        <div className='absolute -mt-[15rem] left-[8rem] w-[84vw]'>
           <div className='text-white text-3xl font-abeezee'>Các phòng trọ nổi bật</div>
-          <div className='flex gap-8 mt-12'>
-            {dataRandomRooms &&
-              dataRandomRooms.map((dataRandomRoom) => {
-                return (
-                  <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
-                    <img
-                      referrerPolicy='no-referrer'
-                      src={dataRandomRoom.images[Math.floor(Math.random() * 5)].url}
-                      alt=''
-                      className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg border-gray-500 border-2 shadow-lg'
-                    />
-                  </Link>
-                )
-              })}
+          <div className='mt-12'>
+            <Slider
+              infinite={true}
+              speed={2500}
+              slidesToShow={1}
+              slidesToScroll={1}
+              autoplay={true}
+              arrows={false}
+              dots={false}
+              autoplaySpeed={5000}
+            >
+              <div className=''>
+                <div className='flex gap-[2vw] pr-[2vw]'>
+                  {first4Rooms &&
+                    first4Rooms.map((dataRandomRoom) => {
+                      return (
+                        <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
+                          <img
+                            src={dataRandomRoom.images[Math.floor(Math.random() * 5)].url}
+                            alt=''
+                            className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg'
+                          />
+                        </Link>
+                      )
+                    })}
+                </div>
+              </div>
+              <div className=''>
+                <div className='flex gap-[2vw] pr-[2vw]'>
+                  {last4Rooms &&
+                    last4Rooms.map((dataRandomRoom) => {
+                      return (
+                        <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
+                          <img
+                            src={dataRandomRoom.images[Math.floor(Math.random() * 5)].url}
+                            alt=''
+                            className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg'
+                          />
+                        </Link>
+                      )
+                    })}
+                </div>
+              </div>
+            </Slider>
           </div>
         </div>
       </div>
