@@ -180,6 +180,21 @@ export default function SidebarFilter() {
       count: '???'
     }
   ]
+  const keysInResponse = [
+    'count_bed',
+    'count_wardrobe',
+    'count_dining_table',
+    'count_refrigerator',
+    'count_television',
+    'count_kitchen',
+    'count_washing_machine',
+    'one_people',
+    'two_people',
+    'three_people',
+    'four_people',
+    'five_people',
+    'six_people'
+  ]
   const { setValueQuery } = useContext(AppContext)
   const {
     data: countData,
@@ -188,24 +203,17 @@ export default function SidebarFilter() {
   } = useQuery({
     queryKey: ['count'],
     queryFn: () => {
-      const promiseArray = []
-      checks.forEach((e) => {
-        promiseArray.push(getServicesCount(e.queryKey))
-      })
-      numOfPeople.forEach(async (e) => {
-        promiseArray.push(getNumberOfPeopleCount(e.value.toString()))
-      })
-      return Promise.all(promiseArray)
+      return Promise.all([getServicesCount(), getNumberOfPeopleCount()])
     },
     placeholderData: keepPreviousData
   })
   // console.log(countData)
   if (isSuccess) {
     checks.forEach((e, index) => {
-      e.count = countData[index].data.count
+      e.count = countData[0].data[keysInResponse[index]]
     })
     numOfPeople.forEach((e, index) => {
-      e.count = countData[index + checks.length].data.count
+      e.count = countData[1].data[keysInResponse[index + checks.length]]
     })
   }
   return (
