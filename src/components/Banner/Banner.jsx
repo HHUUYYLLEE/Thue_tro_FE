@@ -4,7 +4,7 @@ import useQueryConfig from '../../hooks/useQueryConfig'
 import { Link, createSearchParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getRandomRoom } from '../../api/rooms.api'
-import { last, omit } from 'lodash'
+import { omit } from 'lodash'
 import Slider from 'react-slick'
 export default function Banner() {
   const { register, handleSubmit } = useForm({})
