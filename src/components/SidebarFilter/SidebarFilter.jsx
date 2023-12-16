@@ -93,7 +93,7 @@ export default function SidebarFilter() {
       state: haveBed,
       setState: setHaveBed,
       queryKey: 'is_have_bed',
-      count: '???'
+      count: 0
     },
     {
       id: 2,
@@ -101,7 +101,7 @@ export default function SidebarFilter() {
       state: haveWardrobe,
       setState: setHaveWardrobe,
       queryKey: 'is_have_wardrobe',
-      count: '???'
+      count: 0
     },
     {
       id: 3,
@@ -109,7 +109,7 @@ export default function SidebarFilter() {
       state: haveDiningTable,
       setState: setHaveDiningTable,
       queryKey: 'is_have_dinning_table',
-      count: '???'
+      count: 0
     },
     {
       id: 4,
@@ -117,7 +117,7 @@ export default function SidebarFilter() {
       state: haveRefrigerator,
       setState: setHaveRefrigerator,
       queryKey: 'is_have_refrigerator',
-      count: '???'
+      count: 0
     },
     {
       id: 5,
@@ -125,7 +125,7 @@ export default function SidebarFilter() {
       state: haveTV,
       setState: setHaveTV,
       queryKey: 'is_have_television',
-      count: '???'
+      count: 0
     },
     {
       id: 6,
@@ -133,7 +133,7 @@ export default function SidebarFilter() {
       state: haveKitchen,
       setState: setHaveKitchen,
       queryKey: 'is_have_kitchen',
-      count: '???'
+      count: 0
     },
     {
       id: 7,
@@ -141,7 +141,7 @@ export default function SidebarFilter() {
       state: haveWashingMachine,
       setState: setHaveWashingMachine,
       queryKey: 'is_have_washing_machine',
-      count: '???'
+      count: 0
     }
   ]
   const [currentNumOfPeople, setCurrentNumOfPeople] = useState(
@@ -152,32 +152,32 @@ export default function SidebarFilter() {
     {
       label: '1 người',
       value: 1,
-      count: '???'
+      count: 0
     },
     {
       label: '2 người',
       value: 2,
-      count: '???'
+      count: 0
     },
     {
       label: '3 người',
       value: 3,
-      count: '???'
+      count: 0
     },
     {
       label: '4 người',
       value: 4,
-      count: '???'
+      count: 0
     },
     {
       label: '5 người',
       value: 5,
-      count: '???'
+      count: 0
     },
     {
       label: '>5 người',
       value: 6,
-      count: '???'
+      count: 0
     }
   ]
   const keysInResponse = [

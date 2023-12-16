@@ -5,6 +5,7 @@ import { Link, createSearchParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getRandomRoom } from '../../api/rooms.api'
 import { omit } from 'lodash'
+import { PacmanLoader } from 'react-spinners'
 import Slider from 'react-slick'
 export default function Banner() {
   const { register, handleSubmit } = useForm({})
@@ -106,49 +107,61 @@ export default function Banner() {
         <div className='absolute -mt-[15rem] left-[8rem] w-[84vw]'>
           <div className='text-white text-3xl font-abeezee'>Các phòng trọ nổi bật</div>
           <div className='mt-12'>
-            <Slider
-              infinite={true}
-              speed={2500}
-              slidesToShow={1}
-              slidesToScroll={1}
-              autoplay={true}
-              arrows={false}
-              dots={false}
-              autoplaySpeed={5000}
-            >
-              <div className=''>
-                <div className='flex gap-[2vw] pr-[2vw]'>
-                  {first4Rooms &&
-                    first4Rooms.map((dataRandomRoom) => {
-                      return (
-                        <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
-                          <img
-                            src={dataRandomRoom.images[Math.floor(Math.random() * 5)].url}
-                            alt=''
-                            className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg'
-                          />
-                        </Link>
-                      )
-                    })}
-                </div>
+            {isLoading ? (
+              <div className='flex gap-[2vw]'>
+                {[...Array(4)].map((e, i) => (
+                  <div key={i} className='relative min-w-[19vw] max-w-[19vw] h-[217px]'>
+                    <div className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] '>
+                      <PacmanLoader color='#36d7b7' className='' />
+                    </div>
+                  </div>
+                ))}
               </div>
-              <div className=''>
-                <div className='flex gap-[2vw] pr-[2vw]'>
-                  {last4Rooms &&
-                    last4Rooms.map((dataRandomRoom) => {
-                      return (
-                        <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
-                          <img
-                            src={dataRandomRoom.images[Math.floor(Math.random() * 5)].url}
-                            alt=''
-                            className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg'
-                          />
-                        </Link>
-                      )
-                    })}
+            ) : (
+              <Slider
+                infinite={true}
+                speed={2500}
+                slidesToShow={1}
+                slidesToScroll={1}
+                autoplay={true}
+                arrows={false}
+                dots={false}
+                autoplaySpeed={5000}
+              >
+                <div className=''>
+                  <div className='flex gap-[2vw] pr-[2vw]'>
+                    {first4Rooms &&
+                      first4Rooms.map((dataRandomRoom) => {
+                        return (
+                          <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
+                            <img
+                              src={dataRandomRoom.images[Math.floor(Math.random() * 5)].url}
+                              alt=''
+                              className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg'
+                            />
+                          </Link>
+                        )
+                      })}
+                  </div>
                 </div>
-              </div>
-            </Slider>
+                <div className=''>
+                  <div className='flex gap-[2vw] pr-[2vw]'>
+                    {last4Rooms &&
+                      last4Rooms.map((dataRandomRoom) => {
+                        return (
+                          <Link to={`/room/${dataRandomRoom._id}`} key={dataRandomRoom._id}>
+                            <img
+                              src={dataRandomRoom.images[Math.floor(Math.random() * 5)].url}
+                              alt=''
+                              className='min-w-[19vw] max-w-[19vw] h-[217px] rounded-lg'
+                            />
+                          </Link>
+                        )
+                      })}
+                  </div>
+                </div>
+              </Slider>
+            )}
           </div>
         </div>
       </div>
