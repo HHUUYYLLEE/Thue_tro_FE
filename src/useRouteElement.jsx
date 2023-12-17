@@ -5,6 +5,8 @@ import Home from './pages/Home'
 import Bejeweled from './pages/Bejeweled'
 import Error404NotFound from './pages/Error404NotFound/Error404NotFound'
 import RoomProfile from './pages/RoomProfile'
+import AdminLayout from './layouts/AdminLayout'
+import AdminDashboard from './pages/AdminDashboard'
 
 export default function useRouteElement() {
   const routeElement = useRoutes([
@@ -24,6 +26,15 @@ export default function useRouteElement() {
         <MainLayout>
           <RoomProfile />
         </MainLayout>
+      )
+    },
+    {
+      path: '/admin/dashboard',
+      index: true,
+      element: (
+        <AdminLayout>
+          <AdminDashboard />
+        </AdminLayout>
       )
     },
     {
