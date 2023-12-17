@@ -53,12 +53,6 @@ export default function useRouteElement() {
         <Error404NotFound />
         // </MainLayout>
       )
-    },
-    {
-      path: '/admin',
-      element: (
-        <Admin />
-      )
     }
   ])
   return routeElement
