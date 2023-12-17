@@ -1,5 +1,8 @@
 import React from 'react'
 import Pepega from '../../asset/img/pepega.png'
+import { FaRegBell } from "react-icons/fa6";
+import { FaMoon } from "react-icons/fa";
+import { IoMdInformationCircleOutline } from "react-icons/io";
 
 export default function AdminHeader() {
   return (
@@ -8,8 +11,8 @@ export default function AdminHeader() {
         <div>Pages / Quản lý phòng trọ</div>
         <div className="text-[#2B3674] font-semibold text-3xl">Main Dashboard</div>
       </div>
-      <div className='bg-white p-2.5 rounded-full w-[30rem] flex justify-between items-center'>
-        <form>
+      <div className='bg-white p-2.5 rounded-full w-[31rem] flex justify-between items-center'>
+        <form className='mr-3'>
           <div className='relative'>
             <div className='flex absolute inset-y-0 left-0 items-center pl-8 pointer-events-none z-10'>
               <svg
@@ -36,6 +39,9 @@ export default function AdminHeader() {
             ></input>
           </div>
         </form>
+        <FaRegBell className='text-[#8F9BBA] w-[1.5rem] h-[1.5rem] cursor-pointer'/>
+        <FaMoon className='text-[#8F9BBA] w-[1.3rem] h-[1.3rem] cursor-pointer'/>
+        <IoMdInformationCircleOutline className='text-[#8F9BBA] w-[1.7rem] h-[1.7rem] cursor-pointer'/>
         <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center cursor-pointer'>
           <img src={Pepega} alt="" className='w-[2rem] h-[2rem]'/>
         </div>
