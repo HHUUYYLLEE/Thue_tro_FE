@@ -1,11 +1,8 @@
 import { FaLocationDot } from 'react-icons/fa6'
 import { IoMdCafe } from 'react-icons/io'
-import { FaRegSquare } from 'react-icons/fa'
-import { FaRegCheckSquare } from 'react-icons/fa'
 import { displayNum } from '../../../utils/utils'
 import { Link } from 'react-router-dom'
-import { useState
- } from 'react'
+import { useState } from 'react'
 export default function Room({ room }) {
   let numOfFeatures = () => {
     let count = 0
@@ -30,8 +27,8 @@ export default function Room({ room }) {
   
   return (
     <div className='flex flex-row w-full justify-center'>
-      <div className='flex justify-between items-center my-[1rem] border-2 rounded-md'>
-        <div className='flex'>
+      <div className='flex justify-between items-center my-[1rem] border-2 rounded-md w-full'>
+        <div className='flex mr-2'>
           <div className='max-w-[16vw] min-w-[16vw] w-[100%] overflow-hidden max-h-[22vh] min-h-[22vh]'>
             <Link to={`/room/${room._id}`}>
               <img
@@ -61,7 +58,7 @@ export default function Room({ room }) {
             </div>
           </div>
         </div>
-        <div className='ml-40 mt-[1.5rem] mr-[2vw]'>
+        <div className='mt-[1.5rem] mr-[2vw]'>
           <div className='text-[#353535] font-poppins-700 text-4xl'>{displayNum(room.price) + '/tháng'}</div>
           <div className='flex justify-end font-poppins-500 text-[#112211]'>excl. tax</div>
           <div className='flex justify-end mt-[1vh]'>
@@ -85,7 +82,7 @@ export default function Room({ room }) {
           >
             Lựa chọn
             <svg
-              className={`mt-0.5 -mr-1 h-5 w-5 ${isOpen ? 'transform rotate-180' : ''}`}
+              className={`mt-0.5 -mr-1 h-5 w-5 duration-300 ${isOpen ? 'transform rotate-180' : ''}`}
               viewBox="0 0 20 20"
               fill="currentColor"
               aria-hidden="true"

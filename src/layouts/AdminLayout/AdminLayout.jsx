@@ -9,7 +9,7 @@ export default function AdminLayout({ children }) {
         <div className='bg-[#DCEAFF]'>
           <AdminSidebar />
         </div>
-        <div>
+        <div className='w-full'>
           <div className='bg-[#DCEAFF]'>
             <AdminHeader />
           </div>
