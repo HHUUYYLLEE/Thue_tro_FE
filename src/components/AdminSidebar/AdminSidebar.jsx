@@ -10,7 +10,7 @@ export default function AdminSidebar() {
   const [open, setOpen] = useState(true);
 
   return (
-    <div className={`bg-white h-screen w-72 duration-300 relative ${open ? "w-72" : "w-20"}`}>
+    <div className={`bg-white h-screen duration-300 relative ${open ? "w-72" : "w-20"}`}>
       <BsArrowLeftShort className={`mt-2 -mr-0.5 bg-gray-200 text-3xl rounded-full absolute -right-3 top-9 border border-purple-950 cursor-pointer duration-300' ${!open && "rotate-180"}`} onClick={() => setOpen(!open)} />
       <div className='flex justify-center p-10 border-b'>
         <h1 className={`text-[#2B3674] text-3xl ${!open && "hidden"}`}><strong>Admin </strong>DB</h1>
