@@ -5,7 +5,6 @@ import Home from './pages/Home'
 import Bejeweled from './pages/Bejeweled'
 import Error404NotFound from './pages/Error404NotFound/Error404NotFound'
 import RoomProfile from './pages/RoomProfile'
-import Admin from './pages/Admin'
 import AdminLayout from './layouts/AdminLayout'
 import AdminDashboard from './pages/AdminDashboard'
 
