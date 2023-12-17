@@ -7,6 +7,7 @@ import { getRandomRoom } from '../../api/rooms.api'
 import { omit } from 'lodash'
 import { PacmanLoader } from 'react-spinners'
 import Slider from 'react-slick'
+import { useEffect } from 'react'
 export default function Banner() {
   const { register, handleSubmit } = useForm({})
   const queryConfig = useQueryConfig()
@@ -47,15 +48,15 @@ export default function Banner() {
       ).toString()
     })
   })
-
-  const { data, isLoading, isSuccess } = useQuery({
+  const { data, isLoading, isSuccess, refetch } = useQuery({
     queryKey: ['randomRoom'],
     queryFn: () => {
       return getRandomRoom()
     },
-    staleTime: 1000 * 60 * 5,
-    refetchInterval: 12500
+    staleTime: 1000 * 60 * 5
   })
+
+  let updateBanner = false
   let first4Rooms, last4Rooms
   if (isSuccess) {
     const listRandomRooms = data?.data?.randomRooms
@@ -127,6 +128,12 @@ export default function Banner() {
                 arrows={false}
                 dots={false}
                 autoplaySpeed={5000}
+                afterChange={() => {
+                  if (updateBanner) {
+                    updateBanner = false
+                    refetch()
+                  } else updateBanner = true
+                }}
               >
                 <div className=''>
                   <div className='flex gap-[2vw] pr-[2vw]'>
