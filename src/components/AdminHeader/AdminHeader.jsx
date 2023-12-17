@@ -8,7 +8,7 @@ export default function AdminHeader() {
         <div>Pages / Quản lý phòng trọ</div>
         <div className="text-[#2B3674] font-semibold text-3xl">Main Dashboard</div>
       </div>
-      <div className='bg-white p-2.5 rounded-full w-[30vw] flex justify-between items-center'>
+      <div className='bg-white p-2.5 rounded-full w-[30rem] flex justify-between items-center'>
         <form>
           <div className='relative'>
             <div className='flex absolute inset-y-0 left-0 items-center pl-8 pointer-events-none z-10'>
