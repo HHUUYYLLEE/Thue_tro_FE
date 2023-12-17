@@ -6,11 +6,11 @@ export default function AdminLayout({ children }) {
   return (
     <>
       <div className='flex'>
-        <div className='bg-[#DCEAFF]'>
+        <div className='bg-[#F4F7FE]'>
           <AdminSidebar />
         </div>
-        <div className='w-full'>
-          <div className='bg-[#DCEAFF]'>
+        <div className='w-full h-full bg-[#F4F7FE] p-6'>
+          <div>
             <AdminHeader />
           </div>
           {children}
