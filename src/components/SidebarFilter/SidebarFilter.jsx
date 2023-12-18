@@ -5,7 +5,16 @@ import Switch from 'react-switch'
 import { displayNum } from '../../utils/utils'
 import { AppContext } from '../../contexts/app.context'
 import useQueryConfig from '../../hooks/useQueryConfig'
-import { minPrice, minArea, defaultAreaRight, defaultPriceRight, maxPrice, maxArea } from '../../utils/env'
+import {
+  minPrice,
+  minArea,
+  defaultAreaRight,
+  defaultPriceRight,
+  maxPrice,
+  maxArea,
+  stepArea,
+  stepPrice
+} from '../../utils/env'
 import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import { getServicesCount, getNumberOfPeopleCount } from '../../api/countFilterOptions'
 import { PulseLoader } from 'react-spinners'
@@ -234,7 +243,7 @@ export default function SidebarFilter() {
           allowCross={false}
           className='mt-[1rem] mb-[1.5rem]'
           value={[sliderPriceLeft, sliderPriceRight]}
-          step={100000}
+          step={stepPrice}
           min={minPrice}
           max={maxPrice}
           defaultValue={[minPrice, defaultPriceRight]}
@@ -268,7 +277,7 @@ export default function SidebarFilter() {
           allowCross={false}
           className='mt-[1rem] mb-[1.5rem]'
           value={[sliderAreaLeft, sliderAreaRight]}
-          step={1}
+          step={stepArea}
           min={minArea}
           max={maxArea}
           defaultValue={[minArea, defaultAreaRight]}
