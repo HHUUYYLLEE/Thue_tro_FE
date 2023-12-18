@@ -1,7 +1,7 @@
 const webName = 'HustHostel'
 const minPrice = 0,
   defaultPriceRight = 4500000,
-  minArea = 10,
+  minArea = 0,
   defaultAreaRight = 200,
   maxPrice = 20000000,
   maxArea = 20010,
