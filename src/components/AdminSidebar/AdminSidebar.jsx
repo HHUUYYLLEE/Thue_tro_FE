@@ -25,22 +25,26 @@ export default function AdminSidebar() {
         <RiAdminLine className={`text-[#2B3674] min-w-[2rem] min-h-[2rem] ${open && 'hidden'}`} />
       </div>
       <div className={`flex flex-col gap-5 py-6 ${!open && 'items-center'}`}>
-        <Link onClick={() => this.forceUpdate} to='/admin/dashboard'>
-          <div className='px-8 py-1 cursor-pointer flex items-center text-[#4318FF] hover:text-blue-600'>
+        <Link onClick={() => this.forceUpdate} to='/admin/dashboard' className='w-full'>
+          <div className='px-6 py-1 cursor-pointer flex items-center text-[#4318FF] hover:text-blue-600'>
             <IoMdHome className='min-w-[2rem] min-h-[2rem]' />
             <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Dashboard</div>
           </div>
         </Link>
-        <div className='px-8 py-1 cursor-pointer flex items-center text-[#A3AED0] hover:text-blue-600 border-r-4 border-[#4318FF]'>
-          <MdOutlineShoppingCart className='min-w-[2rem] min-h-[2rem]' />
-          <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Quản lý phòng trọ</div>
-        </div>
-        <div className='px-8 py-1 cursor-pointer flex items-center text-[#A3AED0] hover:text-blue-600'>
-          <LuBarChart2 className='min-w-[2rem] min-h-[2rem] scale-x-[-1]' />
-          <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Quản lý khách hàng</div>
-        </div>
+        <Link onClick={() => this.forceUpdate} to='/admin/dashboard' className='w-full'>
+          <div className='px-6 py-1 cursor-pointer flex items-center text-[#A3AED0] hover:text-blue-600 border-r-4 border-[#4318FF]'>
+            <MdOutlineShoppingCart className='min-w-[2rem] min-h-[2rem]' />
+            <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Quản lý phòng trọ</div>
+          </div>
+        </Link>
+        <Link onClick={() => this.forceUpdate} to='/admin/dashboard' className='w-full'>
+          <div className='px-6 py-1 cursor-pointer flex items-center text-[#A3AED0] hover:text-blue-600'>
+            <LuBarChart2 className='min-w-[2rem] min-h-[2rem] scale-x-[-1]' />
+            <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Quản lý khách hàng</div>
+          </div>
+        </Link>
       </div>
-      <div className='w-full flex justify-center items-center absolute bottom-6'>
+      <div className={`w-full flex justify-center items-center absolute bottom-6 ${!open && 'hidden'}`}>
         <img src={Vector} alt="" className='adminlogo absolute top-0 -translate-y-1/2 rounded-full p-5 border-white border-[7px]'/>
         <div className='adminlogo flex justify-center items-center flex-col rounded-[24px] w-[14.5vw] h-[12.5rem]'>
           <div className='font-dmsans-700 text-white'>Tro.vn</div>
