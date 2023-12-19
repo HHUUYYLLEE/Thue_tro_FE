@@ -46,7 +46,7 @@ export default function AdminHeader() {
     })
   })
   return (
-    <header className='flex justify-between flex-row'>
+    <header className='flex justify-between flex-row mt-4'>
       <div className='flex flex-col text-[#707EAE] ml-4'>
         <div>Pages / Quản lý phòng trọ</div>
         <div className='text-[#2B3674] font-semibold text-3xl'>Main Dashboard</div>

@@ -7,6 +7,7 @@ import { AiOutlineDown } from 'react-icons/ai'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import Loading from './Loading'
 import { MdCalendarToday } from 'react-icons/md'
+import { LuBarChart2 } from 'react-icons/lu'
 
 export default function RoomsList() {
   const queryConfig = useQueryConfig()
@@ -76,8 +77,13 @@ export default function RoomsList() {
   if (isLoading) return <Loading />
   return (
     <>
-      <div className='flex justify-center items-center w-[8vw] rounded-lg bg-[#F4F7FE] py-[1vh] text-[#A3AED0]'>
-        <MdCalendarToday className='scale-150' /> <div className='ml-[0.5vw] font-dmsans-500'>This month</div>
+      <div className='flex justify-between'>
+        <div className='flex justify-center items-center w-[8rem] rounded-lg bg-[#F4F7FE] py-[1vh] text-[#A3AED0]'>
+          <MdCalendarToday className='scale-150' /> <div className='ml-[0.5vw] font-dmsans-500'>This month</div>
+        </div>
+        <div className='flex justify-center items-center w-[3rem] rounded-lg bg-[#F4F7FE] py-[1vh] text-[#4318FF]'>
+          <LuBarChart2 className='scale-x-[-1.5] scale-y-[1.5]' />
+        </div>
       </div>
 
       <div className='flex justify-between mb-[1rem] mr-[10.5vw] ml-[2vw] mt-[6vh]'>
