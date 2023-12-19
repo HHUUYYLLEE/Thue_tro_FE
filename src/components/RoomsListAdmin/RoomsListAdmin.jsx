@@ -8,6 +8,7 @@ import { createSearchParams, useNavigate } from 'react-router-dom'
 import Loading from './Loading'
 import { MdCalendarToday } from 'react-icons/md'
 import Modal from 'react-modal'
+import { LuBarChart2 } from 'react-icons/lu'
 export default function RoomsList() {
   const queryConfig = useQueryConfig()
   console.log(queryConfig)
