@@ -47,7 +47,7 @@ export default function AdminHeader() {
     })
   })
   return (
-    <header className='flex justify-between flex-row'>
+    <header className='flex justify-between flex-row mt-4'>
       <div className='flex flex-col text-[#707EAE] ml-4'>
         <div>
           <span>Pages / </span>

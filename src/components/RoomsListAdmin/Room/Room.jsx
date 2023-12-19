@@ -174,7 +174,7 @@ export default function Room({ room, refetch }) {
             )}
           </div>
           {room?.is_checked_information ? (
-            <button className='group bg-[#5C5C5C] inline-flex justify-center text-white font-poppins-600 hover:text-[#5C5C5C] py-2 px-4  rounded w-[10vw] pointer-events-none'>
+            <button className='group bg-[#5C5C5C] inline-flex justify-center text-white font-poppins-600 hover:text-[#5C5C5C] py-3 px-2  rounded w-[10vw] pointer-events-none'>
               Đã xác minh
               <svg
                 className='text-white group-hover:text-[#5C5C5C] mt-1 ml-2'
