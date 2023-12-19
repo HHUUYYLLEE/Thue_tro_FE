@@ -5,7 +5,8 @@ import { LuBarChart2 } from 'react-icons/lu'
 import { RiAdminLine } from 'react-icons/ri'
 import { IoMdHome } from 'react-icons/io'
 import { Link } from 'react-router-dom'
-import Logo from './Logo'
+import Vector from '../../asset/img/Vector.png'
+
 export default function AdminSidebar() {
   const [open, setOpen] = useState(true)
 
@@ -39,8 +40,13 @@ export default function AdminSidebar() {
           <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Quản lý khách hàng</div>
         </div>
       </div>
-
-      {open && <Logo />}
+      <div className='w-full flex justify-center items-center absolute bottom-5'>
+        <img src={Vector} alt="" className='adminlogo absolute top-0 -translate-y-1/2 rounded-full p-5 border-white border-[7px]'/>
+        <div className='adminlogo flex justify-center items-center flex-col rounded-[24px] w-[14.5vw] h-[12.5rem]'>
+          <div className='font-dmsans-700 text-white'>Tro.vn</div>
+          <div className='font-dmsans-500 text-white'>Kết nối mọi nhà</div>
+        </div>
+      </div>
     </div>
   )
 }
