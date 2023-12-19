@@ -7,12 +7,7 @@ import { AiOutlineDown } from 'react-icons/ai'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import Loading from './Loading'
 import { MdCalendarToday } from 'react-icons/md'
-<<<<<<< HEAD
 import Modal from 'react-modal'
-=======
-import { LuBarChart2 } from 'react-icons/lu'
-
->>>>>>> 37f2cf8c43774326a5077cb6dbe303e7212d8780
 export default function RoomsList() {
   const queryConfig = useQueryConfig()
   console.log(queryConfig)
