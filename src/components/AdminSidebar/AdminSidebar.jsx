@@ -4,12 +4,13 @@ import { MdOutlineShoppingCart } from 'react-icons/md'
 import { LuBarChart2 } from 'react-icons/lu'
 import { RiAdminLine } from 'react-icons/ri'
 import { IoMdHome } from 'react-icons/io'
+import Vector from '../../asset/img/Vector.png'
 
 export default function AdminSidebar() {
   const [open, setOpen] = useState(true)
 
   return (
-    <div className={`bg-white h-full duration-300 relative ${open ? 'w-72' : 'w-20'}`}>
+    <div className={`bg-white h-screen duration-300 relative ${open ? 'w-72' : 'w-20'}`}>
       <BsArrowLeftShort
         className={`mt-2 -mr-0.5 bg-gray-200 text-3xl rounded-full absolute -right-3 top-9 border border-purple-950 cursor-pointer duration-300' ${
           !open && 'rotate-180'
@@ -36,8 +37,9 @@ export default function AdminSidebar() {
           <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Quản lý khách hàng</div>
         </div>
       </div>
-      <div className='mt-[40vh] w-full'>
-        <div className='adminlogo flex justify-center items-center rounded-[24px] w-[15vw] h-[20vh]'>
+      <div className='mt-[15rem] w-full flex justify-center items-center relative'>
+        <img src={Vector} alt="" className='adminlogo absolute top-0 -translate-y-1/2 rounded-full p-3 border-white border-4'/>
+        <div className='adminlogo flex justify-center items-center flex-col rounded-[24px] w-[15vw] h-[20vh]'>
           <div className='font-dmsans-700 text-white'>Tro.vn</div>
           <div className='font-dmsans-500 text-white'>Kết nối mọi nhà</div>
         </div>
