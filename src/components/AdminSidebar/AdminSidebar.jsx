@@ -24,18 +24,18 @@ export default function AdminSidebar() {
         </h1>
         <RiAdminLine className={`text-[#2B3674] min-w-[2rem] min-h-[2rem] ${open && 'hidden'}`} />
       </div>
-      <div className={`flex flex-col gap-6 p-8 ${!open && 'items-center'}`}>
+      <div className={`flex flex-col gap-5 py-6 ${!open && 'items-center'}`}>
         <Link onClick={() => this.forceUpdate} to='/admin/dashboard'>
-          <div className='cursor-pointer flex items-center text-[#4318FF] hover:text-blue-600'>
+          <div className='px-8 py-1 cursor-pointer flex items-center text-[#4318FF] hover:text-blue-600'>
             <IoMdHome className='min-w-[2rem] min-h-[2rem]' />
             <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Dashboard</div>
           </div>
         </Link>
-        <div className='cursor-pointer flex items-center text-[#A3AED0] hover:text-blue-600'>
+        <div className='px-8 py-1 cursor-pointer flex items-center text-[#A3AED0] hover:text-blue-600 border-r-4 border-[#4318FF]'>
           <MdOutlineShoppingCart className='min-w-[2rem] min-h-[2rem]' />
           <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Quản lý phòng trọ</div>
         </div>
-        <div className='cursor-pointer flex items-center text-[#A3AED0] hover:text-blue-600'>
+        <div className='px-8 py-1 cursor-pointer flex items-center text-[#A3AED0] hover:text-blue-600'>
           <LuBarChart2 className='min-w-[2rem] min-h-[2rem] scale-x-[-1]' />
           <div className={`ml-4 duration-200 ${!open && 'hidden'}`}>Quản lý khách hàng</div>
         </div>
