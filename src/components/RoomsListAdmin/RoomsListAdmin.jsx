@@ -76,7 +76,7 @@ export default function RoomsList() {
 
   if (isLoading) return <Loading />
   return (
-    <div className='min-w-[71vw] max-w-[71vw]'>
+    <>
       <div className='flex justify-between'>
         <div className='flex justify-center items-center w-[8rem] rounded-lg bg-[#F4F7FE] py-[1vh] text-[#A3AED0]'>
           <MdCalendarToday className='scale-150' /> <div className='ml-[0.5vw] font-dmsans-500'>This month</div>
@@ -131,29 +131,30 @@ export default function RoomsList() {
           )}
         </div>
       </div>
-
-      {dataRooms &&
-        dataRooms?.map((room) => {
-          return <Room key={room.id} room={room} refetch={refetch} />
-        })}
-      <div className='flex justify-center ml-[2vw]'>
-        {enableLoadingMore && (
+      <div className='ml-[1vw] min-w-[71vw] max-w-[71vw]'>
+        {dataRooms &&
+          dataRooms?.map((room) => {
+            return <Room key={room.id} room={room} refetch={refetch} />
+          })}
+        <div className='flex justify-center ml-[2vw]'>
+          {enableLoadingMore && (
+            <button
+              onClick={loadingMore}
+              className='font-poppins-500 w-[57vw] py-[1rem] hover:bg-green-700 text-white text-xl rounded-md bg-[#4318FF]'
+            >
+              Xem thêm kết quả khác
+            </button>
+          )}
           <button
-            onClick={loadingMore}
-            className='font-poppins-500 w-[57vw] py-[1rem] hover:bg-green-700 text-white text-xl rounded-md bg-[#4318FF]'
+            className={`${
+              enableLoadingMore ? 'ml-[2vw] w-[10vw]' : 'w-full'
+            } font-poppins-500 flex justify-center items-center py-[1rem] hover:bg-green-700 text-white rounded-md bg-[#2BB3FF]`}
           >
-            Xem thêm kết quả khác
+            <span className='text-3xl'>+</span>
+            <span className='text-lg'>&nbsp;Thêm Phòng</span>
           </button>
-        )}
-        <button
-          className={`${
-            enableLoadingMore ? 'ml-[2vw] w-[10vw]' : 'w-full'
-          } font-poppins-500 flex justify-center items-center py-[1rem] hover:bg-green-700 text-white rounded-md bg-[#2BB3FF]`}
-        >
-          <span className='text-3xl'>+</span>
-          <span className='text-lg'>&nbsp;Thêm Phòng</span>
-        </button>
+        </div>
       </div>
-    </div>
+    </>
   )
 }
