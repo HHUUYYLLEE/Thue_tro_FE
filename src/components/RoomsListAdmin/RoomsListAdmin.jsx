@@ -76,7 +76,7 @@ export default function RoomsList() {
 
   if (isLoading) return <Loading />
   return (
-    <>
+    <div className='min-w-[71vw] max-w-[71vw]'>
       <div className='flex justify-between'>
         <div className='flex justify-center items-center w-[8rem] rounded-lg bg-[#F4F7FE] py-[1vh] text-[#A3AED0]'>
           <MdCalendarToday className='scale-150' /> <div className='ml-[0.5vw] font-dmsans-500'>This month</div>
@@ -154,6 +154,6 @@ export default function RoomsList() {
           <span className='text-lg'>&nbsp;Thêm Phòng</span>
         </button>
       </div>
-    </>
+    </div>
   )
 }
