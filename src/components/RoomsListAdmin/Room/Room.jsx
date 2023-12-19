@@ -66,7 +66,7 @@ export default function Room({ room, refetch }) {
   }
   return (
     <>
-      <div className='ml-[2vw] flex flex-row justify-center'>
+      <div className='ml-[2vw] flex justify-center'>
         <div className='flex justify-between items-center my-[1rem] border-2 rounded-md w-[57vw]'>
           <div className='flex'>
             <div className='max-w-[16vw] min-w-[16vw] w-[100%] overflow-hidden max-h-[22vh] min-h-[22vh]'>

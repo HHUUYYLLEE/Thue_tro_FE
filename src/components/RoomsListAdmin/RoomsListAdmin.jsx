@@ -136,7 +136,7 @@ export default function RoomsList() {
         dataRooms?.map((room) => {
           return <Room key={room.id} room={room} refetch={refetch} />
         })}
-      <div className='flex justify-between pl-[2.5vw] w-[71.5vw]'>
+      <div className='flex justify-center ml-[2vw]'>
         {enableLoadingMore && (
           <button
             onClick={loadingMore}
@@ -147,7 +147,7 @@ export default function RoomsList() {
         )}
         <button
           className={`${
-            enableLoadingMore ? 'w-[10vw]' : 'w-full'
+            enableLoadingMore ? 'ml-[2vw] w-[10vw]' : 'w-full'
           } font-poppins-500 flex justify-center items-center py-[1rem] hover:bg-green-700 text-white rounded-md bg-[#2BB3FF]`}
         >
           <span className='text-3xl'>+</span>
