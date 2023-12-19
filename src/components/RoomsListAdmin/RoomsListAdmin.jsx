@@ -81,7 +81,7 @@ export default function RoomsList() {
         <div className='flex justify-center items-center w-[8rem] rounded-lg bg-[#F4F7FE] py-[1vh] text-[#A3AED0]'>
           <MdCalendarToday className='scale-150' /> <div className='ml-[0.5vw] font-dmsans-500'>This month</div>
         </div>
-        <div className='flex justify-center items-center w-[3rem] rounded-lg bg-[#F4F7FE] py-[1vh] text-[#4318FF]'>
+        <div className='flex justify-center items-center w-[2.5rem] rounded-lg bg-[#F4F7FE] py-[1vh] text-[#4318FF]'>
           <LuBarChart2 className='scale-x-[-1.5] scale-y-[1.5]' />
         </div>
       </div>
