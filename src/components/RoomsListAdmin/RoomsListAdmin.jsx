@@ -89,7 +89,7 @@ export default function RoomsList() {
       <div className='flex justify-between mb-[1rem] mr-[10.5vw] ml-[2vw] mt-[6vh]'>
         <div>
           <span className='font-poppins-500'>{`Xem ${dataRooms?.length ? dataRooms.length : '0'} trên `}</span>
-          <span className='font-poppins-500 text-[#01B7F2]'>{`${data ? data?.data?.total : '0'} kết quả`}</span>
+          <span className='font-poppins-500 text-[#4318FF]'>{`${data ? data?.data?.total : '0'} kết quả`}</span>
         </div>
         <div className='relative' ref={refSort} onClick={() => toggleSortMenu(!sortMenu)}>
           <div className='font-poppins-500 flex justify-end hover:text-blue-400 cursor-pointer '>
