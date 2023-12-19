@@ -1,6 +1,6 @@
 export default function Logo() {
   return (
-    <div className='mt-[40vh] w-full relative'>
+    <div className='mt-[24vh] w-full relative'>
       <div className='absolute left-[50%] translate-x-[-50%] translate-y-[-50%] top-[10%]'>
         <div className='adminlogo2'>
           <svg xmlns='http://www.w3.org/2000/svg' width='174' height='174' viewBox='0 0 174 174' fill='none'>
