@@ -2,14 +2,15 @@ import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getAllRooms } from '../../api/rooms.api'
 import Room from './Room'
 import useQueryConfig from '../../hooks/useQueryConfig'
-import { useContext, useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import Loading from './Loading'
-import { AppContext } from '../../contexts/app.context'
+import { MdCalendarToday } from 'react-icons/md'
 
 export default function RoomsList() {
   const queryConfig = useQueryConfig()
+  console.log(queryConfig)
   const [sortMode, toggleSortMode] = useState(
     queryConfig?.sort === '1' ? 'Sắp xếp theo giá thấp nhất' : 'Sắp xếp theo giá cao nhất'
   )
@@ -35,7 +36,7 @@ export default function RoomsList() {
 
   // console.log(queryConfig)
 
-  const { status, data, isLoading } = useQuery({
+  const { status, data, isLoading, refetch } = useQuery({
     queryKey: ['rooms', queryConfig],
     queryFn: () => {
       return getAllRooms(queryConfig)
@@ -51,7 +52,7 @@ export default function RoomsList() {
   const loadingMore = () => {
     // console.log('loading more')
     navigate({
-      pathname: '/',
+      pathname: '/admin/dashboard',
       search: createSearchParams({
         ...queryConfig,
         limit: parseInt(queryConfig.limit) + 4
@@ -72,11 +73,14 @@ export default function RoomsList() {
     }
   }, [data?.data?.rooms, data?.data?.total, queryConfig.limit, queryConfig.page, status])
 
-  const { setValueQuery } = useContext(AppContext)
   if (isLoading) return <Loading />
   return (
     <>
-      <div className='flex justify-between mb-[3rem]'>
+      <div className='flex justify-center items-center w-[8vw] rounded-lg bg-[#F4F7FE] py-[1vh] text-[#A3AED0]'>
+        <MdCalendarToday className='scale-150' /> <div className='ml-[0.5vw] font-dmsans-500'>This month</div>
+      </div>
+
+      <div className='flex justify-between mb-[1rem] mr-[10.5vw] ml-[2vw] mt-[6vh]'>
         <div>
           <span className='font-poppins-500'>{`Xem ${dataRooms?.length ? dataRooms.length : '0'} trên `}</span>
           <span className='font-poppins-500 text-[#01B7F2]'>{`${data ? data?.data?.total : '0'} kết quả`}</span>
@@ -98,7 +102,13 @@ export default function RoomsList() {
                         <div
                           onClick={() => {
                             toggleSortMode(option.label)
-                            setValueQuery((prev) => ({ ...prev, sort: option.value }))
+                            navigate({
+                              pathname: '/admin/dashboard',
+                              search: createSearchParams({
+                                ...queryConfig,
+                                sort: option.value
+                              }).toString()
+                            })
                           }}
                           className='block hover:text-blue-500 cursor-pointer border-y-2  px-2 py-2 transition-all duration-400'
                         >
@@ -115,18 +125,29 @@ export default function RoomsList() {
           )}
         </div>
       </div>
+
       {dataRooms &&
         dataRooms?.map((room) => {
-          return <Room key={room.id} room={room} />
+          return <Room key={room.id} room={room} refetch={refetch} />
         })}
-      {enableLoadingMore && (
+      <div className='flex justify-between pl-[2.5vw] w-[71.5vw]'>
+        {enableLoadingMore && (
+          <button
+            onClick={loadingMore}
+            className='font-poppins-500 w-[57vw] py-[1rem] hover:bg-green-700 text-white text-xl rounded-md bg-[#4318FF]'
+          >
+            Xem thêm kết quả khác
+          </button>
+        )}
         <button
-          onClick={loadingMore}
-          className='font-poppins-500 w-[100%] py-[1rem] hover:bg-green-700 text-white text-xl rounded-lg bg-[#172432]'
+          className={`${
+            enableLoadingMore ? 'w-[10vw]' : 'w-full'
+          } font-poppins-500 flex justify-center items-center py-[1rem] hover:bg-green-700 text-white rounded-md bg-[#2BB3FF]`}
         >
-          Xem thêm kết quả khác
+          <span className='text-3xl'>+</span>
+          <span className='text-lg'>&nbsp;Thêm Phòng</span>
         </button>
-      )}
+      </div>
     </>
   )
 }

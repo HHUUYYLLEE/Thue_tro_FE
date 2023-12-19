@@ -7,7 +7,6 @@ import { getRandomRoom } from '../../api/rooms.api'
 import { omit } from 'lodash'
 import { PacmanLoader } from 'react-spinners'
 import Slider from 'react-slick'
-import { useEffect } from 'react'
 export default function Banner() {
   const { register, handleSubmit } = useForm({})
   const queryConfig = useQueryConfig()

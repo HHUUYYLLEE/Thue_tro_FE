@@ -12,7 +12,6 @@ if (typeof window !== 'undefined') {
 function App() {
   const routeElement = useRouteElement()
   // toast('🦄 Wow so easy!')
-
   return (
     <div>
       {/* <BGM /> */}
