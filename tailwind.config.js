@@ -15,6 +15,17 @@ export default {
         blooddrip: ['BloodDrip']
       },
       keyframes: {
+        rainbowtext: {
+          '0%': {
+            'background-position': '0 0'
+          },
+          '50%': {
+            'background-position': '100% 0'
+          },
+          '100%': {
+            'background-position': '0 0'
+          }
+        },
         move: {
           '0%': {
             transform: 'translate(98vw)'
@@ -66,7 +77,8 @@ export default {
         fadeIn2: 'fadeIn 2.5s linear 11.5s',
         fadeIn3: 'fadeIn 2.5s linear 14s',
         fadeIn4: 'fadeIn 2.5s linear 16.5s',
-        fadeIn5: 'fadeIn 2.5s linear 19s'
+        fadeIn5: 'fadeIn 2.5s linear 19s',
+        rainbowtext: 'rainbowtext 2s linear infinite'
       }
     }
   },

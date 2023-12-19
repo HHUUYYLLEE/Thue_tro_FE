@@ -4,7 +4,7 @@ export default function Loading() {
   return (
     <>
       <img src={Spinning} className='fixed bottom-[2rem] w-[10rem] right-[1rem]' alt='' />
-      <div className='relative'>
+      <div className='relative h-[20vh]'>
         <div className='absolute grid grid-cols-[31] grid-rows-5'>
           {/* Letter L */}
           <img src={loadingGif} className='w-[1.8rem] row-start-1 col-start-1' alt='' />

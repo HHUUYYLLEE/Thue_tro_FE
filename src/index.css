@@ -22,8 +22,16 @@
 .adminlogo {
   background: linear-gradient(135deg, #868cff 0%, #4318ff 100%);
 }
+
 .animation404 {
   animation-fill-mode: both;
+}
+.rainbow-text {
+  background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  background-size: 400% 100%;
 }
 .font-blooddrip {
   font-family: BloodDrip;
@@ -70,9 +78,11 @@
 }
 .font-dmsans-500 {
   font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
 }
 .font-dmsans-700 {
   font-family: 'DM Sans', sans-serif;
+  font-weight: 700;
 }
 /* .active {
   @apply text-blue-600;

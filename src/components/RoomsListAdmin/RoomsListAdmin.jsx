@@ -7,7 +7,7 @@ import { AiOutlineDown } from 'react-icons/ai'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import Loading from './Loading'
 import { MdCalendarToday } from 'react-icons/md'
-
+import Modal from 'react-modal'
 export default function RoomsList() {
   const queryConfig = useQueryConfig()
   console.log(queryConfig)
@@ -28,12 +28,12 @@ export default function RoomsList() {
     }
   }
   useEffect(() => {
+    Modal.setAppElement('body')
     document.addEventListener('mousedown', handleClickOutside)
     return () => {
       document.removeEventListener('mousedown', handleClickOutside)
     }
   }, [])
-
   // console.log(queryConfig)
 
   const { status, data, isLoading, refetch } = useQuery({

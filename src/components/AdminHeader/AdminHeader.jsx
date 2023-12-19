@@ -6,6 +6,7 @@ import { useForm } from 'react-hook-form'
 import { omit } from 'lodash'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import useQueryConfig from '../../hooks/useQueryConfig'
+import { Link } from 'react-router-dom'
 export default function AdminHeader() {
   const { register, handleSubmit } = useForm({})
   const navigate = useNavigate()
@@ -48,7 +49,12 @@ export default function AdminHeader() {
   return (
     <header className='flex justify-between flex-row'>
       <div className='flex flex-col text-[#707EAE] ml-4'>
-        <div>Pages / Quản lý phòng trọ</div>
+        <div>
+          <span>Pages / </span>
+          <Link onClick={() => this.forceUpdate} to='/admin/dashboard'>
+            <span>Quản lý phòng trọ</span>
+          </Link>
+        </div>
         <div className='text-[#2B3674] font-semibold text-3xl'>Main Dashboard</div>
       </div>
       <div className='bg-white p-2.5 rounded-full w-[31rem] flex justify-between items-center'>

@@ -8,6 +8,7 @@ import { useMutation } from '@tanstack/react-query'
 import { checkARoom } from '../../../api/rooms.api'
 import { toast } from 'react-toastify'
 import Modal from 'react-modal'
+import { TailSpin } from 'react-loader-spinner'
 export default function Room({ room, refetch }) {
   const mutation = useMutation({
     mutationFn: (data) => {
@@ -221,23 +222,42 @@ export default function Room({ room, refetch }) {
           }
         }}
         isOpen={modal}
-        onRequestClose={() => toggleModal(false)}
+        onRequestClose={() => {
+          if (!mutation.isPending) toggleModal(false)
+        }}
       >
-        <div className='font-inter-700 text-4xl'>Xác minh cho phòng trọ?</div>
-        <div className='mt-[8vh] flex justify-between'>
-          <button
-            onClick={() => updateRoomCheck({ _id: room?._id, is_checked_information: true })}
-            className='w-[10vw] h-[8vh] flex justify-center items-center bg-[#0366FF] hover:bg-green-700 text-white font-inter-700 rounded-lg text-xl'
-          >
-            Xác minh
-          </button>
-          <button
-            onClick={() => toggleModal(false)}
-            className='w-[10vw] h-[8vh] flex justify-center items-center bg-[#DD1A1A] hover:bg-red-900 text-white font-inter-700 rounded-lg text-xl'
-          >
-            Huỷ
-          </button>
-        </div>
+        {mutation.isPending ? (
+          <>
+            <div className='text-[#4FA94D] font-dmsans-700 mb-[5vh] text-3xl'>Đang gửi yêu cầu xác minh...</div>
+            <TailSpin
+              height='200'
+              width='200'
+              color='#4fa94d'
+              ariaLabel='tail-spin-loading'
+              radius='5'
+              visible={true}
+              wrapperStyle={{ display: 'flex', 'justify-content': 'center' }}
+            />
+          </>
+        ) : (
+          <>
+            <div className='font-inter-700 text-4xl'>Xác minh cho phòng trọ?</div>
+            <div className='mt-[8vh] flex justify-between'>
+              <button
+                onClick={() => updateRoomCheck({ _id: room?._id, is_checked_information: true })}
+                className='w-[10vw] h-[8vh] flex justify-center items-center bg-[#0366FF] hover:bg-green-700 text-white font-inter-700 rounded-lg text-xl'
+              >
+                Xác minh
+              </button>
+              <button
+                onClick={() => toggleModal(false)}
+                className='w-[10vw] h-[8vh] flex justify-center items-center bg-[#DD1A1A] hover:bg-red-900 text-white font-inter-700 rounded-lg text-xl'
+              >
+                Huỷ
+              </button>
+            </div>
+          </>
+        )}
       </Modal>
     </>
   )
