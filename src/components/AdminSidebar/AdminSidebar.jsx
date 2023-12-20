@@ -12,12 +12,12 @@ export default function AdminSidebar() {
 
   return (
     <div className={`bg-white h-screen duration-300 relative rounded-br-3xl ${open ? 'w-72' : 'w-20'}`}>
-      <BsArrowLeftShort
+      {/* <BsArrowLeftShort
         className={`mt-2 -mr-0.5 bg-gray-200 text-3xl rounded-full absolute -right-3 top-9 border border-purple-950 cursor-pointer duration-300' ${
           !open && 'rotate-180'
         }`}
         onClick={() => setOpen(!open)}
-      />
+      /> */}
       <div className='flex justify-center p-10 border-b'>
         <h1 className={`text-[#2B3674] text-3xl ${!open && 'hidden'}`}>
           <strong>Admin </strong>DB
