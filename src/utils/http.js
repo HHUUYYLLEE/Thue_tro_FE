@@ -54,7 +54,7 @@ instance.interceptors.response.use(
     return response
   },
   function (error) {
-    if (error.response?.status !== HttpStatusCode.BadRequest) {
+    if (error.response?.status !== HttpStatusCode.UnprocessableEntity) {
       const data = error.response?.data
       const message = data.message || error.message
       // console.log(message)
