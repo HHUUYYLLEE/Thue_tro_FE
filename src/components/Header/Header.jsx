@@ -130,7 +130,7 @@ export default function Header() {
           <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center'>
             <img src={Pepega} alt='' className='w-[2rem] h-[2rem]' />
           </div>
-          <div className='font-semibold text-white'>dazai</div>
+          <div className={`font-semibold ${path.pathname.includes('/room') ? 'text-black' : 'text-white'}`}>dazai</div>
         </div>
       </header>
       {modalLogin && <LoginModal closeModalLogin={closeModalLogin} />}
