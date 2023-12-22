@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import LoginModal from '../LoginModal'
+import Pepega from '../../asset/img/pepega.png'
 const headerItems = [
   { id: 1, name: 'Trang chủ', path: '/' },
   { id: 2, name: 'Đăng nhập', path: '/login' },
@@ -41,7 +42,7 @@ export default function Header() {
         }`}
       >
         <div
-          className={`pl-20 -mt-2 text-3xl italic ${
+          className={`ml-20 -mt-2 text-3xl italic ${
             path.pathname.includes('/room') === true ? 'text-blue-500' : 'text-white'
           }`}
         >
@@ -49,7 +50,7 @@ export default function Header() {
             tro.vn
           </Link>
         </div>
-        <div className='flex pl-60 gap-8 font-poppins-500'>
+        <div className='flex ml-60 gap-8 font-poppins-500'>
           {/* {headerItems.map((item) => {
           return (
             <NavLink
@@ -125,7 +126,12 @@ export default function Header() {
             />
           </NavLink>
         </div>
-        <div></div>
+        <div className='flex mr-20 items-center gap-2 cursor-pointer'>
+          <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center'>
+            <img src={Pepega} alt='' className='w-[2rem] h-[2rem]' />
+          </div>
+          <div className='font-semibold text-white'>dazai</div>
+        </div>
       </header>
       {modalLogin && <LoginModal closeModalLogin={closeModalLogin} />}
     </>
