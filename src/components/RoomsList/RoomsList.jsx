@@ -45,7 +45,7 @@ export default function RoomsList() {
   })
 
   const dataRooms = data?.data?.rooms
-  console.log(data?.data)
+
   // const total = data?.data
   // console.log(total)
   const loadingMore = () => {

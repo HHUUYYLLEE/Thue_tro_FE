@@ -10,10 +10,9 @@ import Slider from 'react-slick'
 export default function Banner() {
   const { register, handleSubmit } = useForm({})
   const queryConfig = useQueryConfig()
-  console.log(queryConfig)
+
   const navigate = useNavigate()
   const onSubmit = handleSubmit((data) => {
-    console.log(data)
     navigate({
       pathname: '/',
       search: createSearchParams(
@@ -62,7 +61,6 @@ export default function Banner() {
     first4Rooms = listRandomRooms.slice(0, 4)
     last4Rooms = listRandomRooms.slice(4)
   }
-  console.log(data?.data?.randomRooms)
   return (
     <div>
       <img src={BannerImage} alt='' className='pointer-events-none' />

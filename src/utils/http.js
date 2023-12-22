@@ -57,6 +57,7 @@ instance.interceptors.response.use(
     if (error.response?.status !== HttpStatusCode.BadRequest) {
       const data = error.response?.data
       const message = data.message || error.message
+      // console.log(message)
       toast.error(message)
     }
     if (error.response?.status === HttpStatusCode.Unauthorized) {
