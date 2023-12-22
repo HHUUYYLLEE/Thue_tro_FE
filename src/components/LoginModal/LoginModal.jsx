@@ -35,6 +35,7 @@ export default function LoginModal({ closeModalLogin }) {
         toast.success('Đăng nhập thành công !') //。(20)
         setInfo(getInfoFromLS())
         setIsAuthenticated(true)
+        closeModalLogin()
       },
       onError: (error) => {
         console.log(error)
