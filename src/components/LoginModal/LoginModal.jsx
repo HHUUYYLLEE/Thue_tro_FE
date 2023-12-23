@@ -31,11 +31,16 @@ export default function LoginModal({ closeModalLogin }) {
     //  console.log(data)
     loginAccontMutation.mutate(data, {
       onSuccess: (data) => {
-        console.log(data)
+        console.log(data?.data.data.user.roles)
         toast.success('Đăng nhập thành công !') //。(20)
         setInfo(getInfoFromLS())
         setIsAuthenticated(true)
-        closeModalLogin()
+        if (data?.data.data.user.roles === 2) {
+          navigate('/admin/dashboard')
+          closeModalLogin()
+        } else {
+          closeModalLogin()
+        }
       },
       onError: (error) => {
         console.log(error)
