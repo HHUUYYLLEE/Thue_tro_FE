@@ -1,8 +1,8 @@
-import { useContext, useState } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import LoginModal from '../LoginModal'
 import Pepega from '../../asset/img/pepega.png'
 import { AppContext } from '../../contexts/app.context'
+import { useEffect, useRef, useState, useContext } from 'react'
 // const headerItems = [
 //   { id: 1, name: 'Trang chủ', path: '/' },
 //   { id: 2, name: 'Đăng nhập', path: '/login' },
@@ -33,6 +33,25 @@ export default function Header() {
 
   // console.log(header)
   window.addEventListener('scroll', changeBackground)
+
+  const [isOpen, setIsOpen] = useState(false)
+  const refDropDown = useRef()
+
+  const handleClickOutside = (event) => {
+    if (refDropDown.current && !refDropDown.current.contains(event.target)) {
+      setIsOpen(false)
+    }
+  }
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
     <>
@@ -165,13 +184,27 @@ export default function Header() {
             </NavLink>
           </div>
         </div>
-        <div className={`flex mr-20 items-center gap-2 cursor-pointer ${!isAuthenticated && 'invisible'}`}>
-          <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center'>
-            <img src={Pepega} alt='' className='w-[2rem] h-[2rem]' />
+        <div className={`mr-20 cursor-pointer ${!isAuthenticated && 'invisible'}`}>
+          <div ref={refDropDown} onClick={toggleMenu} className='flex items-center gap-2'>
+            <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center'>
+              <img src={Pepega} alt='' className='w-[2rem] h-[2rem]' />
+            </div>
+            <div className={`font-semibold ${path.pathname.includes('/room') ? 'text-black' : 'text-white'}`}>
+              {info?.user_name}
+            </div>
           </div>
-          <div className={`font-semibold ${path.pathname.includes('/room') ? 'text-black' : 'text-white'}`}>
-            {info?.user_name}
-          </div>
+          {isOpen && (
+            <div className='absolute z-10 mt-4 w-[10vw] rounded-lg shadow-lg border-[1px] border-black focus:outline-none bg-white/80'>
+              <div className='py-1 divide-y-[1px] divide-gray-300'>
+                <button className='inline-flex w-full justify-center px-4 py-3 font-poppins-600 text-lg -mt-0.5'>
+                  Tài khoản
+                </button>
+                <button className='inline-flex w-full justify-center text-red-600 font-poppins-600 px-4 py-3 text-lg mt-0.5'>
+                  Đăng xuất
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </header>
       {modalLogin && <LoginModal closeModalLogin={closeModalLogin} />}
