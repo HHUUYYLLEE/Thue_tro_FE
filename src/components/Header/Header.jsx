@@ -209,10 +209,11 @@ export default function Header() {
           {isOpen && (
             <div className='absolute z-10 mt-4 w-[10vw] rounded-lg shadow-lg border-[1px] border-black focus:outline-none bg-white/80'>
               <div className='py-1 divide-y-[1px] divide-gray-400'>
-                <button className='inline-flex w-full justify-center px-4 py-3 text-lg -mt-0.5'>
-                  Tài khoản
-                </button>
-                <button className='inline-flex w-full justify-center text-red-600 px-4 py-3 text-lg mt-0.5'>
+                <button className='inline-flex w-full justify-center px-4 py-3 text-lg -mt-0.5'>Tài khoản</button>
+                <button
+                  onClick={handleLogout}
+                  className='inline-flex w-full justify-center text-red-600 px-4 py-3 text-lg mt-0.5'
+                >
                   Đăng xuất
                 </button>
               </div>
