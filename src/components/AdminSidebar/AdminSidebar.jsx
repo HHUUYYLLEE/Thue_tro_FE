@@ -45,7 +45,11 @@ export default function AdminSidebar() {
         </Link>
       </div>
       <div className={`w-full flex justify-center items-center absolute bottom-6 ${!open && 'hidden'}`}>
-        <img src={Vector} alt="" className='adminlogo absolute top-0 -translate-y-1/2 rounded-full p-5 border-white border-[7px]'/>
+        <img
+          src={Vector}
+          alt=''
+          className='adminlogo absolute top-0 -translate-y-1/2 rounded-full p-5 border-white border-[7px]'
+        />
         <div className='adminlogo flex justify-center items-center flex-col rounded-[24px] w-[14.5vw] h-[12.5rem]'>
           <div className='font-dmsans-700 text-white'>Tro.vn</div>
           <div className='font-dmsans-500 text-white'>Kết nối mọi nhà</div>

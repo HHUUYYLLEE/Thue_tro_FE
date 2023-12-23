@@ -3,6 +3,8 @@ import LoginModal from '../LoginModal'
 import Pepega from '../../asset/img/pepega.png'
 import { AppContext } from '../../contexts/app.context'
 import { useEffect, useRef, useState, useContext } from 'react'
+import { logoutAccount } from '../../api/auth.api'
+import { useMutation } from '@tanstack/react-query'
 // const headerItems = [
 //   { id: 1, name: 'Trang chủ', path: '/' },
 //   { id: 2, name: 'Đăng nhập', path: '/login' },
@@ -26,6 +28,17 @@ export default function Header() {
     } else {
       setHeader(false)
     }
+  }
+  const logoutMutation = useMutation({
+    mutationFn: logoutAccount,
+    onSuccess: () => {
+      setIsAuthenticated(false)
+      setInfo(null)
+    }
+  })
+
+  const handleLogout = () => {
+    logoutMutation.mutate()
   }
 
   const path = useLocation()
@@ -100,9 +113,7 @@ export default function Header() {
             to='/'
             className={`group text-lg transition duration-300 ${
               path.pathname.includes('/room') ? 'text-black' : 'text-white'
-            } ${
-              isAuthenticated && 'ml-28'
-            }`}
+            } ${isAuthenticated && 'ml-28'}`}
           >
             Trang chủ
             <span
