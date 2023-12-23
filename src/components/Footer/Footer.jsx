@@ -120,8 +120,8 @@ export default function Footer() {
         {/* <div className='div.copyright justify-center text-white text-xs absolute bottom-0 mb-3 rotate-180'>
           © Website - 2022 | All Right Reserved. Designed By Website
         </div> */}
-        <div className='mt-16 w-full'>
-          <div className='scale-x-1 scale-y-[-1] ml-[20vw] text-white text-sm font-roboto'>
+        <div className='mt-16 w-full flex justify-center'>
+          <div className='scale-x-1 scale-y-[-1] text-white text-sm font-roboto'>
             © Website - 2022 | All Right Reserved. Designed By Website
           </div>
         </div>
