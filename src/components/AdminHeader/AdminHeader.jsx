@@ -7,6 +7,8 @@ import { omit } from 'lodash'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import useQueryConfig from '../../hooks/useQueryConfig'
 import { Link } from 'react-router-dom'
+import { useEffect, useRef, useState } from 'react'
+
 export default function AdminHeader() {
   const { register, handleSubmit } = useForm({})
   const navigate = useNavigate()
@@ -46,6 +48,26 @@ export default function AdminHeader() {
       ).toString()
     })
   })
+
+  const [isOpen, setIsOpen] = useState(false)
+  const refDropDown = useRef()
+
+  const handleClickOutside = (event) => {
+    if (refDropDown.current && !refDropDown.current.contains(event.target)) {
+      setIsOpen(false)
+    }
+  }
+  useEffect(() => {
+    document.addEventListener('mousedown', handleClickOutside)
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [])
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
+
   return (
     <header className='flex justify-between flex-row mt-4'>
       <div className='flex flex-col text-[#707EAE] ml-4'>
@@ -89,8 +111,24 @@ export default function AdminHeader() {
         <FaRegBell className='text-[#8F9BBA] w-[1.5rem] h-[1.5rem] cursor-pointer' />
         <FaMoon className='text-[#8F9BBA] w-[1.3rem] h-[1.3rem] cursor-pointer' />
         <IoMdInformationCircleOutline className='text-[#8F9BBA] w-[1.7rem] h-[1.7rem] cursor-pointer' />
-        <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center cursor-pointer'>
-          <img src={Pepega} alt='' className='w-[2rem] h-[2rem]' />
+        <div className={`cursor-pointer font-poppins-600 relative`} ref={refDropDown}>
+          <div onClick={toggleMenu} className='flex items-center gap-2'>
+            <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center'>
+              <img src={Pepega} alt='' className='w-[2rem] h-[2rem]' />
+            </div>
+          </div>
+          {isOpen && (
+            <div className='absolute left-auto right-0 z-10 mt-4 w-[10vw] rounded-lg shadow-lg border-[1px] border-black focus:outline-none bg-white'>
+              <div className='py-1 divide-y-[1px] divide-gray-400'>
+                <button className='inline-flex w-full justify-center px-4 py-3 text-lg -mt-0.5'>
+                  Tài khoản
+                </button>
+                <button className='inline-flex w-full justify-center text-red-600 px-4 py-3 text-lg mt-0.5'>
+                  Đăng xuất
+                </button>
+              </div>
+            </div>
+          )}
         </div>
       </div>
     </header>
