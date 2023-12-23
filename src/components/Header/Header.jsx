@@ -81,9 +81,7 @@ export default function Header() {
             to='/'
             className={`group text-lg transition duration-300 ${
               path.pathname.includes('/room') ? 'text-black' : 'text-white'
-            } ${
-              isAuthenticated && 'ml-28'
-            }`}
+            } ${isAuthenticated && 'ml-28'}`}
           >
             Trang chủ
             <span
