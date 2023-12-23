@@ -186,8 +186,8 @@ export default function Header() {
             </NavLink>
           </div>
         </div>
-        <div className={`mr-20 cursor-pointer ${!isAuthenticated && 'invisible'}`}>
-          <div ref={refDropDown} onClick={toggleMenu} className='flex items-center gap-2'>
+        <div className={`mr-20 cursor-pointer font-poppins-600 ${!isAuthenticated && 'invisible'}`} ref={refDropDown}>
+          <div onClick={toggleMenu} className='flex items-center gap-2'>
             <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center'>
               <img src={Pepega} alt='' className='w-[2rem] h-[2rem]' />
             </div>
@@ -198,10 +198,10 @@ export default function Header() {
           {isOpen && (
             <div className='absolute z-10 mt-4 w-[10vw] rounded-lg shadow-lg border-[1px] border-black focus:outline-none bg-white/80'>
               <div className='py-1 divide-y-[1px] divide-gray-400'>
-                <button className='inline-flex w-full justify-center px-4 py-3 font-poppins-600 text-lg -mt-0.5'>
+                <button className='inline-flex w-full justify-center px-4 py-3 text-lg -mt-0.5'>
                   Tài khoản
                 </button>
-                <button className='inline-flex w-full justify-center text-red-600 font-poppins-600 px-4 py-3 text-lg mt-0.5'>
+                <button className='inline-flex w-full justify-center text-red-600 px-4 py-3 text-lg mt-0.5'>
                   Đăng xuất
                 </button>
               </div>
