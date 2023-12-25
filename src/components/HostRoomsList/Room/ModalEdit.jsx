@@ -279,10 +279,10 @@ export default function ModalEdit({ room, toggle, checked }) {
                       <span className='font-inter-700'>Khu vực </span>
                       <span className='text-[#D83B3B]'>*</span>
                     </div>
-                    <div className='flex justify-between h-[4rem] mt-[0.5rem] border-[#FF0000] border-2 py-[1rem]'>
+                    <div className='flex justify-between h-[4rem] mt-[0.5rem] border-[#FF0000] border-2 rounded-lg py-[1rem]'>
                       <textarea
                         placeholder='VD: 3, 3-4, 1-2, 3-5, ...'
-                        className='resize-none placeholder:text-[#C6C6C6C6] placeholder:font-inter-400 w-full h-full rounded-lg outline-none px-[2rem]'
+                        className='resize-none placeholder:text-[#C6C6C6C6] placeholder:font-inter-400 w-full h-full outline-none px-[2rem]'
                         name=''
                         id=''
                         defaultValue={room?.address}
