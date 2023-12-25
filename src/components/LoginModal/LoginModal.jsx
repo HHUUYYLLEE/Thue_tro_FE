@@ -88,7 +88,7 @@ export default function LoginModal({ closeModalLogin }) {
                   placeholder='Username'
                   autoComplete='on'
                   {...register('user_name')}
-                  className='focus:outline-[#8AC0FF] border font-inter-500 border-[#E6E6E6] text-xl rounded-xl w-full py-6 px-[2rem]'
+                  className='focus:outline-[#8AC0FF] placeholder:text-[#4F4F4F] placeholder:font-inter-400 border font-inter-500 border-[#E6E6E6] text-xl rounded-xl w-full py-6 px-[2rem]'
                 />
                 <div className='mt-1 flex min-h-[1.75rem] text-lg text-red-600'>{errors.user_name?.message}</div>
               </div>
@@ -101,7 +101,7 @@ export default function LoginModal({ closeModalLogin }) {
                   placeholder='Password'
                   autoComplete='on'
                   {...register('password')}
-                  className='focus:outline-[#8AC0FF] border font-inter-500 border-[#E6E6E6] text-xl rounded-xl w-full py-6 px-[2rem]'
+                  className='focus:outline-[#8AC0FF] placeholder:text-[#4F4F4F] placeholder:font-inter-400 border font-inter-500 border-[#E6E6E6] text-xl rounded-xl w-full py-6 px-[2rem]'
                 />
                 <div className='mt-1 flex min-h-[1.75rem] text-lg text-red-600'>{errors.password?.message}</div>
               </div>
