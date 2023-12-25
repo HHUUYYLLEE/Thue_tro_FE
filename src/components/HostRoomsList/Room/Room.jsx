@@ -354,7 +354,7 @@ export default function Room({ room }) {
                 <div className='flex ml-[1.8rem] mr-[0.5rem]'>
                   <div className='w-[34rem] mt-[2rem] text-[#434343]'>
                     <div className='text-3xl font-inter-700'>Thông tin bất động sản</div>
-                    <div className='text-lg mt-[2rem]￼'>
+                    <div className='text-lg mt-[2rem]'>
                       <span className='font-inter-700'>Diện tích </span>
                       <span className='text-[#D83B3B]'>*</span>
                     </div>
@@ -390,13 +390,15 @@ export default function Room({ room }) {
                       <span className='font-inter-700'>Khu vực </span>
                       <span className='text-[#D83B3B]'>*</span>
                     </div>
-                    <textarea
-                      placeholder='VD: 3, 3-4, 1-2, 3-5, ...'
-                      className='resize-none placeholder:text-[#C6C6C6C6] placeholder:font-inter-400 w-full h-[4rem] mt-[0.5rem] rounded-lg outline-none border-[#FF0000] border-2 py-[1rem] px-[2rem]'
-                      name=''
-                      id=''
-                      defaultValue={room?.address}
-                    ></textarea>
+                    <div className='flex justify-between h-[4rem] mt-[0.5rem] border-[#FF0000] border-2 py-[1rem]'>
+                      <textarea
+                        placeholder='VD: 3, 3-4, 1-2, 3-5, ...'
+                        className='resize-none placeholder:text-[#C6C6C6C6] placeholder:font-inter-400 w-full h-full rounded-lg outline-none px-[2rem]'
+                        name=''
+                        id=''
+                        defaultValue={room?.address}
+                      ></textarea>
+                    </div>
                   </div>
 
                   <div
