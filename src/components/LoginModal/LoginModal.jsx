@@ -34,7 +34,6 @@ export default function LoginModal({ closeModalLogin }) {
         console.log(data?.data.data.user.roles)
         toast.success('Đăng nhập thành công !') //。(20)
         setInfo(getInfoFromLS())
-        saveAccessTokenToLS(data?.data.data.accessToken)
         setIsAuthenticated(true)
         switch (data?.data.data.user.roles) {
           case 1:
