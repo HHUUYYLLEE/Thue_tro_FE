@@ -36,12 +36,17 @@ export default function LoginModal({ closeModalLogin }) {
         setInfo(getInfoFromLS())
         saveAccessTokenToLS(data?.data.data.accessToken)
         setIsAuthenticated(true)
-        if (data?.data.data.user.roles === 2) {
-          navigate('/admin/dashboard')
-          closeModalLogin()
-        } else {
-          closeModalLogin()
+        switch (data?.data.data.user.roles) {
+          case 1:
+            navigate('/host')
+            break
+          case 2:
+            navigate('/admin/dashboard')
+            break
+          default:
+            break
         }
+        closeModalLogin()
       },
       onError: (error) => {
         console.log(error)
