@@ -11,7 +11,7 @@ import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getRoom } from '../../api/rooms.api'
 import { useEffect, useState } from 'react'
-import webName from '../../utils/env'
+import { webName } from '../../utils/env'
 import { FadeLoader } from 'react-spinners'
 export default function RoomDetail() {
   const { id } = useParams()
@@ -287,7 +287,7 @@ export default function RoomDetail() {
                     name='feature'
                     aria-disabled='true'
                     className='transform scale-150 accent-black pointer-events-none'
-                    defaultChecked={room.is_have_dining_table}
+                    defaultChecked={room.is_have_dinning_table}
                   />
                 </div>
                 <div className='flex justify-between my-[14px] min-w-[180px]'>

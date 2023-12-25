@@ -18,7 +18,7 @@ import {
 import { useQuery, keepPreviousData } from '@tanstack/react-query'
 import { getServicesCount, getNumberOfPeopleCount } from '../../api/countFilterOptions'
 import { PulseLoader } from 'react-spinners'
-export default function SidebarFilter() {
+export default function HostSidebarFilter() {
   const queryConfig = useQueryConfig()
 
   const [sliderPriceRight, setSliderPriceRight] = useState(
@@ -104,7 +104,7 @@ export default function SidebarFilter() {
       state: haveBed,
       setState: setHaveBed,
       queryKey: 'is_have_bed',
-      count: 0
+      count: 10
     },
     {
       id: 2,
@@ -112,7 +112,7 @@ export default function SidebarFilter() {
       state: haveWardrobe,
       setState: setHaveWardrobe,
       queryKey: 'is_have_wardrobe',
-      count: 0
+      count: 20
     },
     {
       id: 3,
@@ -120,7 +120,7 @@ export default function SidebarFilter() {
       state: haveDiningTable,
       setState: setHaveDiningTable,
       queryKey: 'is_have_dinning_table',
-      count: 0
+      count: 2
     },
     {
       id: 4,
@@ -128,7 +128,7 @@ export default function SidebarFilter() {
       state: haveRefrigerator,
       setState: setHaveRefrigerator,
       queryKey: 'is_have_refrigerator',
-      count: 0
+      count: 5
     },
     {
       id: 5,
@@ -136,7 +136,7 @@ export default function SidebarFilter() {
       state: haveTV,
       setState: setHaveTV,
       queryKey: 'is_have_television',
-      count: 0
+      count: 8
     },
     {
       id: 6,
@@ -144,7 +144,7 @@ export default function SidebarFilter() {
       state: haveKitchen,
       setState: setHaveKitchen,
       queryKey: 'is_have_kitchen',
-      count: 0
+      count: 6
     },
     {
       id: 7,
@@ -152,7 +152,7 @@ export default function SidebarFilter() {
       state: haveWashingMachine,
       setState: setHaveWashingMachine,
       queryKey: 'is_have_washing_machine',
-      count: 0
+      count: 9
     }
   ]
   const [currentNumOfPeople, setCurrentNumOfPeople] = useState(
@@ -163,32 +163,32 @@ export default function SidebarFilter() {
     {
       label: '1 người',
       value: 1,
-      count: 0
+      count: 2
     },
     {
       label: '2 người',
       value: 2,
-      count: 0
+      count: 2
     },
     {
       label: '3 người',
       value: 3,
-      count: 0
+      count: 4
     },
     {
       label: '4 người',
       value: 4,
-      count: 0
+      count: 8
     },
     {
       label: '5 người',
       value: 5,
-      count: 0
+      count: 9
     },
     {
       label: '>5 người',
       value: 6,
-      count: 0
+      count: 30
     }
   ]
   const keysInResponse = [
@@ -207,26 +207,26 @@ export default function SidebarFilter() {
     'six_people'
   ]
   const { setValueQuery } = useContext(AppContext)
-  const {
-    data: countData,
-    isSuccess,
-    isLoading
-  } = useQuery({
-    queryKey: ['count'],
-    queryFn: () => {
-      return Promise.all([getServicesCount(), getNumberOfPeopleCount()])
-    },
-    placeholderData: keepPreviousData
-  })
-  // console.log(countData)
-  if (isSuccess) {
-    checks.forEach((e, index) => {
-      e.count = countData[0].data[keysInResponse[index]]
-    })
-    numOfPeople.forEach((e, index) => {
-      e.count = countData[1].data[keysInResponse[index + checks.length]]
-    })
-  }
+  // const {
+  //   data: countData,
+  //   isSuccess,
+  //   isLoading
+  // } = useQuery({
+  //   queryKey: ['count'],
+  //   queryFn: () => {
+  //     return Promise.all([getServicesCount(), getNumberOfPeopleCount()])
+  //   },
+  //   placeholderData: keepPreviousData
+  // })
+  // // console.log(countData)
+  // if (isSuccess) {
+  //   checks.forEach((e, index) => {
+  //     e.count = countData[0].data[keysInResponse[index]]
+  //   })
+  //   numOfPeople.forEach((e, index) => {
+  //     e.count = countData[1].data[keysInResponse[index + checks.length]]
+  //   })
+  // }
   return (
     <>
       <div className='border-y-2 mt-[0.5rem]'>
@@ -276,7 +276,10 @@ export default function SidebarFilter() {
               backgroundColor: 'black',
               height: '1.25rem',
               width: '1.25rem',
-              opacity: enablePrice ? '100%' : '30%'
+              opacity: enablePrice ? '100%' : '30%',
+              active: {
+                outline: 'none'
+              }
             },
             rail: {
               backgroundColor: 'grey',
@@ -387,13 +390,13 @@ export default function SidebarFilter() {
                 />
                 <div className='font-andika'>{element.label}</div>
               </div>
-              {isLoading ? (
+              {/* {isLoading ? (
                 <div>
                   <PulseLoader speedMultiplier={0.7} size={5} color='#36d7b7' />
                 </div>
-              ) : (
-                <div className='opacity-50'>{element.count}</div>
-              )}
+              ) : ( */}
+              <div className='opacity-50'>{element.count}</div>
+              {/* )} */}
             </div>
           )
         })}
@@ -416,13 +419,13 @@ export default function SidebarFilter() {
                 />
                 <div className='font-andika'>{element.label}</div>
               </div>
-              {isLoading ? (
+              {/* {isLoading ? (
                 <div>
                   <PulseLoader speedMultiplier={0.7} size={5} color='#36d7b7' />
                 </div>
-              ) : (
-                <div className='opacity-50'>{element.count}</div>
-              )}
+              ) : ( */}
+              <div className='opacity-50'>{element.count}</div>
+              {/* )} */}
             </div>
           )
         })}

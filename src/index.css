@@ -6,7 +6,7 @@
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -35,6 +35,10 @@
 }
 .font-blooddrip {
   font-family: BloodDrip;
+}
+.font-inter-400 {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
 }
 .font-inter-700 {
   font-family: 'Inter', sans-serif;

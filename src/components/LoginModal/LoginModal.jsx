@@ -8,7 +8,7 @@ import { schemaLogin } from '../../utils/rules'
 import { loginAccount } from '../../api/auth.api'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
-import { getInfoFromLS } from '../../utils/auth'
+import { getInfoFromLS, saveAccessTokenToLS } from '../../utils/auth'
 import { isAxiosUnprocessableEntityError } from '../../utils/utils'
 export default function LoginModal({ closeModalLogin }) {
   const { setIsAuthenticated, setInfo, isAuthenticated } = useContext(AppContext)
@@ -34,6 +34,7 @@ export default function LoginModal({ closeModalLogin }) {
         console.log(data?.data.data.user.roles)
         toast.success('Đăng nhập thành công !') //。(20)
         setInfo(getInfoFromLS())
+        saveAccessTokenToLS(data?.data.data.accessToken)
         setIsAuthenticated(true)
         if (data?.data.data.user.roles === 2) {
           navigate('/admin/dashboard')

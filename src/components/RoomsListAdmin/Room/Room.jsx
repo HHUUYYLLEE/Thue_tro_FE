@@ -24,7 +24,7 @@ export default function Room({ room, refetch }) {
     if (room.is_high_security) count++
     if (room.is_have_bed) count++
     if (room.is_have_wardrobe) count++
-    if (room.is_have_dining_table) count++
+    if (room.is_have_dinning_table) count++
     if (room.is_have_refrigerator) count++
     if (room.is_have_television) count++
     if (room.is_have_kitchen) count++
@@ -93,6 +93,7 @@ export default function Room({ room, refetch }) {
               </div>
               <div className='font-montserrat-700 text-sm mt-1'>{'Diện tích: ' + room.area + 'm2'}</div>
               <div className='flex mt-[1.2rem]'>
+                React/Thue_tro_FE/src/components/SidebarFilter
                 <IoMdCafe />
                 <div className='ml-[0.4rem] font-montserrat-700'>{numOfFeatures()}</div>
                 <div className='ml-[0.4rem] font-montserrat-500'>Tiện ích</div>
@@ -100,11 +101,11 @@ export default function Room({ room, refetch }) {
             </div>
           </div>
           <div className='mt-[1.5rem] mr-[2vw]'>
-            <div className='text-[#353535] font-poppins-700 text-4xl'>{displayNum(room.price) + '/tháng'}</div>
+            <div className='text-[#353535] font-poppins-700 text-4xl'>{displayNum(room.price) + 'VNĐ/tháng'}</div>
             <div className='flex justify-end font-poppins-500 text-[#112211]'>excl. tax</div>
             <div className='flex justify-end mt-[1vh]'>
               <Link to={`/room/${room._id}`}>
-                <button className='font-medium hover:bg-blue-500 bg-[#4318FF] px-[2rem] py-[0.5rem] rounded-md text-white'>
+                <button className='font-poppins-600 hover:bg-blue-500 bg-[#4318FF] px-[2rem] py-[0.5rem] rounded-md text-white'>
                   Xem phòng
                 </button>
               </Link>

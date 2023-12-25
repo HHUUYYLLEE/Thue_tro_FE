@@ -7,7 +7,7 @@ import Error404NotFound from './pages/Error404NotFound/Error404NotFound'
 import RoomProfile from './pages/RoomProfile'
 import AdminLayout from './layouts/AdminLayout'
 import AdminDashboard from './pages/AdminDashboard'
-
+import HostHome from './pages/HostHome'
 export default function useRouteElement() {
   const routeElement = useRoutes([
     {
@@ -16,6 +16,15 @@ export default function useRouteElement() {
       element: (
         <MainLayout>
           <Home />
+        </MainLayout>
+      )
+    },
+    {
+      path: '/host',
+      index: true,
+      element: (
+        <MainLayout>
+          <HostHome />
         </MainLayout>
       )
     },
