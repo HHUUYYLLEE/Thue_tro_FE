@@ -12,9 +12,15 @@ import { useContext } from 'react'
 import { AppContext } from './contexts/app.context'
 
 // eslint-disable-next-line react-refresh/only-export-components
-function RoleProtectedRouter() {
+function AdminProtectedRouter() {
   const { info } = useContext(AppContext)
-  const check = Boolean(info.roles === 2)
+  const check = Boolean(info?.roles === 2)
+  return check ? <Outlet /> : <Navigate to='/' />
+}
+// eslint-disable-next-line react-refresh/only-export-components
+function HostProtectedRouter() {
+  const { info } = useContext(AppContext)
+  const check = Boolean(info?.roles === 1)
   return check ? <Outlet /> : <Navigate to='/' />
 }
 
@@ -30,17 +36,23 @@ export default function useRouteElement() {
       )
     },
     {
-      path: '/host',
-      index: true,
-      element: (
-        <MainLayout>
-          <HostHome />
-        </MainLayout>
-      )
+      path: '',
+      element: <HostProtectedRouter />,
+      children: [
+        {
+          path: '/host',
+          index: true,
+          element: (
+            <MainLayout>
+              <HostHome />
+            </MainLayout>
+          )
+        }
+      ]
     },
     {
       path: '',
-      element: <RoleProtectedRouter />,
+      element: <AdminProtectedRouter />,
       children: [
         {
           path: '/admin/dashboard',

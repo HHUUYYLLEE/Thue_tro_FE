@@ -16,7 +16,7 @@ export default function Room({ room, refetch }) {
     }
   })
 
-  const [modal, toggleModal] = useState(false)
+  const [modal, toggleModal] = useState(0)
   let numOfFeatures = () => {
     let count = 0
     if (room.is_have_parking_lot) count++
@@ -54,12 +54,14 @@ export default function Room({ room, refetch }) {
     mutation.mutate(checkData, {
       onSuccess: (data) => {
         if (data.data.message === 'Room is checked') {
-          toast.success('Xác minh thành công')
+          if (modal == 1) toast.success('Xác minh thành công')
+          else toast.success('Huỷ xác minh thành công')
           refetch()
-          toggleModal(false)
+          toggleModal(0)
         } else {
-          toast.error('Xác minh thất bại')
-          toggleModal(false)
+          if (modal == 1) toast.error('Xác minh thất bại')
+          else toast.error('Huỷ xác minh thất bại')
+          toggleModal(0)
         }
       }
     })
@@ -93,7 +95,6 @@ export default function Room({ room, refetch }) {
               </div>
               <div className='font-montserrat-700 text-sm mt-1'>{'Diện tích: ' + room.area + 'm2'}</div>
               <div className='flex mt-[1.2rem]'>
-                React/Thue_tro_FE/src/components/SidebarFilter
                 <IoMdCafe />
                 <div className='ml-[0.4rem] font-montserrat-700'>{numOfFeatures()}</div>
                 <div className='ml-[0.4rem] font-montserrat-500'>Tiện ích</div>
@@ -175,10 +176,13 @@ export default function Room({ room, refetch }) {
             )}
           </div>
           {room?.is_checked_information ? (
-            <button className='group bg-[#5C5C5C] inline-flex justify-center text-white font-poppins-600 hover:text-[#5C5C5C] py-2 rounded w-[10vw] pointer-events-none'>
+            <button
+              onClick={() => toggleModal(2)}
+              className='group bg-[#5C5C5C] inline-flex justify-center text-white font-poppins-600 py-2 rounded w-[10vw]'
+            >
               Đã xác minh
               <svg
-                className='text-white group-hover:text-[#5C5C5C] mt-1 ml-2'
+                className='text-white mt-1 ml-2'
                 viewBox='0 0 1024 1024'
                 fill='currentColor'
                 height='1em'
@@ -189,7 +193,7 @@ export default function Room({ room, refetch }) {
             </button>
           ) : (
             <button
-              onClick={() => toggleModal(true)}
+              onClick={() => toggleModal(1)}
               className='bg-[#20AD2E] hover:bg-green-900 text-white font-poppins-600  py-2 px-4 rounded w-[10vw]'
             >
               Xác minh
@@ -222,9 +226,9 @@ export default function Room({ room, refetch }) {
             borderRadius: '1rem'
           }
         }}
-        isOpen={modal}
+        isOpen={modal === 1}
         onRequestClose={() => {
-          if (!mutation.isPending) toggleModal(false)
+          if (!mutation.isPending) toggleModal(0)
         }}
       >
         {mutation.isPending ? (
@@ -251,7 +255,70 @@ export default function Room({ room, refetch }) {
                 Xác minh
               </button>
               <button
-                onClick={() => toggleModal(false)}
+                onClick={() => toggleModal(0)}
+                className='w-[10vw] h-[8vh] flex justify-center items-center bg-[#DD1A1A] hover:bg-red-900 text-white font-inter-700 rounded-lg text-xl'
+              >
+                Huỷ
+              </button>
+            </div>
+          </>
+        )}
+      </Modal>
+      <Modal
+        style={{
+          overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.9)'
+          },
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            paddingLeft: '3vw',
+            paddingRight: '3vw',
+            paddingTop: '2vw',
+            paddingBottom: '4vw',
+            borderWidth: '0px',
+            borderRadius: '1rem'
+          }
+        }}
+        isOpen={modal === 2}
+        onRequestClose={() => {
+          if (!mutation.isPending) toggleModal(0)
+        }}
+      >
+        {mutation.isPending ? (
+          <>
+            <div className='text-[#4FA94D] font-dmsans-700 mb-[5vh] text-3xl'>Đang gửi yêu cầu huỷ xác minh...</div>
+            <TailSpin
+              height='200'
+              width='200'
+              color='#4fa94d'
+              ariaLabel='tail-spin-loading'
+              radius='5'
+              visible={true}
+              wrapperStyle={{ display: 'flex', 'justify-content': 'center' }}
+            />
+          </>
+        ) : (
+          <>
+            <div className='font-inter-700 text-4xl'>Huỷ xác minh phòng trọ?</div>
+            <div className='mt-[8vh] flex justify-between'>
+              <button
+                onClick={() => updateRoomCheck({ _id: room?._id, is_checked_information: false })}
+                className='w-[10vw] h-[8vh] flex justify-center items-center bg-[#0366FF] hover:bg-green-700 text-white font-inter-700 rounded-lg text-xl'
+              >
+                Huỷ xác minh
+              </button>
+              <button
+                onClick={() => toggleModal(0)}
                 className='w-[10vw] h-[8vh] flex justify-center items-center bg-[#DD1A1A] hover:bg-red-900 text-white font-inter-700 rounded-lg text-xl'
               >
                 Huỷ
