@@ -54,7 +54,7 @@ export default function HostRoomsList() {
   const loadingMore = () => {
     // console.log('loading more')
     navigate({
-      pathname: '/',
+      pathname: '/host',
       search: createSearchParams({
         ...queryConfig,
         limit: parseInt(queryConfig.limit) + 4
