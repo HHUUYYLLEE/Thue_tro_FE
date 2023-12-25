@@ -49,7 +49,7 @@ instance.interceptors.response.use(
       console.log(response.data)
       accessToken = ''
       clearAccessTokenFromLS()
-      toast('Đăng xuất thành công')
+      toast.success('Đăng xuất thành công')
     }
     return response
   },

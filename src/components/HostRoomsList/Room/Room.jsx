@@ -234,7 +234,10 @@ export default function Room({ room }) {
           <div className='flex justify-end mt-[1vh]'>
             <div className='flex justify-between gap-7'>
               <button
-                onClick={() => toggleModalEdit(true)}
+                onClick={() => {
+                  toggleModalEdit(true)
+                  window.scrollTo(0, document.body.scrollHeight * 0.36)
+                }}
                 className='flex justify-center items-center gap-3 font-poppins-600 hover:bg-blue-500 bg-[#01B7F2] px-[0.5rem] py-[0.7rem] rounded-md text-white'
               >
                 <div>Sửa</div>

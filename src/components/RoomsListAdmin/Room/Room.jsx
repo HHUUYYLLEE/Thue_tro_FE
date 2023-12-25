@@ -54,11 +54,11 @@ export default function Room({ room, refetch }) {
     mutation.mutate(checkData, {
       onSuccess: (data) => {
         if (data.data.message === 'Room is checked') {
-          toast('Xác minh thành công')
+          toast.success('Xác minh thành công')
           refetch()
           toggleModal(false)
         } else {
-          toast('Xác minh thất bại')
+          toast.error('Xác minh thất bại')
           toggleModal(false)
         }
       }

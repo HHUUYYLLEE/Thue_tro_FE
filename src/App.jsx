@@ -19,11 +19,9 @@ function App() {
       <ToastContainer
         toastClassName={({ type }) =>
           contextClass[type || 'default'] +
-          ' relative flex p-3 border font-gray-300 min-h-[15vh] rounded-md justify-between overflow-hidden cursor-pointer'
+          ' w-[30rem] relative flex p-3 border font-gray-300 min-h-[15vh] rounded-md justify-between overflow-hidden cursor-pointer'
         }
-        bodyClassName={() =>
-          'text-2xl rainbow-text animate-rainbowtext font-white font-medium flex justify-center items-center p-3'
-        }
+        bodyClassName={() => 'text-2xl rainbow-text animate-rainbowtext font-medium flex justify-center items-center'}
         position='bottom-right'
         autoClose={4000}
       />
