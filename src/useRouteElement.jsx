@@ -1,4 +1,4 @@
-import { useRoutes } from 'react-router-dom'
+import { Navigate, Outlet, useRoutes } from 'react-router-dom'
 import MainLayout from './layouts/MainLayout'
 
 import Home from './pages/Home'
@@ -8,6 +8,16 @@ import RoomProfile from './pages/RoomProfile'
 import AdminLayout from './layouts/AdminLayout'
 import AdminDashboard from './pages/AdminDashboard'
 import HostHome from './pages/HostHome'
+import { useContext } from 'react'
+import { AppContext } from './contexts/app.context'
+
+// eslint-disable-next-line react-refresh/only-export-components
+function RoleProtectedRouter() {
+  const { info } = useContext(AppContext)
+  const check = Boolean(info.roles === 2)
+  return check ? <Outlet /> : <Navigate to='/' />
+}
+
 export default function useRouteElement() {
   const routeElement = useRoutes([
     {
@@ -29,6 +39,21 @@ export default function useRouteElement() {
       )
     },
     {
+      path: '',
+      element: <RoleProtectedRouter />,
+      children: [
+        {
+          path: '/admin/dashboard',
+          index: true,
+          element: (
+            <AdminLayout>
+              <AdminDashboard />
+            </AdminLayout>
+          )
+        }
+      ]
+    },
+    {
       path: '/room/:id',
       index: true,
       element: (
@@ -37,15 +62,7 @@ export default function useRouteElement() {
         </MainLayout>
       )
     },
-    {
-      path: '/admin/dashboard',
-      index: true,
-      element: (
-        <AdminLayout>
-          <AdminDashboard />
-        </AdminLayout>
-      )
-    },
+
     {
       path: 'bejeweled',
       element: (

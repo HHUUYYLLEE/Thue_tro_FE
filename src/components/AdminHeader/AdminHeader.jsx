@@ -7,7 +7,10 @@ import { omit } from 'lodash'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import useQueryConfig from '../../hooks/useQueryConfig'
 import { Link } from 'react-router-dom'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
+import { useMutation } from '@tanstack/react-query'
+import { logoutAccount } from '../../api/auth.api'
+import { AppContext } from '../../contexts/app.context'
 
 export default function AdminHeader() {
   const { register, handleSubmit } = useForm({})
@@ -48,6 +51,21 @@ export default function AdminHeader() {
       ).toString()
     })
   })
+
+  const { isAuthenticated, setIsAuthenticated, info, setInfo } = useContext(AppContext)
+
+  const logoutMutation = useMutation({
+    mutationFn: logoutAccount,
+    onSuccess: () => {
+      setIsAuthenticated(false)
+      setInfo(null)
+    }
+  })
+
+  const handleLogout = () => {
+    logoutMutation.mutate()
+    navigate('/')
+  }
 
   const [isOpen, setIsOpen] = useState(false)
   const refDropDown = useRef()
@@ -120,10 +138,11 @@ export default function AdminHeader() {
           {isOpen && (
             <div className='absolute left-auto right-0 z-10 mt-4 w-[10vw] rounded-lg shadow-lg border-[1px] border-black focus:outline-none bg-white'>
               <div className='py-1 divide-y-[1px] divide-gray-400'>
-                <button className='inline-flex w-full justify-center px-4 py-3 text-lg -mt-0.5'>
-                  Tài khoản
-                </button>
-                <button className='inline-flex w-full justify-center text-red-600 px-4 py-3 text-lg mt-0.5'>
+                <button className='inline-flex w-full justify-center px-4 py-3 text-lg -mt-0.5'>Tài khoản</button>
+                <button
+                  onClick={handleLogout}
+                  className='inline-flex w-full justify-center text-red-600 px-4 py-3 text-lg mt-0.5'
+                >
                   Đăng xuất
                 </button>
               </div>
