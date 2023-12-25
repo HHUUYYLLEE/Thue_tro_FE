@@ -5,7 +5,7 @@ import { FaRegCheckSquare } from 'react-icons/fa'
 import { displayNum } from '../../../utils/utils'
 import { Link } from 'react-router-dom'
 export default function Room({ room }) {
-  let numOfFeatures = () => {
+  const numOfFeatures = () => {
     let count = 0
     if (room.is_have_parking_lot) count++
     if (room.is_new) count++
