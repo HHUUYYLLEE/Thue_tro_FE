@@ -34,7 +34,6 @@ export default function Header() {
     onSuccess: () => {
       setIsAuthenticated(false)
       setInfo(null)
-      window.location.reload()
     }
   })
 

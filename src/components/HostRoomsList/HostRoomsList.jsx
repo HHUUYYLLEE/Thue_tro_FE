@@ -37,12 +37,12 @@ export default function HostRoomsList() {
   // console.log(queryConfig)
 
   const { status, data, isLoading, refetch } = useQuery({
-    queryKey: ['rooms', queryConfig],
+    queryKey: ['roomsHost', queryConfig],
     queryFn: () => {
       return getAllRoomsHost(queryConfig)
-    },
-    placeholderData: keepPreviousData,
-    staleTime: 1000 * 60 * 5
+    }
+    // placeholderData: keepPreviousData,
+    // staleTime: 1000 * 60 * 5
   })
 
   const dataRooms = data?.data?.rooms
