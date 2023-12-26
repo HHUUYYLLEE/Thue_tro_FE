@@ -40,7 +40,7 @@ export default function RoomsList() {
   const { status, data, isLoading, refetch } = useQuery({
     queryKey: ['rooms', queryConfig],
     queryFn: () => {
-      return getAllRooms(queryConfig, null)
+      return getAllRooms(queryConfig)
     },
     placeholderData: keepPreviousData,
     staleTime: 1000 * 60 * 5

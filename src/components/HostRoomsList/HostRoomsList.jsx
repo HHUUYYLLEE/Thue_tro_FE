@@ -1,5 +1,5 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
-import { getAllRooms } from '../../api/rooms.api'
+import { getAllRoomsHost } from '../../api/rooms.api'
 import Room from './Room'
 import useQueryConfig from '../../hooks/useQueryConfig'
 import { useContext, useEffect, useRef, useState } from 'react'
@@ -7,7 +7,6 @@ import { AiOutlineDown } from 'react-icons/ai'
 import { createSearchParams, useNavigate } from 'react-router-dom'
 import Loading from './Loading'
 import { AppContext } from '../../contexts/app.context'
-import { getAccessTokenFromLS } from '../../utils/auth'
 import Modal from 'react-modal'
 export default function HostRoomsList() {
   const queryConfig = useQueryConfig()
@@ -40,7 +39,7 @@ export default function HostRoomsList() {
   const { status, data, isLoading } = useQuery({
     queryKey: ['rooms', queryConfig],
     queryFn: () => {
-      return getAllRooms(queryConfig, getAccessTokenFromLS())
+      return getAllRoomsHost(queryConfig)
     },
     placeholderData: keepPreviousData,
     staleTime: 1000 * 60 * 5

@@ -52,7 +52,7 @@ export default function ModalEdit({ room, toggle, checked }) {
       state: haveWashingMachine,
       setState: setHaveWashingMachine,
       queryKey: 'is_have_washing_machine',
-      icon: <LiaSwimmingPoolSolid className='w-[1/5rem] h-[1.5rem]' />
+      icon: <LiaSwimmingPoolSolid className='w-[22px] h-[22px]' />
     },
     {
       id: 2,
@@ -60,7 +60,7 @@ export default function ModalEdit({ room, toggle, checked }) {
       state: haveKitchen,
       setState: setHaveKitchen,
       queryKey: 'is_have_kitchen',
-      icon: <MdOutlineRestaurant className='w-[1/5rem] h-[1.5rem]' />
+      icon: <MdOutlineRestaurant className='w-[22px] h-[22px]' />
     },
     {
       id: 3,
@@ -68,7 +68,7 @@ export default function ModalEdit({ room, toggle, checked }) {
       state: haveDiningTable,
       setState: setHaveDiningTable,
       queryKey: 'is_have_dinning_table',
-      icon: <MdRoomService className='w-[1/5rem] h-[1.5rem]' />
+      icon: <MdRoomService className='w-[22px] h-[22px]' />
     },
     {
       id: 4,

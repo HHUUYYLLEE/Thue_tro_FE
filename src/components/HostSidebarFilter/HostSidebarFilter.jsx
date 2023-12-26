@@ -293,6 +293,7 @@ export default function HostSidebarFilter() {
       <div className='border-y-2 pb-[1.5rem]'>
         <div className='flex justify-between my-[0.5rem]'>
           <div className='text-lg font-andika'>Diện tích</div>
+
           <Switch
             name='switch'
             onChange={(value) => {
