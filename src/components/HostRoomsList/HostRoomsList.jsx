@@ -36,7 +36,7 @@ export default function HostRoomsList() {
 
   // console.log(queryConfig)
 
-  const { status, data, isLoading } = useQuery({
+  const { status, data, isLoading, refetch } = useQuery({
     queryKey: ['rooms', queryConfig],
     queryFn: () => {
       return getAllRoomsHost(queryConfig)
@@ -119,7 +119,7 @@ export default function HostRoomsList() {
       </div>
       {dataRooms &&
         dataRooms?.map((room) => {
-          return <Room key={room.id} room={room} />
+          return <Room key={room.id} room={room} refetch={refetch} />
         })}
       {enableLoadingMore && (
         <button

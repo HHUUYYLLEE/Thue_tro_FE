@@ -11,8 +11,8 @@ import { useState } from 'react'
 
 import ModalEdit from './ModalEdit'
 import ModalDelete from './ModalDelete'
-export default function Room({ room }) {
-  const [modalEdit, toggleModalEdit] = useState(false)
+export default function Room({ room, refetch }) {
+  const [modalEdit, toggleModalEdit] = useState(0)
   const [modalDelete, toggleModalDelete] = useState(false)
 
   const numOfFeatures = () => {
@@ -79,7 +79,7 @@ export default function Room({ room }) {
             <div className='flex justify-between gap-7'>
               <button
                 onClick={() => {
-                  toggleModalEdit(true)
+                  toggleModalEdit(1)
                   window.scrollTo(0, document.body.scrollHeight * 0.36)
                 }}
                 className='flex justify-center items-center gap-3 font-poppins-600 hover:bg-blue-500 bg-[#01B7F2] px-[0.5rem] py-[0.7rem] rounded-md text-white'
@@ -99,9 +99,9 @@ export default function Room({ room }) {
         </div>
       </div>
 
-      <ModalEdit room={room} toggle={toggleModalEdit} checked={modalEdit} />
+      <ModalEdit room={room} toggle={toggleModalEdit} checked={modalEdit} refetch={refetch} />
 
-      <ModalDelete id={room._id} toggle={toggleModalDelete} checked={modalDelete} />
+      <ModalDelete id={room._id} toggle={toggleModalDelete} checked={modalDelete} refetch={refetch} />
     </>
   )
 }

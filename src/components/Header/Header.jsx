@@ -34,6 +34,7 @@ export default function Header() {
     onSuccess: () => {
       setIsAuthenticated(false)
       setInfo(null)
+      window.location.reload()
     }
   })
 
@@ -197,7 +198,10 @@ export default function Header() {
             </NavLink>
           </div>
         </div>
-        <div className={`relative mr-20 cursor-pointer font-poppins-600 ${!isAuthenticated && 'invisible'}`} ref={refDropDown}>
+        <div
+          className={`relative mr-20 cursor-pointer font-poppins-600 ${!isAuthenticated && 'invisible'}`}
+          ref={refDropDown}
+        >
           <div onClick={toggleMenu} className='flex items-center gap-2'>
             <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center'>
               <img src={Pepega} alt='' className='w-[2rem] h-[2rem]' />

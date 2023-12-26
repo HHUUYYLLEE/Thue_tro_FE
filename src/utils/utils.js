@@ -18,21 +18,13 @@ export function getAges(dateOB) {
 }
 
 export function displayNum(num) {
-  return num.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
+  return num
+    .toString()
+    .replace(/\D/g, '')
+    .replace(/^0+(\d)/, '$1')
+    .replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, '.')
 }
 
 export function convertDate(date) {
   return date.substring(0, 10).replaceAll('-', '/')
-}
-
-export function count(object) {
-  let count = 0
-  for (let key in object) {
-    if (object.hasOwnProperty(key) && key !== 'housemaid' && key !== 'babysister') {
-      if (object[key] === true) {
-        count++
-      }
-    }
-  }
-  return count
 }

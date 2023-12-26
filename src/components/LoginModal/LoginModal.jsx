@@ -20,6 +20,7 @@ export default function LoginModal({ closeModalLogin }) {
     setError,
     formState: { errors }
   } = useForm({
+    mode: 'all',
     resolver: yupResolver(schemaLogin)
   })
 
@@ -38,6 +39,7 @@ export default function LoginModal({ closeModalLogin }) {
         switch (data?.data.data.user.roles) {
           case 1:
             navigate('/host')
+            window.location.reload()
             break
           case 2:
             navigate('/admin/dashboard')

@@ -12,5 +12,8 @@ export const schemaLogin = yup.object({
 export const schemaEditRoom = yup.object({
   name: yup.string().required('Bắt buộc'),
   describe: yup.string().required('Bắt buộc'),
-  number_or_people: yup.number('Không phải số đúng').positive('Không phải số đúng').required('Bắt buộc')
+  number_or_people: yup.string().required('Bắt buộc'),
+  area: yup.string().required('Bắt buộc'),
+  price: yup.string().required('Bắt buộc'),
+  address: yup.string().required('Bắt buộc')
 })
