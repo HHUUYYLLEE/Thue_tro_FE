@@ -47,7 +47,7 @@ export default function ModalEdit({ room, toggle, checked, refetch }) {
         toggle(0)
       },
       onError: () => {
-        toast.success('Chỉnh sửa thất bại!')
+        toast.error('Chỉnh sửa thất bại!')
         toggle(0)
       }
     })
