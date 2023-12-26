@@ -8,3 +8,9 @@ export const schemaLogin = yup.object({
     .min(5, 'Độ dài từ 6 - 160 ký tự')
     .max(160, 'Độ dài từ 6 - 160 ký tự')
 })
+
+export const schemaEditRoom = yup.object({
+  name: yup.string().required('Bắt buộc'),
+  describe: yup.string().required('Bắt buộc'),
+  number_or_people: yup.number('Không phải số đúng').positive('Không phải số đúng').required('Bắt buộc')
+})
