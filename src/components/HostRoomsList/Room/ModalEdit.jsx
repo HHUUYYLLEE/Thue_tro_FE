@@ -151,7 +151,7 @@ export default function ModalEdit({ room, toggle, checked, refetch }) {
             paddingLeft: '0px',
             borderWidth: '0px',
             borderRadius: '0.5rem',
-            zIndex: '99'
+            zIndex: '1000'
           }
         }}
         isOpen={checked === 1}
