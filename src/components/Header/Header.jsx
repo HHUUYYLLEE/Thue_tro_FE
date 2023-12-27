@@ -116,9 +116,9 @@ export default function Header() {
             </NavLink>
           )
         })} */}
-          <NavLink
+          <Link
             onClick={() => this.forceUpdate}
-            to={{ 0: '/', 1: '/host', 2: '/host' }[info?.roles]}
+            to={{ undefined: '/', 0: '/', 1: '/host', 2: '/host' }[info?.roles]}
             className={`group text-lg transition duration-300 ${
               path.pathname.includes('/room') ? 'text-black' : 'text-white'
             } ${isAuthenticated && 'ml-28'}`}
@@ -133,7 +133,7 @@ export default function Header() {
                 path.pathname.includes('/room') ? 'bg-black' : 'bg-white'
               }`}
             />
-          </NavLink>
+          </Link>
           {/* <div
             onClick={openModalLogin}
             className={`group cursor-pointer text-lg transition duration-300 ${
