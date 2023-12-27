@@ -126,7 +126,7 @@ export default function Header() {
             Trang chủ
             <span
               className={`${
-                path.pathname === '/' || path.pathname.includes('/host')
+                path.pathname === '/' || path.pathname === '/host'
                   ? 'max-w-[80%]'
                   : 'max-w-0 group-hover:max-w-[80%] transition-all duration-500'
               } block rounded-xl mt-[0.5vh] h-[0.1rem] mx-auto ${
