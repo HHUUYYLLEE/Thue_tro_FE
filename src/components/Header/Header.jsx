@@ -5,6 +5,9 @@ import { AppContext } from '../../contexts/app.context'
 import { useEffect, useRef, useState, useContext } from 'react'
 import { logoutAccount } from '../../api/auth.api'
 import { useMutation } from '@tanstack/react-query'
+import Modal from 'react-modal'
+import { TailSpin } from 'react-loader-spinner'
+
 // const headerItems = [
 //   { id: 1, name: 'Trang chủ', path: '/' },
 //   { id: 2, name: 'Đăng nhập', path: '/login' },
@@ -14,6 +17,7 @@ import { useMutation } from '@tanstack/react-query'
 export default function Header() {
   const [header, setHeader] = useState(false)
   const [modalLogin, setModalLogin] = useState(false)
+  const [logoutModal, setLogoutModal] = useState(false)
   const { isAuthenticated, setIsAuthenticated, info, setInfo } = useContext(AppContext)
 
   const openModalLogin = () => {
@@ -34,6 +38,10 @@ export default function Header() {
     onSuccess: () => {
       setIsAuthenticated(false)
       setInfo(null)
+      setLogoutModal(false)
+    },
+    onError: () => {
+      setLogoutModal(false)
     }
   })
 
@@ -214,7 +222,10 @@ export default function Header() {
               <div className='py-1 divide-y-[1px] divide-gray-400'>
                 <button className='inline-flex w-full justify-center px-4 py-3 text-lg -mt-0.5'>Tài khoản</button>
                 <button
-                  onClick={handleLogout}
+                  onClick={() => {
+                    setIsOpen(false)
+                    setLogoutModal(true)
+                  }}
                   className='inline-flex w-full justify-center text-red-600 px-4 py-3 text-lg mt-0.5'
                 >
                   Đăng xuất
@@ -225,6 +236,67 @@ export default function Header() {
         </div>
       </header>
       {modalLogin && <LoginModal closeModalLogin={closeModalLogin} />}
+      <Modal
+        style={{
+          overlay: {
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            backgroundColor: 'rgba(0, 0, 0, 0.9)'
+          },
+          content: {
+            top: '50%',
+            left: '50%',
+            right: 'auto',
+            bottom: 'auto',
+            marginRight: '-50%',
+            transform: 'translate(-50%, -50%)',
+            paddingLeft: '3vw',
+            paddingRight: '3vw',
+            paddingTop: '2vw',
+            paddingBottom: '4vw',
+            borderWidth: '0px',
+            borderRadius: '1rem'
+          }
+        }}
+        isOpen={logoutModal}
+        onRequestClose={() => setLogoutModal(false)}
+      >
+        {logoutMutation.isPending ? (
+          <>
+            <div className='text-[#4FA94D] font-dmsans-700 mb-[5vh] text-3xl'>Đang đăng xuất...</div>
+            <TailSpin
+              height='200'
+              width='200'
+              color='#4fa94d'
+              ariaLabel='tail-spin-loading'
+              radius='5'
+              visible={true}
+              wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
+            />
+          </>
+        ) : (
+          <>
+            <div className='font-inter-700 text-4xl'>Bạn có muốn đăng xuất?</div>
+            <div className='mt-[8vh] flex justify-between'>
+              <button
+                onClick={handleLogout}
+                className='w-[10vw] h-[8vh] flex justify-center items-center bg-[#0366FF] hover:bg-green-700 text-white font-inter-700 rounded-lg text-xl'
+              >
+                Đăng xuất
+              </button>
+              <button
+                onClick={() => setLogoutModal(false)}
+                className='w-[10vw] h-[8vh] flex justify-center items-center bg-[#DD1A1A] hover:bg-red-900 text-white font-inter-700 rounded-lg text-xl'
+              >
+                Huỷ
+              </button>
+            </div>
+          </>
+        )}
+      </Modal>
     </>
   )
 }
