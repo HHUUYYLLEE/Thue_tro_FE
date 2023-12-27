@@ -77,7 +77,7 @@ export default function Header() {
   return (
     <>
       <header
-        className={` fixed flex top-0 w-full h-20 backdrop-filter shadow-lg justify-between items-center transition duration-300 z-[990] ${
+        className={` fixed flex top-0 w-full h-20 backdrop-filter shadow-lg justify-between items-center transition duration-300 z-[20] ${
           path.pathname.includes('/room') === true
             ? 'bg-white'
             : `${header === true ? 'bg-slate-900/70' : 'bg-transparent'}`
