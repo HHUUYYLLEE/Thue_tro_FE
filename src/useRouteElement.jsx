@@ -11,6 +11,7 @@ import AdminDashboard from './pages/AdminDashboard'
 import HostHome from './pages/HostHome'
 import { useContext } from 'react'
 import { AppContext } from './contexts/app.context'
+import FlashGame from './pages/FlashGame/FlashGame'
 
 // eslint-disable-next-line react-refresh/only-export-components
 function AdminProtectedRouter() {
@@ -90,6 +91,14 @@ export default function useRouteElement() {
       element: (
         // <MainLayout>
         <Bejeweled />
+        // </MainLayout>
+      )
+    },
+    {
+      path: 'flashgame',
+      element: (
+        // <MainLayout>
+        <FlashGame />
         // </MainLayout>
       )
     },
