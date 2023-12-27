@@ -2,7 +2,7 @@
 @import '../node_modules/slick-carousel/slick/slick-theme.css';
 @import url('https://fonts.googleapis.com/css2?family=Andika&family=Lato&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@500;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=ABeeZee:ital@1&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,500;9..40,700&display=swap');
@@ -62,6 +62,10 @@
 .font-montserrat-500 {
   font-family: 'Montserrat', sans-serif;
   font-weight: 500;
+}
+.font-poppins-400 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
 }
 .font-poppins-500 {
   font-family: 'Poppins', sans-serif;

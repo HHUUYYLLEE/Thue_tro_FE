@@ -1,4 +1,4 @@
-import { keepPreviousData, useQuery } from '@tanstack/react-query'
+import { useQuery } from '@tanstack/react-query'
 import { getAllRoomsHost } from '../../api/rooms.api'
 import Room from './Room'
 import useQueryConfig from '../../hooks/useQueryConfig'

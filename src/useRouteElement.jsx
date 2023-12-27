@@ -5,6 +5,7 @@ import Home from './pages/Home'
 import Bejeweled from './pages/Bejeweled'
 import Error404NotFound from './pages/Error404NotFound/Error404NotFound'
 import RoomProfile from './pages/RoomProfile'
+import HostRoomProfile from './pages/HostRoomProfile'
 import AdminLayout from './layouts/AdminLayout'
 import AdminDashboard from './pages/AdminDashboard'
 import HostHome from './pages/HostHome'
@@ -39,6 +40,15 @@ export default function useRouteElement() {
       path: '',
       element: <HostProtectedRouter />,
       children: [
+        {
+          path: '/host/room/:id',
+          index: true,
+          element: (
+            <MainLayout>
+              <HostRoomProfile />
+            </MainLayout>
+          )
+        },
         {
           path: '/host',
           index: true,

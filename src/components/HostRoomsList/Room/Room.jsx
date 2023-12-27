@@ -34,7 +34,7 @@ export default function Room({ room, refetch }) {
       <div className='flex justify-between items-center my-[1rem] border-2 rounded-md'>
         <div className='flex'>
           <div className='max-w-[16vw] min-w-[16vw] w-[100%] overflow-hidden max-h-[22vh] min-h-[22vh]'>
-            <Link to={`/room/${room._id}`}>
+            <Link to={`/host/room/${room._id}`}>
               <img
                 onMouseLeave={(e) => {
                   let randomIndex = Math.floor(Math.random() * 5)
@@ -49,7 +49,7 @@ export default function Room({ room, refetch }) {
             </Link>
           </div>
           <div className='ml-[1rem] flex-col flex justify-center max-h-[12rem]'>
-            <Link to={`/room/${room._id}`}>
+            <Link to={`/host/room/${room._id}`}>
               <div className='font-bold cursor-pointer font-lato text-2xl max-w-[16vw] line-clamp-1'>{room.name}</div>
             </Link>
             <div className='flex text-1xl text-[#01B7F2]'>
