@@ -118,7 +118,7 @@ export default function Header() {
         })} */}
           <NavLink
             onClick={() => this.forceUpdate}
-            to='/'
+            to={{ 0: '/', 1: '/host', 2: '/host' }[info?.roles]}
             className={`group text-lg transition duration-300 ${
               path.pathname.includes('/room') ? 'text-black' : 'text-white'
             } ${isAuthenticated && 'ml-28'}`}
@@ -126,7 +126,9 @@ export default function Header() {
             Trang chủ
             <span
               className={`${
-                path.pathname === '/' ? 'max-w-[80%]' : 'max-w-0 group-hover:max-w-[80%] transition-all duration-500'
+                path.pathname === '/' || path.pathname.includes('/host')
+                  ? 'max-w-[80%]'
+                  : 'max-w-0 group-hover:max-w-[80%] transition-all duration-500'
               } block rounded-xl mt-[0.5vh] h-[0.1rem] mx-auto ${
                 path.pathname.includes('/room') ? 'bg-black' : 'bg-white'
               }`}
