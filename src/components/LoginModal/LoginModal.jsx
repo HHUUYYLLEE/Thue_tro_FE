@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import { AiOutlineClose } from 'react-icons/ai'
 import { AppContext } from '../../contexts/app.context'
 import { useNavigate } from 'react-router-dom'
@@ -8,6 +8,8 @@ import { schemaLogin } from '../../utils/rules'
 import { loginAccount } from '../../api/auth.api'
 import { useMutation } from '@tanstack/react-query'
 import { toast } from 'react-toastify'
+import Modal from 'react-modal'
+import { TailSpin } from 'react-loader-spinner'
 import { getInfoFromLS } from '../../utils/auth'
 import { isAxiosUnprocessableEntityError } from '../../utils/utils'
 export default function LoginModal({ closeModalLogin }) {
@@ -23,7 +25,9 @@ export default function LoginModal({ closeModalLogin }) {
     mode: 'all',
     resolver: yupResolver(schemaLogin)
   })
-
+  useEffect(() => {
+    Modal.setAppElement('body')
+  })
   const loginAccontMutation = useMutation({
     mutationFn: (body) => loginAccount(body)
   })
@@ -115,6 +119,48 @@ export default function LoginModal({ closeModalLogin }) {
                 </button>
               </div>
             </form>
+            <Modal
+              style={{
+                overlay: {
+                  position: 'fixed',
+                  top: 0,
+                  left: 0,
+                  right: 0,
+                  bottom: 0,
+                  backgroundColor: 'rgba(0, 0, 0, 0.9)',
+                  zIndex: 28
+                },
+                content: {
+                  top: '50%',
+                  left: '50%',
+                  right: 'auto',
+                  bottom: 'auto',
+                  marginRight: '-50%',
+                  transform: 'translate(-50%, -50%)',
+                  paddingLeft: '3vw',
+                  paddingRight: '3vw',
+                  paddingTop: '2vw',
+                  paddingBottom: '4vw',
+                  borderWidth: '0px',
+                  borderRadius: '1rem',
+                  zIndex: 29
+                }
+              }}
+              isOpen={loginAccontMutation.isPending}
+            >
+              <>
+                <div className='text-[#4FA94D] font-dmsans-700 mb-[5vh] text-3xl'>Đang đăng nhập...</div>
+                <TailSpin
+                  height='200'
+                  width='200'
+                  color='#4fa94d'
+                  ariaLabel='tail-spin-loading'
+                  radius='5'
+                  visible={true}
+                  wrapperStyle={{ display: 'flex', justifyContent: 'center' }}
+                />
+              </>
+            </Modal>
           </div>
         </div>
       </div>

@@ -145,7 +145,7 @@
   right: 0;
   bottom: 0;
   position: fixed;
-  z-index: 998;
+  z-index: 26;
 }
 
 .overlay {
@@ -154,7 +154,7 @@
 
 .modal-content {
   position: absolute;
-  z-index: 999;
+  z-index: 27;
   top: 50%;
   left: 50%;
   height: auto;

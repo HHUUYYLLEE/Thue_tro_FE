@@ -18,11 +18,12 @@ import ModalEdit from './ModalEdit'
 import Modal from 'react-modal'
 import 'photoswipe/dist/photoswipe.css'
 import { Gallery, Item } from 'react-photoswipe-gallery'
+import { ColorRing } from 'react-loader-spinner'
 export default function HostRoomDetail() {
   const { id } = useParams()
   const [loadingVideo, setLoadingVideo] = useState(true)
   const [modalEdit, toggleModalEdit] = useState(0)
-  const { data, status, refetch } = useQuery({
+  const { data, status, refetch, isLoading } = useQuery({
     queryKey: ['roomDetailHost', id],
     queryFn: () => {
       return getRoom(id)
@@ -40,7 +41,19 @@ export default function HostRoomDetail() {
 
   const room = data?.data?.room
   console.log(room)
-
+  if (isLoading)
+    return (
+      <div className='w-full h-[100vh] relative'>
+        <div className='left-[50%] translate-x-[-50%] z-[19] top-[50%] translate-y-[-50%] absolute'>
+          <ColorRing
+            visible={true}
+            width='40vw'
+            height='40vw'
+            colors={['#02d8fa', '#222222', '#02d8fa', '#222222', '#02d8fa']}
+          />
+        </div>
+      </div>
+    )
   return (
     <>
       <div className='w-full flex flex-col justify-center items-center'>

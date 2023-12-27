@@ -1,9 +1,9 @@
 import { Flash } from 'react-ruffle'
 export default function FlashGame() {
   return (
-    <div className='left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%]  absolute'>
+    <div className='left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] absolute'>
       <Flash
-        className='w-[100vw] h-[80vh]'
+        className='w-[990px] h-[720px]'
         src={
           {
             0: 'https://hhuuyyllee.github.io/flash/HB7.swf',

@@ -13,13 +13,14 @@ import { getRoom } from '../../api/rooms.api'
 import { useEffect, useState } from 'react'
 import { webName } from '../../utils/env'
 import { FadeLoader } from 'react-spinners'
+import { ColorRing } from 'react-loader-spinner'
 import 'photoswipe/dist/photoswipe.css'
 import { Gallery, Item } from 'react-photoswipe-gallery'
 export default function RoomDetail() {
   const { id } = useParams()
   const [loadingVideo, setLoadingVideo] = useState(true)
 
-  const { data, status } = useQuery({
+  const { data, status, isLoading } = useQuery({
     queryKey: ['roomDetail', id],
     queryFn: () => {
       return getRoom(id)
@@ -34,6 +35,19 @@ export default function RoomDetail() {
 
   const room = data?.data?.room
   console.log(room)
+  if (isLoading)
+    return (
+      <div className='w-full h-[100vh] relative'>
+        <div className='left-[50%] translate-x-[-50%] z-[19] top-[50%] translate-y-[-50%] absolute'>
+          <ColorRing
+            visible={true}
+            width='40vw'
+            height='40vw'
+            colors={['#02d8fa', '#222222', '#02d8fa', '#222222', '#02d8fa']}
+          />
+        </div>
+      </div>
+    )
   return (
     <div className='w-full flex flex-col justify-center items-center'>
       {room && (
