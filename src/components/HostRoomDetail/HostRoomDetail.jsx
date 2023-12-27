@@ -10,13 +10,14 @@ import { displayNum } from '../../utils/utils'
 import { useParams } from 'react-router-dom'
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { getRoom } from '../../api/rooms.api'
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { webName } from '../../utils/env'
 import { FadeLoader } from 'react-spinners'
 import EditIcon from './EditIcon'
 import ModalEdit from './ModalEdit'
 import Modal from 'react-modal'
-
+import 'photoswipe/dist/photoswipe.css'
+import { Gallery, Item } from 'react-photoswipe-gallery'
 export default function HostRoomDetail() {
   const { id } = useParams()
   const [loadingVideo, setLoadingVideo] = useState(true)
@@ -111,52 +112,114 @@ export default function HostRoomDetail() {
                 </div>
               </div>
               <div className='grid grid-cols-5 gap-3'>
-                <div className='grid col-span-3 row-span-2 gap-3'>
-                  <div className='overflow-hidden h-[30.75rem] rounded-lg'>
-                    <img
-                      className='rounded-lg object-cover w-full h-full'
-                      src={room?.images[0].url}
-                      alt=''
-                      referrerPolicy='no-referrer'
-                    />
+                <Gallery
+                  options={{
+                    showHideAnimationType: 'none',
+                    showAnimationDuration: 0,
+                    hideAnimationDuration: 0,
+                    clickToCloseNonZoomable: false,
+                    secondaryZoomLevel: 4,
+                    maxZoomLevel: 10,
+                    counter: false
+                  }}
+                >
+                  <div className='grid col-span-3 row-span-2 gap-3'>
+                    <div className='overflow-hidden h-[30.75rem] rounded-lg'>
+                      <Item
+                        original={room.images[0].url}
+                        width={document.documentElement.clientWidth}
+                        height={document.documentElement.clientHeight}
+                      >
+                        {({ ref, open }) => (
+                          <img
+                            className='rounded-lg object-cover w-full h-full'
+                            src={room?.images[0].url}
+                            alt=''
+                            referrerPolicy='no-referrer'
+                            ref={ref}
+                            onClick={open}
+                          />
+                        )}
+                      </Item>
+                    </div>
                   </div>
-                </div>
-                <div className='grid gap-3'>
-                  <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
-                    <img
-                      className='rounded-lg object-cover w-full h-full'
-                      src={room?.images[1].url}
-                      alt=''
-                      referrerPolicy='no-referrer'
-                    />
+                  <div className='grid gap-3'>
+                    <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
+                      <Item
+                        original={room.images[1].url}
+                        width={document.documentElement.clientWidth}
+                        height={document.documentElement.clientHeight}
+                      >
+                        {({ ref, open }) => (
+                          <img
+                            className='rounded-lg object-cover w-full h-full'
+                            src={room?.images[1].url}
+                            alt=''
+                            referrerPolicy='no-referrer'
+                            ref={ref}
+                            onClick={open}
+                          />
+                        )}
+                      </Item>
+                    </div>
+                    <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
+                      <Item
+                        original={room.images[2].url}
+                        width={document.documentElement.clientWidth}
+                        height={document.documentElement.clientHeight}
+                      >
+                        {({ ref, open }) => (
+                          <img
+                            className='rounded-lg object-cover w-full h-full'
+                            src={room?.images[2].url}
+                            alt=''
+                            referrerPolicy='no-referrer'
+                            ref={ref}
+                            onClick={open}
+                          />
+                        )}
+                      </Item>
+                    </div>
                   </div>
-                  <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
-                    <img
-                      className='rounded-lg object-cover w-full h-full'
-                      src={room?.images[2].url}
-                      alt=''
-                      referrerPolicy='no-referrer'
-                    />
+                  <div className='grid gap-3'>
+                    <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
+                      <Item
+                        original={room.images[3].url}
+                        width={document.documentElement.clientWidth}
+                        height={document.documentElement.clientHeight}
+                      >
+                        {({ ref, open }) => (
+                          <img
+                            className='rounded-lg object-cover w-full h-full'
+                            src={room?.images[3].url}
+                            alt=''
+                            referrerPolicy='no-referrer'
+                            ref={ref}
+                            onClick={open}
+                          />
+                        )}
+                      </Item>
+                    </div>
+                    <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
+                      <Item
+                        original={room.images[4].url}
+                        width={document.documentElement.clientWidth}
+                        height={document.documentElement.clientHeight}
+                      >
+                        {({ ref, open }) => (
+                          <img
+                            className='rounded-lg object-cover w-full h-full'
+                            src={room?.images[4].url}
+                            alt=''
+                            referrerPolicy='no-referrer'
+                            ref={ref}
+                            onClick={open}
+                          />
+                        )}
+                      </Item>
+                    </div>
                   </div>
-                </div>
-                <div className='grid gap-3'>
-                  <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
-                    <img
-                      className='rounded-lg object-cover w-full h-full'
-                      src={room?.images[3].url}
-                      alt=''
-                      referrerPolicy='no-referrer'
-                    />
-                  </div>
-                  <div className='overflow-hidden rounded-lg w-[14.25rem] h-[15rem]'>
-                    <img
-                      className='rounded-lg object-cover w-full h-full'
-                      src={room?.images[4].url}
-                      alt=''
-                      referrerPolicy='no-referrer'
-                    />
-                  </div>
-                </div>
+                </Gallery>
               </div>
             </div>
             <div className='my-16 w-5/6'>

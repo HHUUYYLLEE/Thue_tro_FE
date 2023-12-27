@@ -27,6 +27,13 @@
 .animation404 {
   animation-fill-mode: both;
 }
+
+.pswp__img {
+  object-fit: contain !important;
+}
+.pswp__img--placeholder {
+  display: none !important;
+}
 .rainbow-text {
   background: linear-gradient(to right, #6666ff, #0099ff, #00ff00, #ff3399, #6666ff);
   -webkit-background-clip: text;
