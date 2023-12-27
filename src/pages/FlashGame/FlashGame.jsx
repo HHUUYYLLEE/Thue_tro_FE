@@ -6,12 +6,12 @@ export default function FlashGame() {
         className='w-[100vw] h-[80vh]'
         src={
           {
-            0: '/HB7.swf',
-            1: '/N1.swf',
-            2: '/N2.swf',
-            3: '/N3.swf',
-            4: '/N4.swf',
-            5: '/N5.swf'
+            0: '../src/asset/HB7.swf',
+            1: '../src/asset/N1.swf',
+            2: '../src/asset/N2.swf',
+            3: '../src/asset/N3.swf',
+            4: '../src/asset/N4.swf',
+            5: '../src/asset/N5.swf'
           }[Math.floor(Math.random() * 6)]
         }
       />
