@@ -12,9 +12,27 @@ export default {
         '2xl': '1536px'
       },
       fontFamily: {
-        blooddrip: ['BloodDrip']
+        blooddrip: ['BloodDrip'],
+        godofwar: ['GodOfWar']
       },
       keyframes: {
+        loadingtext: {
+          '0%': {
+            'font-size': '3rem',
+            color: '#8C1714',
+            'line-height': '3.5rem'
+          },
+          '50%': {
+            'font-size': '4rem',
+            color: '#A59C68',
+            'line-height': '4.5rem'
+          },
+          '100%': {
+            'font-size': '3rem',
+            color: '#8C1714',
+            'line-height': '3.5rem'
+          }
+        },
         rainbowtext: {
           '0%': {
             'background-position': '0 0'
@@ -78,7 +96,8 @@ export default {
         fadeIn3: 'fadeIn 2.5s linear 14s',
         fadeIn4: 'fadeIn 2.5s linear 16.5s',
         fadeIn5: 'fadeIn 2.5s linear 19s',
-        rainbowtext: 'rainbowtext 2s linear infinite'
+        rainbowtext: 'rainbowtext 2s linear infinite',
+        loadingtext: 'loadingtext 4s linear infinite'
       }
     }
   },

@@ -11,12 +11,16 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-@layer base {
-  @font-face {
-    font-family: 'BloodDrip';
-    src: url(./asset/font/plasdrip.ttf) format('truetype');
-  }
+
+@font-face {
+  font-family: 'BloodDrip';
+  src: url(./asset/font/plasdrip.ttf) format('truetype');
 }
+@font-face {
+  font-family: 'GodOfWar';
+  src: url(./asset/font/GODOFWAR.TTF) format('truetype');
+}
+
 #homepage-animation2 {
   animation-delay: -15s;
 }

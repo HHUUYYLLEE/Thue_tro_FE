@@ -5,7 +5,9 @@ import useQueryConfig from '../../hooks/useQueryConfig'
 import { useEffect, useRef, useState } from 'react'
 import { AiOutlineDown } from 'react-icons/ai'
 import { createSearchParams, useNavigate } from 'react-router-dom'
-import Loading from './Loading'
+// import Loading from './Loading'
+import LoadingGif from '../../asset/img/City.gif'
+import Spinning from '../../asset/img/spinning.gif'
 import { MdCalendarToday } from 'react-icons/md'
 import Modal from 'react-modal'
 import { LuBarChart2 } from 'react-icons/lu'
@@ -74,7 +76,16 @@ export default function RoomsList() {
     }
   }, [data?.data?.rooms, data?.data?.total, queryConfig.limit, queryConfig.page, status])
 
-  if (isLoading) return <Loading />
+  if (isLoading)
+    return (
+      <div className='relative'>
+        <div className='font-godofwar animate-loadingtext absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] font'>
+          Loading...
+        </div>
+        <img src={LoadingGif} alt='' />
+        <img src={Spinning} className='fixed bottom-[2rem] w-[10rem] right-[1rem]' alt='' />
+      </div>
+    )
   return (
     <>
       <div className='flex justify-between'>
