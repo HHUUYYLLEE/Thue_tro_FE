@@ -65,9 +65,9 @@ export default function RoomDetail() {
                   <div className='self-center mr-1'>
                     <FaLocationDot />
                   </div>
-                  <div className='underline'>{room.address}</div>
+                  <div className='underline text-lg'>{room.address}</div>
                 </div>
-                <div className='text-sm mt-3'>Diện tích: {room.area}m2</div>
+                <div className='text-lg mt-3'>Diện tích: {room.area}m2</div>
               </div>
               <div className='flex flex-row items-center justify-center'>
                 <div className='flex items-center bg-[#CECECE] min-w-[8rem] text-black cursor-pointer border border-[#01B7F2] rounded-sm px-4 py-1.5 mr-3'>
