@@ -5,7 +5,7 @@ import { Link, createSearchParams, useNavigate } from 'react-router-dom'
 import { useQuery } from '@tanstack/react-query'
 import { getRandomRoom } from '../../api/rooms.api'
 import { omit } from 'lodash'
-import { PacmanLoader } from 'react-spinners'
+import { FadeLoader } from 'react-spinners'
 import Slider from 'react-slick'
 export default function Banner() {
   const { register, handleSubmit } = useForm({})
@@ -110,7 +110,7 @@ export default function Banner() {
                 {[...Array(4)].map((e, i) => (
                   <div key={i} className='relative min-w-[19vw] max-w-[19vw] h-[217px]'>
                     <div className='absolute top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%] '>
-                      <PacmanLoader color='#36d7b7' className='' />
+                      <FadeLoader color='#36d7b7' className='' />
                     </div>
                   </div>
                 ))}

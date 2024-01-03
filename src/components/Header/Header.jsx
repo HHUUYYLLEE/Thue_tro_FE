@@ -1,6 +1,6 @@
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import LoginModal from '../LoginModal'
-import Pepega from '../../asset/img/pepega.png'
+import Ava from '../../asset/img/ava.png'
 import { AppContext } from '../../contexts/app.context'
 import { useEffect, useRef, useState, useContext } from 'react'
 import { logoutAccount } from '../../api/auth.api'
@@ -213,7 +213,7 @@ export default function Header() {
         >
           <div onClick={toggleMenu} className='flex items-center gap-2'>
             <div className='bg-gray-300 rounded-full w-[3rem] h-[3rem] flex items-center justify-center'>
-              <img src={Pepega} alt='' className='w-[2rem] h-[2rem]' />
+              <img src={Ava} alt='' className='w-[2rem] h-[2rem]' />
             </div>
             <div className={`font-semibold ${path.pathname.includes('/room') ? 'text-black' : 'text-white'}`}>
               {info?.user_name}
